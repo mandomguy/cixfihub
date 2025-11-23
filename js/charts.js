@@ -33,22 +33,23 @@
 
 // Steam API player count
 async function getSteamPlayerCount() {
-    const appId = 2694490; // Path of Exile 2 App ID
     try {
-        // Using a public CORS proxy to bypass CORS issues on client-side.
-        // For a production environment, it is recommended to use your own backend proxy.
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const apiUrl = `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appId}`;
+        // Use your own serverless function endpoint
+        // In development: http://localhost:3000/api/steam-players
+        // In production: https://your-domain.vercel.app/api/steam-players
+        const apiEndpoint = '/api/steam-players';
         
-        const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
+        const response = await fetch(apiEndpoint);
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const data = await response.json();
         return data;
     } catch (error) {
         console.error("Could not fetch Steam player count:", error);
-        return null; // Return null to handle the error gracefully
+        return null;
     }
 }
 
