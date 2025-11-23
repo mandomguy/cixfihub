@@ -1,19 +1,16 @@
 // Serverless function to proxy Steam API requests
-// This avoids CORS issues by making the request server-side
-
 export default async function handler(req, res) {
   // Set CORS headers to allow requests from your domain
   res.setHeader('Access-Control-Allow-Origin', '*'); // Change '*' to your domain in production
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
-  // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
     res.status(200).end();
     return;
   }
 
-  // Only allow GET requests
+  // Only GET
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
