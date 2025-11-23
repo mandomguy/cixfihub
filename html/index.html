@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cixfi Hub • POE2</title>
+
+  <!-- From html/ up to root, then into css/ -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="header">
+  <div class="header-inner" id="headerInner">
+    <a class="logo" id="logoBtn" href="#top">
+      <span class="mark" aria-hidden="true">
+        <img src="../img/img-test1.png" alt="PoE2 Icon">
+      </span>
+        <span class="title">PoE2 Hub</span>
+      </a>
+
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <input id="filterInput" type="search"
+               placeholder="Filter links (e.g. builds, wiki, trade, crafting)..."
+               aria-label="Filter links" />
+      </div>
+
+      <button class="btn" id="themeToggle" aria-pressed="false" title="Toggle theme">
+        Toggle theme
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-card reveal" style="--delay:0s">
+        <div class="shine" aria-hidden="true"></div>
+        <h1>Path of Exile 2 — Resource Hub</h1>
+        <p>Tools, builds, trade, and more</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="kpi" id="countSections">0</div>
+            <div class="kcap">Sections</div>
+          </div>
+          <div class="stat">
+            <div class="kpi" id="countLinks">0</div>
+            <div class="kcap">Links</div>
+          </div>
+          <div class="stat">
+            <div class="kpi" id="openRate">0%</div>
+            <div class="kcap">Sections opened</div>
+          </div>
+          <div class="stat">
+            <div class="kpi" id="currentPlayers"></div>
+            <div class="kcap">Current Players</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal" style="--delay:.05s">
+        <h2 style="margin:0 0 10px">About</h2>
+        <p style="margin:0; color:var(--muted)">
+          This is a comprehensive resource hub for Path of Exile 2, featuring curated links to official websites,
+          community tools, build guides, trading platforms, crafting calculators, and social channels.
+          Whether you're looking for the latest patch notes, loot filters, build inspiration, or market prices,
+          everything you need is organized here in one place.
+        </p>
+      </div>
+    </section>
+
+    <div class="container" id="sections">
+      <!-- JS will populate sections here -->
+    </div>
+  </main>
+
+  <button id="toTop" class="btn to-top" aria-label="Back to top">▲ Top</button>
+
+  <footer>
+    No external frameworks.
+  </footer>
+
+  <script type="module" src="../js/charts.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
