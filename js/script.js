@@ -1,5 +1,6 @@
-// Data (mirrors the structure and links from arpg.info/poe2)
-// Data (mirrors the structure and links from arpg.info/poe2)
+/* ==========================================================================
+   CONFIGURATION & DATA
+   ========================================================================== */
 const DATA = {
   "Official": [
     { label: "Path of Exile Website", url: "https://pathofexile2.com/" },
@@ -8,7 +9,7 @@ const DATA = {
   ],
   "Important": [
     { label: "Neversink Loot Filter", url: "https://github.com/NeverSinkDev/NeverSink-PoE2litefilter/releases/latest" },
-    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter with an easy-to-use web tool" }
+    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter" }
   ],
   "Builds": [
     { label: "Poe.ninja - Builds", url: "https://poe.ninja/poe2/builds" },
@@ -26,9 +27,9 @@ const DATA = {
     }
   ],
   "Trade": [
-    { label: "Official Trade site", url: "https://www.pathofexile.com/trade2", desc: "Search for items to buy with advanced search filters" },
-    { label: "Poe.ninja - Prices", url: "https://poe.ninja/poe2/economy/", desc: "Current market prices for everything" },
-    { label: "Orb Watch", url: "https://orbwatch.trade/", desc: "Current market prices for items" }
+    { label: "Official Trade site", url: "https://www.pathofexile.com/trade2", desc: "Search for items to buy" },
+    { label: "Poe.ninja - Prices", url: "https://poe.ninja/poe2/economy/", desc: "Current market prices" },
+    { label: "Orb Watch", url: "https://orbwatch.trade/", desc: "Live currency rates" }
   ],
   "Information": [
     { label: "Community Wiki", url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki" },
@@ -36,26 +37,25 @@ const DATA = {
   ],
   "Tools": [
     { label: "Path of Building", url: "https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases", desc: "Complete build planning tool" },
-    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for Path of Exile 2" },
-    { label: "Sidekick", url: "https://sidekick-poe.github.io/", desc: "Path of exile companion tool." },
-    { label: "POE2.re", url: "https://poe2.re/", desc: "Regular Expression builder for UI searches" }
+    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for PoE2" },
+    { label: "POE2.re", url: "https://poe2.re/", desc: "Regex builder for UI searches" }
   ],
   "Social": [
     { label: "Reddit", url: "https://www.reddit.com/r/pathofexile/" },
     { label: "Official Discord", url: "https://discord.com/invite/pathofexile" },
-    { label: "Youtube Channel", url: "https://www.youtube.com/channel/UCA7X5unt1JrIiVReQDUbl_A" },
-    { label: "Twitch", url: "https://www.twitch.tv/directory/category/path-of-exile-2" }
-  ],
-  "Embeds": [
-    { label: "Twitter: Official", url: "https://twitter.com/pathofexile" },
-    { label: "Twitter: Bex", url: "https://twitter.com/bexsayswords" },
-    { label: "Twitch", url: "https://www.twitch.tv/directory/game/Path%20of%20Exile" }
+    { label: "Twitch Directory", url: "https://www.twitch.tv/directory/category/path-of-exile-2" }
   ]
 };
 
+/* ==========================================================================
+   DOM ELEMENTS & UTILITIES
+   ========================================================================== */
 const sectionsRoot = document.getElementById('sections');
+const countSections = document.getElementById('countSections');
+const countLinks = document.getElementById('countLinks');
+const openRate = document.getElementById('openRate');
+const currentPlayers = document.getElementById('currentPlayers');
 
-// Utilities
 const el = (tag, props = {}, children = []) => {
   const node = document.createElement(tag);
   Object.entries(props).forEach(([k, v]) => {
@@ -69,159 +69,11 @@ const el = (tag, props = {}, children = []) => {
 };
 
 const makeIcon = () => {
-  // Open square icon with external link symbol
   const wrap = el('div', { class: 'icon' });
-  wrap.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>`;
+  wrap.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 6H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4M14 4h6m0 0v6m0-6L10 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   return wrap;
 };
 
-// Build sections
-let linkCount = 0;
-const openStates = JSON.parse(sessionStorage.getItem('openStates') || '{}');
-
-Object.entries(DATA).forEach(([sectionName, items], idx) => {
-  const section = el('section', { class: 'section reveal', 'aria-expanded': openStates[sectionName] ? 'true' : 'false', 'data-name': sectionName });
-
-  const header = el('div', { class: 'section-header', role: 'button', tabindex: 0, 'aria-controls': `${sectionName}-content` });
-  const title = el('div', { class: 'section-title' }, [
-    el('span', { class: 'pill' }, [sectionName]),
-    el('span', {}, [sectionName === 'Embeds' ? 'External Feeds' : 'Links'])
-  ]);
-
-  const controls = el('div', { class: 'section-controls' }, [
-    el('span', { class: 'pill' }, [`${items.length} link${items.length>1?'s':''}`]),
-    el('span', { class: 'chevron', 'aria-hidden': 'true' }, [
-      el('svg', { width: 18, height: 18, viewBox: '0 0 24 24' }, [
-        el('path', { d: 'M6 9l6 6 6-6', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })
-      ])
-    ])
-  ]);
-
-  header.appendChild(title); header.appendChild(controls);
-
-  const content = el('div', { class: 'section-content', id: `${sectionName}-content` });
-
-  items.forEach(it => {
-    linkCount++;
-    const card = el('a', { class: 'card a', href: it.url, target: '_blank', rel: 'noopener noreferrer', 'data-label': it.label.toLowerCase(), 'data-desc': (it.desc||'').toLowerCase() });
-    card.appendChild(makeIcon());
-    const meta = el('div', { class: 'meta' }, [
-      el('div', { class: 'label' }, [it.label]),
-      it.desc ? el('div', { class: 'desc' }, [it.desc]) : null
-    ]);
-    const actions = el('div', { class: 'actions' }, [
-      el('button', { class: 'btn copy', type: 'button', title: 'Copy link', onclick: (e)=>{ e.preventDefault(); navigator.clipboard.writeText(it.url).then(()=> toast(`Copied: ${it.label}`)); } }, ['Copy']),
-      it.childs ? el('span', { class: 'pill' }, ['Has sublinks']) : null
-    ]);
-    card.appendChild(meta);
-    card.appendChild(actions);
-    content.appendChild(card);
-
-    if (it.childs) {
-      it.childs.forEach(ch => {
-        linkCount++;
-        const child = el('a', { class: 'card a', href: ch.url, target: '_blank', rel: 'noopener noreferrer', 'data-label': ch.label.toLowerCase() });
-        child.appendChild(makeIcon());
-        child.appendChild(el('div', { class: 'meta' }, [ el('div', { class: 'label' }, [ch.label]), el('div', { class: 'desc' }, ['Sub-link']) ]));
-        child.appendChild(el('div', { class: 'actions' }, [ el('button', { class: 'btn copy', type: 'button', title: 'Copy link', onclick: (e)=>{ e.preventDefault(); navigator.clipboard.writeText(ch.url).then(()=> toast(`Copied: ${ch.label}`)); } }, ['Copy']) ]));
-        content.appendChild(child);
-      });
-    }
-  });
-
-  section.appendChild(header);
-  section.appendChild(content);
-  sectionsRoot.appendChild(section);
-
-  // Toggle behavior
-  const toggle = () => {
-    const expanded = section.getAttribute('aria-expanded') === 'true';
-    section.setAttribute('aria-expanded', String(!expanded));
-    openStates[sectionName] = !expanded;
-    sessionStorage.setItem('openStates', JSON.stringify(openStates));
-    updateOpenRate();
-  };
-  header.addEventListener('click', toggle);
-  header.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-});
-
-// Header expand/collapse on logo click
-const headerInner = document.getElementById('headerInner');
-const logoBtn = document.getElementById('logoBtn');
-
-logoBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  headerInner.classList.toggle('expanded');
-});
-
-// Stats
-const countSections = document.getElementById('countSections');
-const countLinks = document.getElementById('countLinks');
-const openRate = document.getElementById('openRate');
-const currentPlayers = document.getElementById('currentPlayers');
-
-countSections.textContent = Object.keys(DATA).length;
-countLinks.textContent = linkCount;
-const updateOpenRate = () => {
-  const total = Object.keys(DATA).length;
-  const opened = [...document.querySelectorAll('.section[aria-expanded="true"]').values()].length;
-  const pct = Math.round((opened / total) * 100);
-  openRate.textContent = `${pct}%`;
-};
-updateOpenRate();
-
-// Filter behavior
-const filterInput = document.getElementById('filterInput');
-const filter = () => {
-  const q = filterInput.value.trim().toLowerCase();
-  document.querySelectorAll('.section').forEach(section => {
-    let visibleCards = 0;
-    section.querySelectorAll('.card').forEach(card => {
-      const text = (card.getAttribute('data-label') || '') + ' ' + (card.getAttribute('data-desc') || '');
-      const show = text.includes(q);
-      card.style.display = show ? '' : 'none';
-      if (show) visibleCards++;
-    });
-    // Show section if any match
-    section.style.display = visibleCards ? '' : 'none';
-    if (q && visibleCards && section.getAttribute('aria-expanded') !== 'true') {
-      section.setAttribute('aria-expanded', 'true');
-    }
-  });
-  updateOpenRate();
-};
-filterInput.addEventListener('input', filter);
-
-// Theme toggle
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-if (savedTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
-themeToggle.setAttribute('aria-pressed', savedTheme === 'light');
-themeToggle.addEventListener('click', () => {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  localStorage.setItem('theme', isLight ? 'dark' : 'light');
-  themeToggle.setAttribute('aria-pressed', String(!isLight));
-});
-
-// Scroll reveal animations
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(elm => io.observe(elm));
-
-// Back to top button
-const toTop = document.getElementById('toTop');
-const onScroll = () => {
-  const show = window.scrollY > 400;
-  toTop.classList.toggle('show', show);
-};
-window.addEventListener('scroll', onScroll, { passive: true });
-toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// Tiny toast
 let toastTimer;
 function toast(msg) {
   let t = document.getElementById('toast');
@@ -231,95 +83,155 @@ function toast(msg) {
       position: 'fixed', left: '50%', bottom: '24px', transform: 'translateX(-50%)',
       background: 'color-mix(in oklab, var(--bg-soft) 90%, transparent)',
       border: '1px solid', borderColor: 'color-mix(in oklab, var(--ring) 40%, transparent)',
-      color: 'var(--text)', padding: '10px 14px', borderRadius: '12px', boxShadow: 'var(--shadow)', zIndex: '100'
+      color: 'var(--text)', padding: '10px 14px', borderRadius: '12px', boxShadow: 'var(--shadow)', zIndex: '100',
+      opacity: '0', transition: 'opacity 0.2s ease'
     });
     document.body.appendChild(t);
   }
   t.textContent = msg;      
   t.style.opacity = '1';
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>{ t.style.opacity = '0'; }, 1500);
+  toastTimer = setTimeout(()=>{ t.style.opacity = '0'; }, 2000);
 }
 
+/* ==========================================================================
+   APP LOGIC
+   ========================================================================== */
 
+// 1. HEADER INTERACTION (Fixed)
+const headerInner = document.getElementById('headerInner');
+const logoBtn = document.getElementById('logoBtn');
+const filterInput = document.getElementById('filterInput');
 
-
-// ============================================
-// Steam API - Fixed CORS Issue
-// ============================================
-// OPTION 1: Use a CORS proxy (quick fix for testing)
-// Note: For production, use your own backend proxy
-// const appId = 2694490; // Path of Exile 2
-
-// async function getSteamPlayerCount() {
-//   try {
-//     // Using a public CORS proxy - replace with your own backend in production
-//     const proxyUrl = 'https://api.allorigins.win/raw?url=';
-//     const apiUrl = `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appId}`;
+if (headerInner && logoBtn) {
+  logoBtn.addEventListener('click', (e) => {
+    // Prevent the page from jumping to top
+    e.preventDefault();
     
-//     const response = await fetch(proxyUrl + encodeURIComponent(apiUrl));
+    // Toggle the 'expanded' class
+    headerInner.classList.toggle('expanded');
     
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-    
-//     const data = await response.json();
-//     console.log('Steam API Response:', data);
-    
-//     if (data.response && data.response.player_count !== undefined) {
-//       console.log(`Current players for app ${appId}:`, data.response.player_count);
-//       // You can display this in your UI if needed
-//       // Example: document.getElementById('playerCount').textContent = data.response.player_count;
-//     }
-    
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching Steam data:', error.message);
-//     // Fallback: show a message or use cached data
-//   }
-// }
+    // If opening, focus the search bar after a small delay for animation
+    if (headerInner.classList.contains('expanded')) {
+      setTimeout(() => {
+        if (filterInput) filterInput.focus();
+      }, 100);
+    }
+  });
+}
 
-// getSteamPlayerCount();
-// Call the function when page loads
+// 2. Build Sections
+let linkCount = 0;
+const openStates = JSON.parse(sessionStorage.getItem('openStates') || '{}');
 
+Object.entries(DATA).forEach(([sectionName, items]) => {
+  const isExpanded = openStates[sectionName] ? 'true' : 'false';
+  const section = el('section', { class: 'section reveal', 'aria-expanded': isExpanded, 'data-name': sectionName });
 
-// OPTION 2: Backend proxy (recommended for production)
-// Create a file called proxy-server.js:
-/*
-const express = require('express');
-const cors = require('cors');
-const fetch = require('node-fetch');
+  const header = el('div', { class: 'section-header', role: 'button', tabindex: 0 });
+  const title = el('div', { class: 'section-title' }, [
+    el('span', { class: 'pill' }, [sectionName]),
+    el('span', {}, ['Links'])
+  ]);
 
-const app = express();
-app.use(cors());
+  const controls = el('div', { class: 'section-controls' }, [
+    el('span', { class: 'pill' }, [`${items.length} link${items.length>1?'s':''}`]),
+    el('span', { class: 'chevron' }, [
+      el('svg', { width: 18, height: 18, viewBox: '0 0 24 24' }, [
+        el('path', { d: 'M6 9l6 6 6-6', stroke: 'currentColor', 'stroke-width': 2, 'stroke-linecap': 'round' })
+      ])
+    ])
+  ]);
 
-app.get('/api/steam/players/:appid', async (req, res) => {
-  const { appid } = req.params;
-  const url = `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appid}`;
-  
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch from Steam' });
-  }
+  header.appendChild(title); header.appendChild(controls);
+  const content = el('div', { class: 'section-content' });
+
+  const createCard = (it, isSub = false) => {
+    linkCount++;
+    const card = el('a', { class: 'card a', href: it.url, target: '_blank', rel: 'noopener noreferrer', 'data-label': it.label.toLowerCase() });
+    card.appendChild(makeIcon());
+    card.appendChild(el('div', { class: 'meta' }, [
+      el('div', { class: 'label' }, [it.label]),
+      it.desc ? el('div', { class: 'desc' }, [it.desc]) : null
+    ]));
+    card.appendChild(el('div', { class: 'actions' }, [
+      el('button', { class: 'btn copy', type: 'button', onclick: (e)=>{ e.preventDefault(); e.stopPropagation(); navigator.clipboard.writeText(it.url).then(()=> toast('Copied!')); }}, ['Copy'])
+    ]));
+    content.appendChild(card);
+    if (it.childs) it.childs.forEach(ch => createCard(ch, true));
+  };
+
+  items.forEach(item => createCard(item));
+  section.appendChild(header);
+  section.appendChild(content);
+  sectionsRoot.appendChild(section);
+
+  const toggle = () => {
+    const expanded = section.getAttribute('aria-expanded') === 'true';
+    section.setAttribute('aria-expanded', String(!expanded));
+    openStates[sectionName] = !expanded;
+    sessionStorage.setItem('openStates', JSON.stringify(openStates));
+    updateOpenRate();
+  };
+  header.addEventListener('click', toggle);
 });
 
-app.listen(4000, () => console.log('Proxy running on http://localhost:4000'));
-*/
+// 3. Stats & Filters
+countSections.textContent = Object.keys(DATA).length;
+countLinks.textContent = linkCount;
 
-// Then replace getSteamPlayerCount() with:
-/*
-async function getSteamPlayerCount() {
+const updateOpenRate = () => {
+  const total = Object.keys(DATA).length;
+  const opened = document.querySelectorAll('.section[aria-expanded="true"]').length;
+  openRate.textContent = total ? `${Math.round((opened / total) * 100)}%` : '0%';
+};
+updateOpenRate();
+
+if (filterInput) {
+  filterInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('.section').forEach(sec => {
+      let visible = 0;
+      sec.querySelectorAll('.card').forEach(card => {
+        const match = (card.getAttribute('data-label') || '').includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      sec.style.display = visible ? '' : 'none';
+      if (q && visible && sec.getAttribute('aria-expanded') !== 'true') sec.setAttribute('aria-expanded', 'true');
+    });
+  });
+}
+
+// 4. Robust Steam API Fetch
+async function fetchSteamPlayers() {
+  const appId = 2694490;
+  // Proxy URL handles CORS and HTTPS
+  const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appId}`)}`;
+  
   try {
-    const response = await fetch(`http://localhost:4000/api/steam/players/${appId}`);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const response = await fetch(proxyUrl);
+    if (!response.ok) throw new Error('Proxy failed');
     const data = await response.json();
-    console.log('Steam players:', data.response.player_count);
-    return data;
-  } catch (error) {
-    console.error('Error:', error.message);
+    
+    if (data.response && data.response.player_count) {
+      currentPlayers.textContent = data.response.player_count.toLocaleString();
+    } else {
+      currentPlayers.textContent = 'N/A';
+    }
+  } catch (err) {
+    console.error("Steam API Error:", err);
+    currentPlayers.textContent = 'N/A';
   }
 }
-*/
+fetchSteamPlayers();
+
+// 5. Theme Toggle & UI
+document.getElementById('themeToggle').addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent header collapse when clicking theme button
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+});
+
+const io = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')));
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));

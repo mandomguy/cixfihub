@@ -12,6 +12,9 @@
   --accent: #22c55e; /* green */
   --ring: #3b82f6; /* blue */
   --shadow: 0 10px 30px rgba(0,0,0,0.35);
+  --gradient-test: radial-gradient(1200px 500px at 10% -10%, rgba(139,92,246,0.25), transparent 60%),
+              radial-gradient(1000px 400px at 110% -20%, rgba(6,182,212,0.25), transparent 60%),
+              var(--bg);
 }
 
 [data-theme="light"] {
@@ -34,14 +37,13 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   height: 100%;
 }
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background: radial-gradient(1200px 500px at 10% -10%, rgba(139,92,246,0.25), transparent 60%),
               radial-gradient(1000px 400px at 110% -20%, rgba(6,182,212,0.25), transparent 60%),
@@ -51,7 +53,7 @@ body {
 }
 
 /* ============================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (OPTIMIZED)
    ============================================ */
 .header {
   position: sticky;
@@ -67,17 +69,15 @@ body {
   margin: 0 auto;
   padding: 12px 16px;
   display: flex;
-  gap: 12px;
   align-items: center;
+  /* Centered by default, spaced when expanded */
   justify-content: center;
+  gap: 12px;
   position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.header-inner.expanded {
-  justify-content: flex-start;
-}
-
-/* Logo */
+/* --- Logo Styling --- */
 .logo {
   display: flex;
   align-items: center;
@@ -85,13 +85,10 @@ body {
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
-  transition: all .8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.header-inner:not(.expanded) .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; /* Fixed: Removed absolute positioning */
+  flex-shrink: 0;
+  z-index: 2;
+  transition: transform 0.2s ease;
 }
 
 .logo .mark {
@@ -99,68 +96,61 @@ body {
   height: 48px;
   border-radius: 50%;
   overflow: hidden;
+  background-color: var(--card); /* Fallback bg if image fails */
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent), var(--shadow);
-  transition: all .8s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .logo .mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.header-inner.expanded .logo .mark {
-  width: 40px;
-  height: 40px;
+  background-image: url('https://i.imgur.com/1gcsIi1.png'); /* Fallback image */
+  background-size: contain; 
+  background-position: center;
+  background-repeat: no-repeat;
+  width: auto;
+  height: 2.5rem;
 }
 
 .logo:hover .mark {
+  background-color: var(--card);
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent), 
               0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-3px);
 }
 
-/* Title */
+/* --- Title Text --- */
 .title {
   font-weight: 800;
   letter-spacing: 0.2px;
-  opacity: 0;
+  opacity: 1;
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
-  transition: opacity .8s cubic-bezier(0.4, 0, 0.2, 1) .2s,
-              /* max-width .8s cubic-bezier(0.4, 0, 0.2, 1) .2s; */
+  transition: all 0.6s ease-in-out;
 }
 
-.header-inner.expanded .title {
-  opacity: 1;
-  max-width: 400px;
-}
 
-/* Search */
+
+/* --- Search Bar --- */
 .search {
-  flex: 0;
   display: flex;
   align-items: center;
   gap: 8px;
   background: var(--bg-soft);
-  padding: 10px 12px;
+  height: 40px;
   border-radius: 12px;
   border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   box-shadow: var(--shadow);
+  
+  /* Hidden State */
   opacity: 0;
   max-width: 0;
+  padding: 0;
+  border-width: 0;
   overflow: hidden;
-  transition: opacity .8s cubic-bezier(0.4, 0, 0.2, 1) .3s,
-              /* max-width .8s cubic-bezier(0.4, 0, 0.2, 1) .3s; */
-}
-
-.header-inner.expanded .search {
-  opacity: 1;
-  max-width: 600px;
-  flex: 1;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .search input {
@@ -170,56 +160,162 @@ body {
   border: 0;
   outline: none;
   font-size: 15px;
+  min-width: 200px;
 }
 
-/* Buttons */
+/* --- Buttons --- */
 .btn {
-  border: linear-gradient(180deg, color-mix(in oklab, var(--card) 93%, transparent), color-mix(in oklab, var(--bg-soft) 88%, transparent));
   border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   background: linear-gradient(180deg, color-mix(in oklab, var(--bg-soft) 85%, transparent), color-mix(in oklab, var(--bg) 85%, transparent));
   color: var(--text);
   padding: 10px 12px;
   border-radius: 12px;
   cursor: pointer;
-  transition: transform .12s ease, 
-              border-color .2s ease, 
-              box-shadow .2s ease, 
-              opacity .8s cubic-bezier(0.4, 0, 0.2, 1) .4s, 
-              max-width .8s cubic-bezier(0.4, 0, 0.2, 1) .4s, 
-              padding .8s cubic-bezier(0.4, 0, 0.2, 1) .4s, 
-              border-width .8s cubic-bezier(0.4, 0, 0.2, 1) .4s, 
-              margin-left .8s cubic-bezier(0.4, 0, 0.2, 1) .4s;
+  white-space: nowrap;
+  transition: transform .12s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  /* Fallbacks for browsers that don't support color-mix() */
-  border-color: rgba(59,130,246,0.4);
-  border-color: linear-gradient(180deg, color-mix(in oklab, var(--card) 93%, transparent), color-mix(in oklab, var(--bg-soft) 88%, transparent));
-  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  box-shadow: 0 8px 24px rgba(59,130,246,0.2);
-  box-shadow: 0 8px 24px color-mix(in oklab, var(--ring) 20%, transparent);
+  background-color: var(--card);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent), 
+              0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
+  transform: scale(1.02) translateY(-2px);
 }
 
 #themeToggle {
   opacity: 0;
   max-width: 0;
   padding: 0;
+  margin: 0;
   border-width: 0;
-  margin-left: 0;
   overflow: hidden;
-  pointer-events: none;
-  white-space: nowrap;
-  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+#githubIconDark {
+  width: 2.5rem;
+  height: 2.5rem;
+  opacity: 0;
+  max-width: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+button#githubIconDark:hover {
+  transform: scale(1.03) translateY(-3px);
+  transition: all 0.25s ease-in-out;
+}
+
+button#githubIconDark:active {
+  color: var(--brand);
+  transform: scale(1) translateY(3px);
+  transition: all 0.1s ease-in;
+}
+
+a#headerTitle {
+  display: flex;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.25s ease-in-out;
+}
+
+a#headerTitle .expanded {
+  display: flex;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+}
+
+a#headerTitle:hover {
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--brand);
+  transform: scale(1.03) translateY(-3px);
+  transition: all 0.25s ease-in-out;
+}
+
+/* a#headerTitle:hover::ended {
+  transform: scale(1) translateY(0px);
+  transition: all 0.65s ease-in-out;
+} */
+
+a#headerTitle:active {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: var(--brand);
+  transform: scale(1) translateY(3px);
+  transition: all 0.1s ease-in;
+}
+
+
+/* ============================================
+   EXPANDED STATE (Active)
+   ============================================ */
+.header-inner.expanded {
+  justify-content: space-between;
+}
+
+.header-inner.expanded .logo .mark {
+  width: 40px;
+  height: 40px;
+}
+
+.header-inner.expanded .title {
+  opacity: 1;
+  max-width: 12.5rem;
+  margin-right: 0.625rem;
+}
+
+.header-inner.expanded .search {
+  opacity: 1;
+  max-width: 600px;
+  flex: 1;
+  padding: 0 12px;
+  border-width: 1px;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-inner.expanded #themeToggle {
   opacity: 1;
   max-width: 160px;
   padding: 10px 12px;
+  margin-left: 8px;
   border-width: 1px;
-  margin-left: 4px;
-  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-inner.expanded #githubIconDark {
+  visibility: visible;
+  opacity: 1;
+  background-image: url(/images/github-mark.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 160px;
+  padding: 10px 12px; /* TALVEZ CAUSE PROBLEMA NO FUTURO */
+  margin-left: 8px;
+  border-width: 1px;
+  border-radius: 50%;
+}
+
+#githubIconDark:hover {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent), 
+              0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
+  transform: scale(1.01) translateY(-1px);
 }
 
 /* ============================================
@@ -256,9 +352,7 @@ body {
 }
 
 @keyframes rotateShine {
-  to {
-    transform: rotate(1turn);
-  }
+  to { transform: rotate(1turn); }
 }
 
 .hero h1 {
@@ -355,7 +449,7 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   display: grid;
   gap: 12px;
-  padding: 0 14px 14px;
+  padding: 0 14px;
   max-height: 0;
   overflow: hidden;
   transition: max-height .35s ease, padding-top .25s ease;
@@ -374,7 +468,8 @@ body {
   border-radius: 14px;
   padding: 14px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  /* 1. Ensure the middle column (text) handles sizing strictly */
+  grid-template-columns: auto minmax(0, 1fr) auto; 
   gap: 12px;
   align-items: center;
   transition: transform .15s ease, border-color .2s ease, box-shadow .2s ease;
@@ -412,15 +507,27 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  /* 2. THE MAGIC FIX: This allows the flex/grid item to shrink below its content width */
+  min-width: 0; 
+  overflow: hidden; 
 }
 
 .meta .label {
   font-weight: 700;
+  /* 3. OPTIONAL: Force text to one line with ... if too long */
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .meta .desc {
   color: var(--muted);
   font-size: 13px;
+  /* 4. Same truncation for description. 
+     If you prefer wrapping text, remove 'white-space: nowrap' here */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .actions {
@@ -457,7 +564,7 @@ body {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER & UI ELEMENTS
    ============================================ */
 footer {
   text-align: center;
@@ -465,9 +572,6 @@ footer {
   padding: 30px 16px 60px;
 }
 
-/* ============================================
-   BACK TO TOP BUTTON
-   ============================================ */
 .to-top {
   position: fixed;
   right: 18px;
@@ -493,11 +597,9 @@ footer {
   .hero {
     grid-template-columns: 1fr;
   }
-
   .section-content {
     grid-template-columns: 1fr;
   }
-
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
