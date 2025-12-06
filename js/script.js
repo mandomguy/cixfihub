@@ -235,3 +235,31 @@ document.getElementById('themeToggle').addEventListener('click', (e) => {
 
 const io = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('in')));
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// 6. Back-to-top button
+(() => {
+  const btn = document.getElementById('toTop');
+  if (!btn) return;
+
+  const toggleVisibility = () => {
+    const show = window.scrollY > 200;
+    btn.style.opacity = show ? '1' : '0';
+    btn.style.pointerEvents = show ? 'auto' : 'none';
+  };
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Keyboard access
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  toggleVisibility();
+})();
