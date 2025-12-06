@@ -98,24 +98,21 @@ function toast(msg) {
    APP LOGIC
    ========================================================================== */
 
-// 1. HEADER INTERACTION (Fixed)
+// 1. HEADER INTERACTION
 const headerInner = document.getElementById('headerInner');
 const logoBtn = document.getElementById('logoBtn');
 const filterInput = document.getElementById('filterInput');
 
 if (headerInner && logoBtn) {
   logoBtn.addEventListener('click', (e) => {
-    // Prevent the page from jumping to top
     e.preventDefault();
     
-    // Toggle the 'expanded' class
+    const isExpanding = !headerInner.classList.contains('expanded');
     headerInner.classList.toggle('expanded');
     
-    // If opening, focus the search bar after a small delay for animation
-    if (headerInner.classList.contains('expanded')) {
-      setTimeout(() => {
-        if (filterInput) filterInput.focus();
-      }, 100);
+    // Focus search input when expanding
+    if (isExpanding && filterInput) {
+      setTimeout(() => filterInput.focus(), 150);
     }
   });
 }
@@ -167,13 +164,20 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
   sectionsRoot.appendChild(section);
 
   const toggle = () => {
-    const expanded = section.getAttribute('aria-expanded') === 'true';
-    section.setAttribute('aria-expanded', String(!expanded));
-    openStates[sectionName] = !expanded;
+    const isExpanded = section.getAttribute('aria-expanded') === 'true';
+    section.setAttribute('aria-expanded', !isExpanded);
+    openStates[sectionName] = !isExpanded;
     sessionStorage.setItem('openStates', JSON.stringify(openStates));
     updateOpenRate();
   };
+  
   header.addEventListener('click', toggle);
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle();
+    }
+  });
 });
 
 // 3. Stats & Filters
@@ -227,8 +231,7 @@ async function fetchSteamPlayers() {
 fetchSteamPlayers();
 
 // 5. Theme Toggle & UI
-document.getElementById('themeToggle').addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent header collapse when clicking theme button
+document.getElementById('themeToggle').addEventListener('click', () => {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
