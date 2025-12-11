@@ -344,6 +344,7 @@ window.closeSidebar = function() {
 // 3. TAB SWITCHING (Global scope)
 window.switchTab = function(tabId, clickedElement) {
   // Lazy-load cached elements on first use
+  // Note: Assumes static DOM structure; elements are not dynamically added after page load
   if (!panelViews) {
     panelViews = document.querySelectorAll('.panel-view');
     railIcons = document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)');
