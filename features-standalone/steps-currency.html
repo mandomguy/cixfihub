@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,3 +270,281 @@
 
 </body>
 </html>
+=======
+<!--  IDEA 1: STEP-BY-STEP CRAFTING /// IDEA 2: SLIDER FOR CURRENCY AND MAYBE CHARTS  -->
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Interactive Steps Card – Pure HTML/CSS/JS</title>
+        <style>
+            :root {
+                --bg-primary: #04070d;
+                --bg-secondary: #10131c;
+                --border: rgba(216, 231, 242, 0.07);
+                --shadow-inset: inset 0 2px 1px rgba(207, 231, 255, 0.2);
+                --shadow-inset-sm: inset 0 1px 1px rgba(207, 231, 255, 0.2);
+                --text-muted: rgba(184, 199, 217, 0.5);
+                --text-normal: #d5dbe6;
+                --transition: all 0.3s ease;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background: #000;
+                color: white;
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                padding: 2rem;
+            }
+
+            .card {
+                background: var(--bg-primary);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: var(--shadow-inset);
+                max-width: 1000px;
+                width: 100%;
+            }
+
+            /* Step Tabs */
+            .tabs {
+                display: flex;
+                gap: 16px;
+                padding: 32px 32px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .tab {
+                background: var(--bg-secondary);
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: var(--transition);
+                box-shadow: var(--shadow-inset-sm);
+                user-select: none;
+            }
+
+            .tab.active {
+                opacity: 1;
+                background: var(--bg-secondary);
+            }
+
+            .tab:not(.active) {
+                opacity: 0.5;
+            }
+
+            .tab:hover:not(.active) {
+                opacity: 0.75;
+            }
+
+            /* Content Area */
+            .content-wrapper {
+                padding: 40px 32px;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            @media (min-width: 768px) {
+                .content-wrapper {
+                    flex-direction: row;
+                    align-items: flex-start;
+                }
+            }
+
+            .image-container {
+                flex-shrink: 0;
+                background: #0f131f;
+                padding: 16px;
+                border-radius: 30px;
+            }
+
+            .image-inner {
+                background: #0f131f;
+                border-radius: 24px;
+                overflow: hidden;
+            }
+
+            .image-inner img {
+                display: block;
+                width: 100%;
+                max-width: 420px;
+                border-radius: 20px;
+                object-fit: contain;
+            }
+
+            .text-content {
+                flex: 1;
+                opacity: 0;
+                transform: translateY(10px);
+                animation: fadeIn 0.5s ease forwards;
+            }
+
+            .text-content.active {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .number {
+                font-size: 1.8rem;
+                color: var(--text-muted);
+                margin-bottom: 8px;
+                font-weight: 300;
+            }
+
+            .title {
+                font-size: 3.2rem;
+                font-weight: 500;
+                line-height: 1.1;
+                margin-bottom: 20px;
+            }
+
+            .description {
+                font-size: 1.125rem;
+                line-height: 1.7;
+                color: var(--text-normal);
+                opacity: 0.9;
+            }
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Hide all steps except active */
+            .step-content {
+                display: none;
+            }
+            .step-content.active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <!-- Step Tabs -->
+            <div class="tabs">
+                <div class="tab active" data-step="1">STEP 1</div>
+                <div class="tab" data-step="2">STEP 2</div>
+                <div class="tab" data-step="3">STEP 3</div>
+            </div>
+
+            <!-- Step Contents -->
+            <div class="content-wrapper">
+                <!-- Step 1 -->
+                <div class="step-content active" id="step-1">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img
+                                src="https://framerusercontent.com/images/iWjIPE13Flu0JP6l05DPEJQ.png"
+                                alt="Discover & Analyze"
+                            />
+                        </div>
+                    </div>
+                    <div class="text-content active">
+                        <div class="number">01</div>
+                        <h2 class="title">Discover &amp; Analyze</h2>
+                        <p class="description">
+                            We audit your existing workflows, tools, and
+                            customer data to uncover inefficiencies and
+                            automation opportunities. Every system is mapped for
+                            clarity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-content" id="step-2">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img
+                                src="https://framerusercontent.com/images/1q2w3e4r5t6y7u.png"
+                                alt="Design & Prototype"
+                            />
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <div class="number">02</div>
+                        <h2 class="title">Design &amp; Prototype</h2>
+                        <p class="description">
+                            We create tailored automation blueprints and
+                            interactive prototypes so you can see exactly how
+                            your new workflows will function before a single
+                            line of code is written.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-content" id="step-3">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img
+                                src="https://framerusercontent.com/images/8u7i6y5t4r3e2w.png"
+                                alt="Deploy & Scale"
+                            />
+                        </div>
+                    </div>
+                    <div class="text-content">
+                        <div class="number">03</div>
+                        <h2 class="title">Deploy &amp; Scale</h2>
+                        <p class="description">
+                            We build, test, and deploy robust automations that
+                            scale with your business. Ongoing monitoring and
+                            optimization ensure maximum ROI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.querySelectorAll(".tab").forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    const step = tab.getAttribute("data-step");
+
+                    // Update active tab
+                    document
+                        .querySelectorAll(".tab")
+                        .forEach((t) => t.classList.remove("active"));
+                    tab.classList.add("active");
+
+                    // Update active content
+                    document
+                        .querySelectorAll(".step-content")
+                        .forEach((content) => {
+                            content.classList.remove("active");
+                        });
+                    document
+                        .getElementById(`step-${step}`)
+                        .classList.add("active");
+
+                    // Trigger fade-in animation on text
+                    document.querySelectorAll(".text-content").forEach((tc) => {
+                        tc.style.animation = "none";
+                        tc.offsetHeight; // Trigger reflow
+                        tc.style.animation = "fadeIn 0.5s ease forwards";
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
+>>>>>>> development2
