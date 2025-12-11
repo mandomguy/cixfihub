@@ -5,56 +5,226 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cixfi POE2 Hub</title>
   
-  <!-- FIXED PATH: css/styles.css (removed ../) -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header class="header">
-    <!-- EXPANDED FOR DEBUGGING -->
     <div class="header-inner" id="headerInner">
-      <a class="logo" id="logoBtn" href="#top">
-        <span class="mark" aria-hidden="true">
-          <!-- FIXED PATH & FALLBACK -->
-          <img src="images/img-test1.png" alt="PoE2"/>   
-        </span>
-      </a>
-
-        <span class="headerTitle">
-          <a href="#" id="headerTitle">
-            Cixfi POE2 Hub
-          </a>
-        </span>
-
-      <div class="search" role="search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
-        </svg>
-        <input id="filterInput" type="search"
-               placeholder="Filter links (e.g. builds, wiki, trade)..."
-               aria-label="Filter links" />
+      <!-- LEFT SECTION: Logo + Widget Trigger -->
+      <div class="header-left">
+        <div class="logo" id="logoBtn">
+          <span class="mark" aria-hidden="true">
+            <img src="images/img-test1.png" alt="PoE2"/>   
+          </span>
+        </div>
+        
+        <button id="widget-trigger-btn" onclick="openSidebar()" title="Open sidebar">
+          ☰
+        </button>
       </div>
 
-      <!-- Theme Toggle Dark/Light -->
-      <div>
+      <!-- MIDDLE SECTION: Search Bar -->
+      <div class="header-center">
+        <div class="search" role="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <input id="filterInput" type="search"
+                 placeholder="Filter links..."
+                 aria-label="Filter links" />
+        </div>
+      </div>
+
+      <!-- RIGHT SECTION: Theme Toggle + GitHub -->
+      <div class="header-right">
         <button class="btn" id="themeToggle" aria-pressed="false" title="Toggle theme">
           Toggle Theme
         </button>
-      </div>
-
-      <!-- GitHub Icon Button -->
-      <div>
+        
         <button class="btn" id="githubIconDark" title="Github Repository" aria-label="GitHub Repository">
-          <a href="#">
-            <img src="/images/github-mark.png" alt="GitHub Logo">
+          <a href="https://github.com/yourusername/yourrepo" target="_blank" rel="noopener noreferrer">
+            <span class="sr-only">GitHub</span>
           </a>
         </button>
       </div>
-
-
     </div>
   </header>
+
+  <!-- Sidebar Widget -->
+  <div class="sidebar-widget" id="sidebar-widget">
+    <div class="sidebar-rail">
+      <div class="rail-icon close-action" onclick="closeSidebar()" title="Close sidebar">✕</div>
+      <div class="rail-icon active-tab" onclick="switchTab('tab-home', this)" title="Home">🏠</div>
+      <div class="rail-icon" onclick="switchTab('tab-builds', this)" title="Builds">📚</div>
+      <div class="rail-icon" onclick="switchTab('tab-tools', this)" title="Tools">🛠</div>
+      <div class="rail-icon" onclick="switchTab('tab-settings', this)" title="Settings">⚙</div>
+    </div>
+
+    <div class="sidebar-panel">
+      <!-- HOME TAB -->
+      <div class="panel-view visible" id="tab-home">
+        <h2>Dashboard</h2>
+        <p class="panel-desc">Overview of builds, trends & activity</p>
+        
+        <h3>Quick Stats</h3>
+        <div class="resource-card" onclick="alert('Current Players')">
+          <div class="resource-icon">👥</div>
+          <div class="resource-info">
+            <div class="resource-title">Current Players</div>
+            <div class="resource-desc">Live POE2 stats</div>
+          </div>
+        </div>
+        
+        <h3>Featured Sections</h3>
+        <div class="resource-card" onclick="document.querySelector('.rail-icon[title=Builds]').click()">
+          <div class="resource-icon">📚</div>
+          <div class="resource-info">
+            <div class="resource-title">Build Guides</div>
+            <div class="resource-desc">Popular builds & guides</div>
+          </div>
+        </div>
+        
+        <div class="resource-card" onclick="document.querySelector('.rail-icon[title=Tools]').click()">
+          <div class="resource-icon">🛠️</div>
+          <div class="resource-info">
+            <div class="resource-title">Tools & Overlays</div>
+            <div class="resource-desc">Community tools</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUILDS TAB -->
+      <div class="panel-view" id="tab-builds">
+        <h2>Build Guides</h2>
+        <p class="panel-desc">Popular builds & leveling guides</p>
+        
+        <h3>Build Platforms</h3>
+        <div class="resource-card">
+          <div class="resource-icon">🏆</div>
+          <div class="resource-info">
+            <div class="resource-title">Poe.ninja Builds</div>
+            <div class="resource-desc">Trending builds</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">⚡</div>
+          <div class="resource-info">
+            <div class="resource-title">PoeVault</div>
+            <div class="resource-desc">Build database</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">🎯</div>
+          <div class="resource-info">
+            <div class="resource-title">Maxroll</div>
+            <div class="resource-desc">Guides & builds</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">📊</div>
+          <div class="resource-info">
+            <div class="resource-title">Mobalytics</div>
+            <div class="resource-desc">Build analysis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLS TAB -->
+      <div class="panel-view" id="tab-tools">
+        <h2>Tools & Overlays</h2>
+        <p class="panel-desc">Community tools & utilities</p>
+        
+        <h3>Planning Tools</h3>
+        <div class="resource-card">
+          <div class="resource-icon">🏗️</div>
+          <div class="resource-info">
+            <div class="resource-title">Path of Building</div>
+            <div class="resource-desc">Build planner</div>
+          </div>
+        </div>
+        
+        <h3>Overlays</h3>
+        <div class="resource-card">
+          <div class="resource-icon">🎮</div>
+          <div class="resource-info">
+            <div class="resource-title">Sidekick Overlay</div>
+            <div class="resource-desc">In-game overlay</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">🖥️</div>
+          <div class="resource-info">
+            <div class="resource-title">XileHUD</div>
+            <div class="resource-desc">HUD overlay</div>
+          </div>
+        </div>
+        
+        <h3>Utilities</h3>
+        <div class="resource-card">
+          <div class="resource-icon">🔍</div>
+          <div class="resource-info">
+            <div class="resource-title">POE2.re</div>
+            <div class="resource-desc">Regex builder</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">📝</div>
+          <div class="resource-info">
+            <div class="resource-title">FilterBlade</div>
+            <div class="resource-desc">Loot filter</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div class="panel-view" id="tab-settings">
+        <h2>Settings</h2>
+        <p class="panel-desc">Customize your experience</p>
+        
+        <h3>Appearance</h3>
+        <div class="resource-card" onclick="window.toggleTheme()">
+          <div class="resource-icon">🌙</div>
+          <div class="resource-info">
+            <div class="resource-title">Theme Toggle</div>
+            <div class="resource-desc">Dark / Light mode</div>
+          </div>
+        </div>
+        
+        <h3>Information</h3>
+        <div class="resource-card">
+          <div class="resource-icon">ℹ️</div>
+          <div class="resource-info">
+            <div class="resource-title">About</div>
+            <div class="resource-desc">POE2 Resource Hub</div>
+          </div>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon">🔗</div>
+          <div class="resource-info">
+            <div class="resource-title">GitHub</div>
+            <div class="resource-desc">View source code</div>
+          </div>
+        </div>
+        
+        <h3>Documentation</h3>
+        <div class="resource-card">
+          <div class="resource-icon">📖</div>
+          <div class="resource-info">
+            <div class="resource-title">Wiki</div>
+            <div class="resource-desc">Community wiki</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main id="top">
     <section class="hero">
@@ -102,7 +272,6 @@
   <footer>
     No external frameworks.
   </footer>
-
 
   <script src="js/script.js"></script>
 </body>

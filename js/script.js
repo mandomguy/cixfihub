@@ -7,9 +7,16 @@ const DATA = {
     { label: "Early Access", url: "https://pathofexile2.com/early-access" },
     { label: "Latest Patch notes", url: "https://www.pathofexile.com/forum/view-forum/2212" }
   ],
-  "Important": [
-    { label: "Neversink Loot Filter", url: "https://github.com/NeverSinkDev/NeverSink-PoE2litefilter/releases/latest" },
-    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter" }
+  "Tools": [
+    { label: "Path of Building", url: "https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases", desc: "Complete build planning tool" },
+    { label: "POE2 Live Search Manager", url: "https://github.com/5k-mirrors/poe-live-search-manager", desc: "Manage multiple live searches, get notifications, and send whispers without leaving the game." },
+    { label: "POE2.re", url: "https://poe2.re/", desc: "Regex builder for UI searches" },
+    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for PoE2" },
+    { label: "Sidekick Overlay", url: "https://sidekick-poe.github.io/", desc: "Sidekick Overlay for POE2" },
+    { label: "Xiletrade", url: "https://github.com/maxensas/xiletrade", desc: "Xiletrade Overlay for POE2" },
+    { label: "XileHUD", url: "https://github.com/XileHUD/poe_overlay", desc: "XileHUD Overlay for POE2" },
+    { label: "POE2 Overlay", url: "https://www.poeoverlay.com/", desc: "Standalone/Overwolf POE2 Overlay" },
+    { label: "#####", url: "####", desc: "######" },
   ],
   "Builds": [
     { label: "Poe.ninja - Builds", url: "https://poe.ninja/poe2/builds" },
@@ -29,21 +36,25 @@ const DATA = {
   "Trade": [
     { label: "Official Trade site", url: "https://www.pathofexile.com/trade2", desc: "Search for items to buy" },
     { label: "Poe.ninja - Prices", url: "https://poe.ninja/poe2/economy/", desc: "Current market prices" },
-    { label: "Orb Watch", url: "https://orbwatch.trade/", desc: "Live currency rates" }
   ],
-  "Information": [
-    { label: "Community Wiki", url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki" },
-    { label: "Poe2DB", url: "https://poe2db.tw/" }
+  "Information/Guides": [
+    { label: "Community Wiki", url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki", desc: "POE2 Community Wiki" },
+    { label: "Poe2DB", url: "https://poe2db.tw/", desc: "POE2 Database" },
+    { label: "POE2 Wiki", url: "https://path-of-exile-2.fandom.com/wiki/Path_of_Exile_2_Wiki", desc: "Fandom POE2 Wiki" },
+    { label: "Game8", url: "https://game8.co/games/Path-of-Exile-2", desc: "Game8 Guides & More" }
   ],
-  "Tools": [
-    { label: "Path of Building", url: "https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases", desc: "Complete build planning tool" },
-    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for PoE2" },
-    { label: "POE2.re", url: "https://poe2.re/", desc: "Regex builder for UI searches" }
+    "Filter": [
+    { label: "Neversink Loot Filter", url: "https://github.com/NeverSinkDev/NeverSink-PoE2litefilter/releases/latest" },
+    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter" },
+    { label: "POE2 Filter", url: "https://poe2filter.com/", desc: "Customizable loot filter generator" },
+    { label: "Divine View", url: "https://divineview.app/", desc: "POE2 Loot Filter Text Editor" },
   ],
   "Social": [
-    { label: "Reddit", url: "https://www.reddit.com/r/pathofexile/" },
-    { label: "Official Discord", url: "https://discord.com/invite/pathofexile" },
-    { label: "Twitch Directory", url: "https://www.twitch.tv/directory/category/path-of-exile-2" }
+    { label: "/r/pathofexile2", url: "https://www.reddit.com/r/pathofexile2/", desc: "POE2 Sub Reddit" },
+    { label: "/r/poe2builds", url: "https://www.reddit.com/r/poe2builds/", desc: "POE2 Builds Sub Reddit" },
+    { label: "Official Discord", url: "https://discord.com/invite/pathofexile", desc: "Path of Exile Official Discord" },
+    { label: "Twitch Directory", url: "https://www.twitch.tv/directory/category/path-of-exile-2", desc: "POE2 Streams" },
+    { label: "YouTube Channel", url: "https://www.youtube.com/c/PathofExile", desc: "POE2 YouTube Channel" },
   ]
 };
 
@@ -98,24 +109,11 @@ function toast(msg) {
    APP LOGIC
    ========================================================================== */
 
-// 1. HEADER INTERACTION
+// 1. HEADER - No interactive functionality needed
 const headerInner = document.getElementById('headerInner');
-const logoBtn = document.getElementById('logoBtn');
 const filterInput = document.getElementById('filterInput');
 
-if (headerInner && logoBtn) {
-  logoBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    const isExpanding = !headerInner.classList.contains('expanded');
-    headerInner.classList.toggle('expanded');
-    
-    // Focus search input when expanding
-    if (isExpanding && filterInput) {
-      setTimeout(() => filterInput.focus(), 150);
-    }
-  });
-}
+// Logo is now just visual, no click handler needed
 
 // 2. Build Sections
 let linkCount = 0;
@@ -266,3 +264,56 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   window.addEventListener('scroll', toggleVisibility, { passive: true });
   toggleVisibility();
 })();
+
+/* ==========================================================================
+   SIDEBAR - GLOBAL FUNCTIONS (Must be accessible to onclick handlers)
+   ========================================================================== */
+
+// SIDEBAR 
+const sidebar = document.getElementById('sidebar-widget');
+const body = document.body;
+
+// 1. OPEN FUNCTION (Global scope)
+window.openSidebar = function() {
+  if (sidebar) {
+    sidebar.classList.add('active');
+    body.classList.add('sidebar-is-open');
+  }
+};
+
+// 2. CLOSE FUNCTION (Global scope)
+window.closeSidebar = function() {
+  if (sidebar) {
+    sidebar.classList.remove('active');
+    body.classList.remove('sidebar-is-open');
+  }
+};
+
+// 3. TAB SWITCHING (Global scope)
+window.switchTab = function(tabId, clickedElement) {
+  // Hide all views
+  document.querySelectorAll('.panel-view').forEach(view => {
+    view.classList.remove('visible');
+  });
+  // Show target view
+  const targetView = document.getElementById(tabId);
+  if (targetView) {
+    targetView.classList.add('visible');
+  }
+
+  // Update Icon States
+  // Note: We skip the first child because that is the Close Button (X)
+  document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)').forEach(icon => {
+    icon.classList.remove('active-tab');
+  });
+  if (clickedElement) {
+    clickedElement.classList.add('active-tab');
+  }
+};
+
+// 4. THEME TOGGLE (Global scope - already defined above, but ensure sidebar version works)
+window.toggleTheme = function() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+};

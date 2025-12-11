@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Workflow Steps – Portable Component</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-primary: rgb(4, 7, 13);
+      --bg-secondary: rgb(16, 19, 28);
+      --text-primary: rgb(213, 219, 230);
+      --text-secondary: rgba(184, 199, 217, 0.5);
+      --accent-blue: rgba(207, 231, 255, 0.2);
+      --border: rgba(216, 231, 242, 0.07);
+      --shadow-inset: rgba(207, 231, 255, 0.2);
+    }
+
+    body { background: #000; padding: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+    .steps-container {
+      max-width: 1100px;;
+      margin: 0 auto;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: inset 0 2px 1px 0 var(--shadow-inset);
+      overflow: hidden;
+    }
+
+    .steps-header {
+      display: flex;
+      padding: 24px 24px 0;
+      gap: 12px;
+    }
+
+    .step-item {
+      flex: 1;
+      padding: 14px 8px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      box-shadow: inset 0 1px 1px 0 var(--shadow-inset);
+      text-align: center;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text-primary);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .step-item.active {
+      opacity: 1;
+      background: rgba(207, 231, 255, 0.08);
+    }
+
+    .step-content {
+      display: none;
+      padding: 40px;
+      gap: 40px;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .step-content.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .graphic-container {
+      flex: 1;
+      min-width: 280px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--bg-secondary);
+    }
+
+    .step-image {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      border-radius: 20px;
+      background: var(--bg-primary);
+    }
+
+    .text-content {
+      flex: 1.4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .step-number {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1;
+    }
+
+    .step-title {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .step-description {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-primary);
+      opacity: 0.7;
+      margin: 0;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 280px;
+      margin-top: 32px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: inset 0 1px 1px 0 var(--shadow-inset);
+    }
+
+    @media (max-width: 868px) {
+      .steps-header { flex-direction: column; padding: 20px; }
+      .step-content.active { flex-direction: column; padding: 30px 20px; }
+      .step-number { font-size: 48px; }
+      .step-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="steps-container" id="stepsComponent">
+
+  <!-- Header -->
+  <div class="steps-header">
+    <div class="step-item active" data-step="1">STEP 1</div>
+    <div class="step-item" data-step="2">STEP 2</div>
+    <div class="step-item" data-step="3">STEP 3</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-content active" id="content-1">
+    <div class="graphic-container">
+      <img src="https://framerusercontent.com/images/1b8o9X5y8p1q2r3t4u5v6w7x8y9z.png" 
+           alt="Discovery & Strategy" class="step-image" loading="lazy">
+    </div>
+    <div class="text-content">
+      <p class="step-number">01</p>
+      <h2 class="step-title">Discovery & Strategy</h2>
+      <p class="step-description">
+        We begin with a deep dive into your business objectives, current workflows, and pain points. 
+        Our AI specialists conduct workshops and audits to identify high-impact automation opportunities 
+        that deliver measurable ROI from day one.
+      </p>
+      <div class="chart-container">
+        <canvas id="chart1"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-content" id="content-2">
+    <div class="graphic-container">
+      <img src="https://framerusercontent.com/images/NlShinj3SRLiU2GpzFKbH8loPs.png" 
+           alt="Design & Implement" class="step-image" loading="lazy">
+    </div>
+    <div class="text-content">
+      <p class="step-number">02</p>
+      <h2 class="step-title">Design &amp; Implement</h2>
+      <p class="step-description">
+        We create tailored AI workflows that align with your goals. Our team builds, tests, and deploys 
+        smart systems that integrate into your operations seamlessly — from custom agents to full-stack AI platforms.
+      </p>
+      <div class="chart-container">
+        <canvas id="chart2"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-content" id="content-3">
+    <div class="graphic-container">
+      <img src="https://framerusercontent.com/images/3a4b5c6d7e8f9g0h1i2j3k4l5m6n.png" 
+           alt="Optimize & Scale" class="step-image" loading="lazy">
+    </div>
+    <div class="text-content">
+      <p class="step-number">03</p>
+      <h2 class="step-title">Optimize &amp; Scale</h2>
+      <p class="step-description">
+        After launch, we continuously monitor performance, retrain models with your data, and scale 
+        solutions across departments. You get ongoing optimization, 24/7 support, and quarterly innovation roadmaps.
+      </p>
+      <div class="chart-container">
+        <canvas id="chart3"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Switch steps
+  document.querySelectorAll('.step-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const step = item.dataset.step;
+
+      // Update header
+      document.querySelectorAll('.step-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Update content
+      document.querySelectorAll('.step-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(`content-${step}`).classList.add('active');
+    });
+  });
+
+  // Chart.js — all using your exact color palette
+  const chartConfig = {
+    type: 'doughnut',
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#d5dbe6' } } },
+      cutout: '72%',
+    }
+  };
+
+  new Chart(document.getElementById('chart1'), {
+    ...chartConfig,
+    data: {
+      labels: ['Audit', 'Workshop', 'Roadmap', 'Prioritization'],
+      datasets: [{ 
+        data: [30, 25, 20, 25],
+        backgroundColor: ['#4A9EFF', '#7BB3FF', '#2E6ACF', '#1E4B99'],
+        borderWidth: 0
+      }]
+    }
+  });
+
+  new Chart(document.getElementById('chart2'), {
+    ...chartConfig,
+    data: {
+      labels: ['Prototype', 'Development', 'Testing', 'Deployment'],
+      datasets: [{ 
+        data: [15, 40, 25, 20],
+        backgroundColor: ['#00D4FF', '#00AAFF', '#0099CC', '#007799'],
+        borderWidth: 0
+      }]
+    }
+  });
+
+  new Chart(document.getElementById('chart3'), {
+    ...chartConfig,
+    data: {
+      labels: ['Monitoring', 'Retraining', 'Scaling', 'Support'],
+      datasets: [{ 
+        data: [20, 25, 35, 20],
+        backgroundColor: ['#FF6B6B', '#FF8E8E', '#FF4747', '#CC3A3A'],
+        borderWidth: 0
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
