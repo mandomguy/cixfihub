@@ -7,9 +7,16 @@ const DATA = {
     { label: "Early Access", url: "https://pathofexile2.com/early-access" },
     { label: "Latest Patch notes", url: "https://www.pathofexile.com/forum/view-forum/2212" }
   ],
-  "Important": [
-    { label: "Neversink Loot Filter", url: "https://github.com/NeverSinkDev/NeverSink-PoE2litefilter/releases/latest" },
-    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter" }
+  "Tools": [
+    { label: "Path of Building", url: "https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases", desc: "Complete build planning tool" },
+    { label: "POE2 Live Search Manager", url: "https://github.com/5k-mirrors/poe-live-search-manager", desc: "Manage multiple live searches, get notifications, and send whispers without leaving the game." },
+    { label: "POE2.re", url: "https://poe2.re/", desc: "Regex builder for UI searches" },
+    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for PoE2" },
+    { label: "Sidekick Overlay", url: "https://sidekick-poe.github.io/", desc: "Sidekick Overlay for POE2" },
+    { label: "Xiletrade", url: "https://github.com/maxensas/xiletrade", desc: "Xiletrade Overlay for POE2" },
+    { label: "XileHUD", url: "https://github.com/XileHUD/poe_overlay", desc: "XileHUD Overlay for POE2" },
+    { label: "POE2 Overlay", url: "https://www.poeoverlay.com/", desc: "Standalone/Overwolf POE2 Overlay" },
+    { label: "#####", url: "####", desc: "######" },
   ],
   "Builds": [
     { label: "Poe.ninja - Builds", url: "https://poe.ninja/poe2/builds" },
@@ -29,21 +36,25 @@ const DATA = {
   "Trade": [
     { label: "Official Trade site", url: "https://www.pathofexile.com/trade2", desc: "Search for items to buy" },
     { label: "Poe.ninja - Prices", url: "https://poe.ninja/poe2/economy/", desc: "Current market prices" },
-    { label: "Orb Watch", url: "https://orbwatch.trade/", desc: "Live currency rates" }
   ],
-  "Information": [
-    { label: "Community Wiki", url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki" },
-    { label: "Poe2DB", url: "https://poe2db.tw/" }
+  "Information/Guides": [
+    { label: "Community Wiki", url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki", desc: "POE2 Community Wiki" },
+    { label: "Poe2DB", url: "https://poe2db.tw/", desc: "POE2 Database" },
+    { label: "POE2 Wiki", url: "https://path-of-exile-2.fandom.com/wiki/Path_of_Exile_2_Wiki", desc: "Fandom POE2 Wiki" },
+    { label: "Game8", url: "https://game8.co/games/Path-of-Exile-2", desc: "Game8 Guides & More" }
   ],
-  "Tools": [
-    { label: "Path of Building", url: "https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2/releases", desc: "Complete build planning tool" },
-    { label: "Exile Exchange 2", url: "https://github.com/Kvan7/Exiled-Exchange-2", desc: "Awakened POE Trade for PoE2" },
-    { label: "POE2.re", url: "https://poe2.re/", desc: "Regex builder for UI searches" }
+    "Filter": [
+    { label: "Neversink Loot Filter", url: "https://github.com/NeverSinkDev/NeverSink-PoE2litefilter/releases/latest" },
+    { label: "FilterBlade", url: "https://www.filterblade.xyz/?game=Poe2", desc: "Build a customized loot filter" },
+    { label: "POE2 Filter", url: "https://poe2filter.com/", desc: "Customizable loot filter generator" },
+    { label: "Divine View", url: "https://divineview.app/", desc: "POE2 Loot Filter Text Editor" },
   ],
   "Social": [
-    { label: "Reddit", url: "https://www.reddit.com/r/pathofexile/" },
-    { label: "Official Discord", url: "https://discord.com/invite/pathofexile" },
-    { label: "Twitch Directory", url: "https://www.twitch.tv/directory/category/path-of-exile-2" }
+    { label: "/r/pathofexile2", url: "https://www.reddit.com/r/pathofexile2/", desc: "POE2 Sub Reddit" },
+    { label: "/r/poe2builds", url: "https://www.reddit.com/r/poe2builds/", desc: "POE2 Builds Sub Reddit" },
+    { label: "Official Discord", url: "https://discord.com/invite/pathofexile", desc: "Path of Exile Official Discord" },
+    { label: "Twitch Directory", url: "https://www.twitch.tv/directory/category/path-of-exile-2", desc: "POE2 Streams" },
+    { label: "YouTube Channel", url: "https://www.youtube.com/c/PathofExile", desc: "POE2 YouTube Channel" },
   ]
 };
 
@@ -55,6 +66,26 @@ const countSections = document.getElementById('countSections');
 const countLinks = document.getElementById('countLinks');
 const openRate = document.getElementById('openRate');
 const currentPlayers = document.getElementById('currentPlayers');
+
+// Performance utilities
+const debounce = (fn, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+};
+
+const throttle = (fn, limit) => {
+  let inThrottle;
+  return (...args) => {
+    if (!inThrottle) {
+      fn(...args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+};
 
 const el = (tag, props = {}, children = []) => {
   const node = document.createElement(tag);
@@ -98,31 +129,18 @@ function toast(msg) {
    APP LOGIC
    ========================================================================== */
 
-// 1. HEADER INTERACTION (Fixed)
+// 1. HEADER - No interactive functionality needed
 const headerInner = document.getElementById('headerInner');
-const logoBtn = document.getElementById('logoBtn');
 const filterInput = document.getElementById('filterInput');
 
-if (headerInner && logoBtn) {
-  logoBtn.addEventListener('click', (e) => {
-    // Prevent the page from jumping to top
-    e.preventDefault();
-    
-    // Toggle the 'expanded' class
-    headerInner.classList.toggle('expanded');
-    
-    // If opening, focus the search bar after a small delay for animation
-    if (headerInner.classList.contains('expanded')) {
-      setTimeout(() => {
-        if (filterInput) filterInput.focus();
-      }, 100);
-    }
-  });
-}
+// Logo is now just visual, no click handler needed
 
 // 2. Build Sections
 let linkCount = 0;
 const openStates = JSON.parse(sessionStorage.getItem('openStates') || '{}');
+// Cache section elements for efficient lookups
+const sectionElements = [];
+const cardElements = [];
 
 Object.entries(DATA).forEach(([sectionName, items]) => {
   const isExpanded = openStates[sectionName] ? 'true' : 'false';
@@ -158,6 +176,8 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
       el('button', { class: 'btn copy', type: 'button', onclick: (e)=>{ e.preventDefault(); e.stopPropagation(); navigator.clipboard.writeText(it.url).then(()=> toast('Copied!')); }}, ['Copy'])
     ]));
     content.appendChild(card);
+    // Cache card reference for filter optimization
+    cardElements.push({ element: card, label: it.label.toLowerCase(), section });
     if (it.childs) it.childs.forEach(ch => createCard(ch, true));
   };
 
@@ -165,15 +185,25 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
   section.appendChild(header);
   section.appendChild(content);
   sectionsRoot.appendChild(section);
+  
+  // Cache section reference for filter optimization
+  sectionElements.push(section);
 
   const toggle = () => {
-    const expanded = section.getAttribute('aria-expanded') === 'true';
-    section.setAttribute('aria-expanded', String(!expanded));
-    openStates[sectionName] = !expanded;
+    const isExpanded = section.getAttribute('aria-expanded') === 'true';
+    section.setAttribute('aria-expanded', !isExpanded);
+    openStates[sectionName] = !isExpanded;
     sessionStorage.setItem('openStates', JSON.stringify(openStates));
     updateOpenRate();
   };
+  
   header.addEventListener('click', toggle);
+  header.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle();
+    }
+  });
 });
 
 // 3. Stats & Filters
@@ -182,25 +212,44 @@ countLinks.textContent = linkCount;
 
 const updateOpenRate = () => {
   const total = Object.keys(DATA).length;
-  const opened = document.querySelectorAll('.section[aria-expanded="true"]').length;
+  // Use cached sectionElements instead of querySelectorAll
+  const opened = sectionElements.filter(sec => sec.getAttribute('aria-expanded') === 'true').length;
   openRate.textContent = total ? `${Math.round((opened / total) * 100)}%` : '0%';
 };
 updateOpenRate();
 
 if (filterInput) {
-  filterInput.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll('.section').forEach(sec => {
-      let visible = 0;
-      sec.querySelectorAll('.card').forEach(card => {
-        const match = (card.getAttribute('data-label') || '').includes(q);
-        card.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      sec.style.display = visible ? '' : 'none';
-      if (q && visible && sec.getAttribute('aria-expanded') !== 'true') sec.setAttribute('aria-expanded', 'true');
+  // Debounce filter to avoid excessive DOM operations
+  const performFilter = (q) => {
+    const query = q.toLowerCase();
+    
+    // Track section visibility using cached elements
+    const sectionVisibility = new Map();
+    sectionElements.forEach(sec => sectionVisibility.set(sec, 0));
+    
+    // Batch DOM updates by filtering cached card elements
+    cardElements.forEach(({ element, label, section }) => {
+      const match = label.includes(query);
+      element.style.display = match ? '' : 'none';
+      if (match) {
+        sectionVisibility.set(section, sectionVisibility.get(section) + 1);
+      }
     });
-  });
+    
+    // Update section visibility in a single pass
+    sectionElements.forEach(sec => {
+      const visible = sectionVisibility.get(sec);
+      sec.style.display = visible ? '' : 'none';
+      if (query && visible && sec.getAttribute('aria-expanded') !== 'true') {
+        sec.setAttribute('aria-expanded', 'true');
+      }
+    });
+  };
+  
+  // Debounce filter input to 150ms
+  filterInput.addEventListener('input', debounce((e) => {
+    performFilter(e.target.value);
+  }, 150));
 }
 
 // 4. Robust Steam API Fetch
@@ -227,8 +276,7 @@ async function fetchSteamPlayers() {
 fetchSteamPlayers();
 
 // 5. Theme Toggle & UI
-document.getElementById('themeToggle').addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent header collapse when clicking theme button
+document.getElementById('themeToggle').addEventListener('click', () => {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
@@ -260,6 +308,71 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
   });
 
-  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  // Throttle scroll event to improve performance
+  window.addEventListener('scroll', throttle(toggleVisibility, 100), { passive: true });
   toggleVisibility();
 })();
+
+/* ==========================================================================
+   SIDEBAR - GLOBAL FUNCTIONS (Must be accessible to onclick handlers)
+   ========================================================================== */
+
+// SIDEBAR 
+const sidebar = document.getElementById('sidebar-widget');
+const body = document.body;
+
+// Cache panel views and rail icons for performance
+let panelViews = null;
+let railIcons = null;
+
+// 1. OPEN FUNCTION (Global scope)
+window.openSidebar = function() {
+  if (sidebar) {
+    sidebar.classList.add('active');
+    body.classList.add('sidebar-is-open');
+  }
+};
+
+// 2. CLOSE FUNCTION (Global scope)
+window.closeSidebar = function() {
+  if (sidebar) {
+    sidebar.classList.remove('active');
+    body.classList.remove('sidebar-is-open');
+  }
+};
+
+// 3. TAB SWITCHING (Global scope)
+window.switchTab = function(tabId, clickedElement) {
+  // Lazy-load cached elements on first use
+  // Note: Assumes static DOM structure; elements are not dynamically added after page load
+  if (!panelViews) {
+    panelViews = document.querySelectorAll('.panel-view');
+    railIcons = document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)');
+  }
+  
+  // Hide all views
+  panelViews.forEach(view => {
+    view.classList.remove('visible');
+  });
+  
+  // Show target view
+  const targetView = document.getElementById(tabId);
+  if (targetView) {
+    targetView.classList.add('visible');
+  }
+
+  // Update Icon States
+  railIcons.forEach(icon => {
+    icon.classList.remove('active-tab');
+  });
+  if (clickedElement) {
+    clickedElement.classList.add('active-tab');
+  }
+};
+
+// 4. THEME TOGGLE (Global scope - already defined above, but ensure sidebar version works)
+window.toggleTheme = function() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+};

@@ -1,7 +1,10 @@
 // api/steam-players.js
 export default async function handler(req, res) {
-  // Allow simple CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Allow CORS for configured origin
+  const allowedOrigin = process.env.ALLOWED_ORIGIN || '';
+  if (allowedOrigin) {
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+  }
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   
   if (req.method === 'OPTIONS') return res.status(200).end();
@@ -17,7 +20,7 @@ export default async function handler(req, res) {
     const data = await response.json();
     
     // Cache for 60 seconds
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate');
+    console.error('Failed to fetch Steam player count:', error);
     res.status(200).json(data);
   } catch (error) {
     console.error('Steam API Fail:', error);

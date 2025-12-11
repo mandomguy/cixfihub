@@ -1,3 +1,6 @@
 .vercel
 
 .vercel
+
+.gemini/
+gha-creds-*.json

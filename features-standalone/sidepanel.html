@@ -1,0 +1,1212 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Widget</title>
+    <style>
+        /* 1. YOUR PALETTE CONFIGURATION */
+        :root {
+            --bg: #0f1115;
+            --bg-soft: #151923;
+            --card: #181c27;
+            --text: #e6e9ef;
+            --muted: #b6bdc7;
+            --brand: #8b5cf6; /* violet */
+            --brand-2: #06b6d4; /* cyan */
+            --accent: #22c55e; /* green */
+            --ring: #3b82f6; /* blue */
+            --shadow: 0 10px 30px rgba(0,0,0,0.35);
+            
+            /* Sidebar Dimensions */
+            --sidebar-rail-width: 70px;
+            --sidebar-panel-width: 320px;
+            --navbar-height-offset: 0px; /* Adjust if you want the sidebar to start BELOW your navbar */
+        }
+
+        [data-theme="light"] {
+            --bg: #f6f7fb;
+            --bg-soft: #ffffff;
+            --card: #ffffff;
+            --text: #0f1115;
+            --muted: #4b5563;
+            --brand: #7c3aed;
+            --brand-2: #0891b2;
+            --accent: #16a34a;
+            --ring: #2563eb;
+            --shadow: 0 10px 30px rgba(2,6,23,0.08);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #333; /* Just for this demo page background */
+        }
+
+        /* -----------------------------------------------------------
+           2. THE TOGGLE BUTTONS (The "Double Button" System)
+        ----------------------------------------------------------- */
+        
+        /* Button A: The "Open" Button (Floats on main site) */
+        #widget-trigger-btn {
+            position: fixed;
+            /* Positioned to likely not overlap your Logo/Navbar text */
+            top: 15px; 
+            left: 15px; 
+            z-index: 9998; /* High, but below the sidebar itself */
+            
+            background-color: var(--card);
+            color: var(--text);
+            border: 1px solid var(--bg-soft);
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        #widget-trigger-btn:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: translateY(-2px);
+        }
+
+        /* Hide the open button when sidebar is active */
+        body.sidebar-is-open #widget-trigger-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* -----------------------------------------------------------
+           3. SIDEBAR CONTAINER & LAYOUT
+        ----------------------------------------------------------- */
+        .sidebar-widget {
+            position: fixed;
+            top: var(--navbar-height-offset); 
+            left: calc(-1 * (var(--sidebar-rail-width) + var(--sidebar-panel-width))); /* Fully hidden left */
+            height: calc(100vh - var(--navbar-height-offset));
+            display: flex;
+            z-index: 9999; /* Highest priority overlay */
+            transition: left 0.4s cubic-bezier(0.19, 1, 0.22, 1); /* smooth pop effect */
+            
+            /* The Gradient Background */
+            background: radial-gradient(1200px 500px at 10% -10%, rgba(139,92,246,0.15), transparent 60%),
+                        radial-gradient(1000px 400px at 110% -20%, rgba(6,182,212,0.15), transparent 60%),
+                        var(--bg);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-widget.active {
+            left: 0;
+        }
+
+        /* -----------------------------------------------------------
+           4. LEFT RAIL (Icons)
+        ----------------------------------------------------------- */
+        .sidebar-rail {
+            width: var(--sidebar-rail-width);
+            background-color: rgba(0,0,0,0.2); /* Slight darken for contrast */
+            border-right: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        /* The Icons */
+        .rail-icon {
+            width: 100%;
+            height: 60px; /* Fixed height for alignment */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--muted);
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        /* Visual Separators (Grey lines) */
+        .rail-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 40%;
+            height: 1px;
+            background-color: var(--muted);
+            opacity: 0.1;
+        }
+
+        .rail-icon:hover {
+            color: var(--text);
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        .rail-icon.active-tab {
+            color: var(--brand);
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+        
+        .rail-icon.active-tab::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background-color: var(--brand);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Button B: The "Close" Button (Inside Rail) */
+        .rail-icon.close-action {
+            color: var(--text);
+            font-size: 24px;
+            margin-bottom: 10px; /* Separation from nav items */
+            border-bottom: 1px solid rgba(255,255,255,0.1); /* Explicit separator */
+        }
+        .rail-icon.close-action:hover {
+            color: #ef4444; /* Red for close action */
+            background: rgba(239, 68, 68, 0.1);
+        }
+        .rail-icon.close-action::after { display: none; } /* Remove small separator */
+
+
+        /* -----------------------------------------------------------
+           5. CONTENT PANEL (Right side)
+        ----------------------------------------------------------- */
+        .sidebar-panel {
+            width: var(--sidebar-panel-width);
+            padding: 25px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            color: var(--text);
+        }
+
+        /* Typography */
+        h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--brand), var(--brand-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 5px;
+        }
+
+        /* Content Visibility Animation */
+        .panel-view {
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+        .panel-view.visible { display: block; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* -----------------------------------------------------------
+           6. THE TEMPLATE (Resource Card)
+           Use this for your manual content later
+        ----------------------------------------------------------- */
+        .resource-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .resource-card:hover {
+            border-color: var(--brand);
+            transform: translateX(4px);
+            background-color: var(--bg-soft);
+        }
+
+        .resource-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--bg-soft), var(--bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 12px;
+            color: var(--brand-2);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .resource-info {
+            flex: 1;
+        }
+
+        .resource-title {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .resource-desc {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="widget-trigger-btn" onclick="openSidebar()">
+        ☰
+    </button>
+
+    <div class="sidebar-widget" id="sidebar-widget">
+        
+        <div class="sidebar-rail">
+            
+            <div class="rail-icon close-action" onclick="closeSidebar()" title="Close Menu">
+                ✕
+            </div>
+
+            <div class="rail-icon active-tab" onclick="switchTab('tab-home', this)" title="Quick Access">
+                🏠
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-tools', this)" title="Tools">
+                🛠️
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-docs', this)" title="Documentation">
+                📄
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-settings', this)" title="Settings">
+                ⚙️
+            </div>
+
+        </div>
+
+        <div class="sidebar-panel">
+
+            <div id="tab-home" class="panel-view visible">
+                <h2>Quick Access</h2>
+                <div style="padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent); border-radius: 6px; color: var(--accent); font-size: 0.9rem; margin-bottom: 20px;">
+                    <strong>Update:</strong> Sidebar now supports themes and fits the original navbar.
+                </div>
+
+                <h3>Recent Items</h3>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Dashboard Analytics</span>
+                        <span class="resource-desc">View main site stats</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📁</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Project Delta</span>
+                        <span class="resource-desc">Updated 2 hours ago</span>
+                    </div>
+                </div>
+                </div>
+
+            <div id="tab-tools" class="panel-view">
+                <h2>Tools</h2>
+                <p style="color:var(--muted)">Select a tool to launch.</p>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">✂️</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Snippet Manager</span>
+                        <span class="resource-desc">Manage code blocks</span>
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Exile 2 Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141923;
+            --bg-card: #1a1f2e;
+            --text-primary: #e4e6eb;
+            --text-secondary: #8b92a8;
+            --accent: #f39c12;
+            --accent-hover: #e67e22;
+            --success: #27ae60;
+            --danger: #e74c3c;
+            --border: #2a3441;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(243, 156, 18, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(243, 156, 18, 0.4);
+        }
+
+        .refresh-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        .refresh-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .player-count {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .count-display {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--success), #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+            animation: countIn 0.5s ease-out;
+        }
+
+        @keyframes countIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .count-label {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .currency-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+        }
+
+        .currency-table thead {
+            background: var(--bg-secondary);
+        }
+
+        .currency-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .currency-table tbody tr {
+            transition: background 0.3s ease;
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .currency-table tbody tr:nth-child(odd) {
+            background: rgba(42, 52, 65, 0.3);
+        }
+
+        .currency-table tbody tr:hover {
+            background: rgba(243, 156, 18, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .currency-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .currency-name {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .currency-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .price-change {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .price-up {
+            background: rgba(39, 174, 96, 0.2);
+            color: var(--success);
+        }
+
+        .price-down {
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--danger);
+        }
+
+        .loading-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .error-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--danger);
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .last-updated {
+            text-align: right;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .count-display {
+                font-size: 3rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .currency-table {
+                font-size: 0.9rem;
+            }
+            
+            .currency-table th,
+            .currency-table td {
+                padding: 10px;
+            }
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .sort-select {
+            padding: 10px 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Path of Exile 2 Dashboard</h1>
+            <p class="subtitle">Real-time player statistics & currency exchange rates</p>
+        </header>
+
+        <div class="dashboard">
+            <!-- Player Count Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="icon">👥</div>
+                        Player Statistics
+                    </div>
+                    <button class="refresh-btn" onclick="fetchPlayerData()">
+                        <span class="spinner"></span>
+                        <span class="btn-text">Refresh</span>
+                    </button>
+                </div>
+                <div id="playerData">
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading player data...</p>
+>>>>>>> development2
+                    </div>
+                </div>
+            </div>
+
+<<<<<<< HEAD
+            <div id="tab-docs" class="panel-view">
+                <h2>Docs</h2>
+                <p style="color:var(--muted)">Documentation library.</p>
+                </div>
+
+            <div id="tab-settings" class="panel-view">
+                <h2>Settings</h2>
+                
+                <h3>Appearance</h3>
+                <div class="resource-card" onclick="toggleTheme()">
+                    <div class="resource-icon">🌗</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Switch Theme</span>
+                        <span class="resource-desc">Toggle Light/Dark Mode</span>
+                    </div>
+                </div>
+            </div>
+
+=======
+            <!-- Currency Exchange Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="icon">💰</div>
+                        Currency Exchange Rates
+                    </div>
+                    <button class="refresh-btn" onclick="fetchCurrencyData()">
+                        <span class="spinner"></span>
+                        <span class="btn-text">Refresh</span>
+                    </button>
+                </div>
+                <div id="currencyData">
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading currency data...</p>
+                    </div>
+                </div>
+            </div>
+>>>>>>> development2
+        </div>
+    </div>
+
+    <script>
+<<<<<<< HEAD
+        const sidebar = document.getElementById('sidebar-widget');
+        const body = document.body;
+
+        // 1. OPEN FUNCTION
+        function openSidebar() {
+            sidebar.classList.add('active');
+            body.classList.add('sidebar-is-open'); // Used to hide the floating button
+        }
+
+        // 2. CLOSE FUNCTION
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            body.classList.remove('sidebar-is-open');
+        }
+
+        // 3. TAB SWITCHING
+        function switchTab(tabId, clickedElement) {
+            // Hide all views
+            document.querySelectorAll('.panel-view').forEach(view => {
+                view.classList.remove('visible');
+            });
+            // Show target view
+            document.getElementById(tabId).classList.add('visible');
+
+            // Update Icon States
+            // Note: We skip the first child because that is the Close Button (X)
+            document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)').forEach(icon => {
+                icon.classList.remove('active-tab');
+            });
+            clickedElement.classList.add('active-tab');
+        }
+
+        // 4. THEME TOGGLE (Demo Purpose)
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en" data-theme="dark"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Widget</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <button id="widget-trigger-btn" onclick="openSidebar()">
+        ☰
+    </button>
+
+    <div class="sidebar-widget" id="sidebar-widget">
+        
+        <div class="sidebar-rail">
+            
+            <div class="rail-icon close-action" onclick="closeSidebar()" title="Close Menu">
+                ✕
+            </div>
+
+            <div class="rail-icon active-tab" onclick="switchTab('tab-home', this)" title="Quick Access">
+                🏠
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-tools', this)" title="Tools">
+                🛠️
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-docs', this)" title="Documentation">
+                📄
+            </div>
+            <div class="rail-icon" onclick="switchTab('tab-settings', this)" title="Settings">
+                ⚙️
+            </div>
+
+        </div>
+
+        <div class="sidebar-panel">
+
+            <div id="tab-home" class="panel-view visible">
+                <h2>Quick Access</h2>
+                <div style="padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid var(--accent); border-radius: 6px; color: var(--accent); font-size: 0.9rem; margin-bottom: 20px;">
+                    <strong>Update:</strong> Sidebar now supports themes and fits the original navbar.
+                </div>
+
+                <h3>Recent Items</h3>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Dashboard Analytics</span>
+                        <span class="resource-desc">View main site stats</span>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📁</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Project Delta</span>
+                        <span class="resource-desc">Updated 2 hours ago</span>
+                    </div>
+                </div>
+                </div>
+
+            <div id="tab-tools" class="panel-view">
+                <h2>Tools</h2>
+                <p style="color:var(--muted)">Select a tool to launch.</p>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">✂️</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Snippet Manager</span>
+                        <span class="resource-desc">Manage code blocks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-docs" class="panel-view">
+                <h2>Docs</h2>
+                <p style="color:var(--muted)">Documentation library.</p>
+                </div>
+
+            <div id="tab-settings" class="panel-view">
+                <h2>Settings</h2>
+                
+                <h3>Appearance</h3>
+                <div class="resource-card" onclick="toggleTheme()">
+                    <div class="resource-icon">🌗</div>
+                    <div class="resource-info">
+                        <span class="resource-title">Switch Theme</span>
+                        <span class="resource-desc">Toggle Light/Dark Mode</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html> -->
+=======
+        // Global variables
+        let currencyData = [];
+        let playerStats = {};
+
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPlayerData();
+            fetchCurrencyData();
+            
+            // Auto-refresh every 5 minutes
+            setInterval(() => {
+                fetchPlayerData();
+                fetchCurrencyData();
+            }, 300000);
+        });
+
+        // Fetch player data from SteamCharts API
+        async function fetchPlayerData() {
+            const playerDataDiv = document.getElementById('playerData');
+            const refreshBtn = document.querySelector('.refresh-btn');
+            
+            // Add loading state to button
+            refreshBtn.classList.add('loading');
+            
+            try {
+                // Path of Exile 2 Steam App ID: 2694490
+                const response = await fetch('https://steamcharts.com/api/v1/games/2694490');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch player data');
+                }
+                
+                const data = await response.json();
+                playerStats = data;
+                
+                // Calculate additional stats
+                const peak24h = data.peak || 0;
+                const avgPlayers = Math.round(data.avg || 0);
+                const gainLoss = data.gain || 0;
+                const gainPercent = data.gainPercentage || 0;
+                
+                playerDataDiv.innerHTML = `
+                    <div class="player-count">
+                        <div class="count-label">Current Players</div>
+                        <div class="count-display">${formatNumber(data.current || 0)}</div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">${formatNumber(peak24h)}</div>
+                                <div class="stat-label">24h Peak</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${formatNumber(avgPlayers)}</div>
+                                <div class="stat-label">30-Day Avg</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value ${gainLoss >= 0 ? '' : 'negative'}">
+                                    ${gainLoss >= 0 ? '+' : ''}${formatNumber(gainLoss)}
+                                </div>
+                                <div class="stat-label">24h Change</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value ${gainPercent >= 0 ? '' : 'negative'}">
+                                    ${gainPercent >= 0 ? '+' : ''}${gainPercent.toFixed(1)}%
+                                </div>
+                                <div class="stat-label">24h %</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="last-updated">
+                        Last updated: ${new Date().toLocaleTimeString()}
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('Error fetching player data:', error);
+                playerDataDiv.innerHTML = `
+                    <div class="error-state">
+                        <div class="error-icon">⚠️</div>
+                        <p>Unable to fetch player statistics</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">Please try again later</p>
+                    </div>
+                `;
+            } finally {
+                refreshBtn.classList.remove('loading');
+            }
+        }
+
+        // Fetch currency data from POE2SCOUT API
+        async function fetchCurrencyData() {
+            const currencyDataDiv = document.getElementById('currencyData');
+            const refreshBtns = document.querySelectorAll('.refresh-btn');
+            const currencyRefreshBtn = refreshBtns[1];
+            
+            // Add loading state to button
+            currencyRefreshBtn.classList.add('loading');
+            
+            try {
+                // POE2SCOUT API endpoint for currencies
+                const response = await fetch('https://poe2scout.com/api/currency');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch currency data');
+                }
+                
+                const data = await response.json();
+                currencyData = data.lines || [];
+                
+                // Render currency table
+                renderCurrencyTable(currencyData);
+                
+            } catch (error) {
+                console.error('Error fetching currency data:', error);
+                // Try alternative endpoint or mock data if API is not available
+                try {
+                    // Mock data for demonstration
+                    const mockData = [
+                        { name: "Divine Orb", chaosEquivalent: 150, change: 5.2, icon: "⬡" },
+                        { name: "Exalted Orb", chaosEquivalent: 80, change: -2.1, icon: "◆" },
+                        { name: "Mirror Shard", chaosEquivalent: 2500, change: 12.5, icon: "⬟" },
+                        { name: "Chaos Orb", chaosEquivalent: 1, change: 0, icon: "⬢" },
+                        { name: "Regal Orb", chaosEquivalent: 3.5, change: 1.2, icon: "▲" },
+                        { name: "Orb of Alchemy", chaosEquivalent: 0.4, change: -0.5, icon: "●" },
+                        { name: "Orb of Fusing", chaosEquivalent: 0.8, change: 2.3, icon: "⬡" },
+                        { name: "Orb of Alteration", chaosEquivalent: 0.2, change: 0.1, icon: "○" },
+                        { name: "Jeweller's Orb", chaosEquivalent: 0.15, change: -0.2, icon: "◇" },
+                        { name: "Chromatic Orb", chaosEquivalent: 0.3, change: 0.8, icon: "◈" }
+                    ];
+                    currencyData = mockData;
+                    renderCurrencyTable(mockData);
+                } catch (mockError) {
+                    currencyDataDiv.innerHTML = `
+                        <div class="error-state">
+                            <div class="error-icon">⚠️</div>
+                            <p>Unable to fetch currency data</p>
+                            <p style="font-size: 0.9rem; margin-top: 10px;">API might be temporarily unavailable</p>
+                        </div>
+                    `;
+                }
+            } finally {
+                currencyRefreshBtn.classList.remove('loading');
+            }
+        }
+
+        // Render currency table with filtering and sorting
+        function renderCurrencyTable(data) {
+            const currencyDataDiv = document.getElementById('currencyData');
+            
+            currencyDataDiv.innerHTML = `
+                <div class="filter-bar">
+                    <input type="text" class="filter-input" placeholder="Search currencies..." onkeyup="filterCurrencies(this.value)">
+                    <select class="sort-select" onchange="sortCurrencies(this.value)">
+                        <option value="name">Sort by Name</option>
+                        <option value="price">Sort by Price</option>
+                        <option value="change">Sort by Change</option>
+                    </select>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="currency-table">
+                        <thead>
+                            <tr>
+                                <th>Currency</th>
+                                <th>Chaos Equivalent</th>
+                                <th>24h Change</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody id="currencyTableBody">
+                            ${data.map((currency, index) => `
+                                <tr style="animation-delay: ${index * 0.05}s">
+                                    <td>
+                                        <div class="currency-name">
+                                            <div class="currency-icon">${currency.icon || '💎'}</div>
+                                            ${currency.name || 'Unknown'}
+                                        </div>
+                                    </td>
+                                    <td>${currency.chaosEquivalent ? currency.chaosEquivalent.toFixed(2) : 'N/A'}</td>
+                                    <td>
+                                        <span class="price-change ${currency.change >= 0 ? 'price-up' : 'price-down'}">
+                                            ${currency.change >= 0 ? '↑' : '↓'} ${Math.abs(currency.change || 0).toFixed(2)}%
+                                        </span>
+                                    </td>
+                                    <td>${getTrendIcon(currency.change || 0)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="last-updated">
+                    Last updated: ${new Date().toLocaleTimeString()}
+                </div>
+            `;
+        }
+
+        // Filter currencies
+        function filterCurrencies(searchTerm) {
+            const filteredData = currencyData.filter(currency => 
+                currency.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            renderCurrencyTable(filteredData);
+        }
+
+        // Sort currencies
+        function sortCurrencies(sortBy) {
+            let sortedData = [...currencyData];
+            
+            switch(sortBy) {
+                case 'name':
+                    sortedData.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'price':
+                    sortedData.sort((a, b) => (b.chaosEquivalent || 0) - (a.chaosEquivalent || 0));
+                    break;
+                case 'change':
+                    sortedData.sort((a, b) => (b.change || 0) - (a.change || 0));
+                    break;
+            }
+            
+            renderCurrencyTable(sortedData);
+        }
+
+        // Get trend icon based on change percentage
+        function getTrendIcon(change) {
+            if (change > 5) return '🚀';
+            if (change > 0) return '📈';
+
+            if (change < 0) return '📉';
+            return '➡️';
+        }
+
+        // Format large numbers with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' && e.ctrlKey) {
+                e.preventDefault();
+                fetchPlayerData();
+                fetchCurrencyData();
+            }
+        });
+    </script>
+</body>
+</html>
+>>>>>>> development2
