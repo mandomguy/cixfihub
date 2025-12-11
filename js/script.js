@@ -67,6 +67,26 @@ const countLinks = document.getElementById('countLinks');
 const openRate = document.getElementById('openRate');
 const currentPlayers = document.getElementById('currentPlayers');
 
+// Performance utilities
+const debounce = (fn, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+};
+
+const throttle = (fn, limit) => {
+  let inThrottle;
+  return (...args) => {
+    if (!inThrottle) {
+      fn(...args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+};
+
 const el = (tag, props = {}, children = []) => {
   const node = document.createElement(tag);
   Object.entries(props).forEach(([k, v]) => {
@@ -118,6 +138,9 @@ const filterInput = document.getElementById('filterInput');
 // 2. Build Sections
 let linkCount = 0;
 const openStates = JSON.parse(sessionStorage.getItem('openStates') || '{}');
+// Cache section elements for efficient lookups
+const sectionElements = [];
+const cardElements = [];
 
 Object.entries(DATA).forEach(([sectionName, items]) => {
   const isExpanded = openStates[sectionName] ? 'true' : 'false';
@@ -153,6 +176,8 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
       el('button', { class: 'btn copy', type: 'button', onclick: (e)=>{ e.preventDefault(); e.stopPropagation(); navigator.clipboard.writeText(it.url).then(()=> toast('Copied!')); }}, ['Copy'])
     ]));
     content.appendChild(card);
+    // Cache card reference for filter optimization
+    cardElements.push({ element: card, label: it.label.toLowerCase(), section });
     if (it.childs) it.childs.forEach(ch => createCard(ch, true));
   };
 
@@ -160,6 +185,9 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
   section.appendChild(header);
   section.appendChild(content);
   sectionsRoot.appendChild(section);
+  
+  // Cache section reference for filter optimization
+  sectionElements.push(section);
 
   const toggle = () => {
     const isExpanded = section.getAttribute('aria-expanded') === 'true';
@@ -184,25 +212,44 @@ countLinks.textContent = linkCount;
 
 const updateOpenRate = () => {
   const total = Object.keys(DATA).length;
-  const opened = document.querySelectorAll('.section[aria-expanded="true"]').length;
+  // Use cached sectionElements instead of querySelectorAll
+  const opened = sectionElements.filter(sec => sec.getAttribute('aria-expanded') === 'true').length;
   openRate.textContent = total ? `${Math.round((opened / total) * 100)}%` : '0%';
 };
 updateOpenRate();
 
 if (filterInput) {
-  filterInput.addEventListener('input', (e) => {
-    const q = e.target.value.toLowerCase();
-    document.querySelectorAll('.section').forEach(sec => {
-      let visible = 0;
-      sec.querySelectorAll('.card').forEach(card => {
-        const match = (card.getAttribute('data-label') || '').includes(q);
-        card.style.display = match ? '' : 'none';
-        if (match) visible++;
-      });
-      sec.style.display = visible ? '' : 'none';
-      if (q && visible && sec.getAttribute('aria-expanded') !== 'true') sec.setAttribute('aria-expanded', 'true');
+  // Debounce filter to avoid excessive DOM operations
+  const performFilter = (q) => {
+    const query = q.toLowerCase();
+    
+    // Track section visibility using cached elements
+    const sectionVisibility = new Map();
+    sectionElements.forEach(sec => sectionVisibility.set(sec, 0));
+    
+    // Batch DOM updates by filtering cached card elements
+    cardElements.forEach(({ element, label, section }) => {
+      const match = label.includes(query);
+      element.style.display = match ? '' : 'none';
+      if (match) {
+        sectionVisibility.set(section, sectionVisibility.get(section) + 1);
+      }
     });
-  });
+    
+    // Update section visibility in a single pass
+    sectionElements.forEach(sec => {
+      const visible = sectionVisibility.get(sec);
+      sec.style.display = visible ? '' : 'none';
+      if (query && visible && sec.getAttribute('aria-expanded') !== 'true') {
+        sec.setAttribute('aria-expanded', 'true');
+      }
+    });
+  };
+  
+  // Debounce filter input to 150ms
+  filterInput.addEventListener('input', debounce((e) => {
+    performFilter(e.target.value);
+  }, 150));
 }
 
 // 4. Robust Steam API Fetch
@@ -261,7 +308,8 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
   });
 
-  window.addEventListener('scroll', toggleVisibility, { passive: true });
+  // Throttle scroll event to improve performance
+  window.addEventListener('scroll', throttle(toggleVisibility, 100), { passive: true });
   toggleVisibility();
 })();
 
@@ -272,6 +320,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // SIDEBAR 
 const sidebar = document.getElementById('sidebar-widget');
 const body = document.body;
+
+// Cache panel views and rail icons for performance
+let panelViews = null;
+let railIcons = null;
 
 // 1. OPEN FUNCTION (Global scope)
 window.openSidebar = function() {
@@ -291,10 +343,18 @@ window.closeSidebar = function() {
 
 // 3. TAB SWITCHING (Global scope)
 window.switchTab = function(tabId, clickedElement) {
+  // Lazy-load cached elements on first use
+  // Note: Assumes static DOM structure; elements are not dynamically added after page load
+  if (!panelViews) {
+    panelViews = document.querySelectorAll('.panel-view');
+    railIcons = document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)');
+  }
+  
   // Hide all views
-  document.querySelectorAll('.panel-view').forEach(view => {
+  panelViews.forEach(view => {
     view.classList.remove('visible');
   });
+  
   // Show target view
   const targetView = document.getElementById(tabId);
   if (targetView) {
@@ -302,8 +362,7 @@ window.switchTab = function(tabId, clickedElement) {
   }
 
   // Update Icon States
-  // Note: We skip the first child because that is the Close Button (X)
-  document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)').forEach(icon => {
+  railIcons.forEach(icon => {
     icon.classList.remove('active-tab');
   });
   if (clickedElement) {
