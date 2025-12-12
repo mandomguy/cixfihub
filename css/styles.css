@@ -720,6 +720,37 @@ body.sidebar-is-open #widget-trigger-btn {
 .actions {
   display: flex;
   gap: 8px;
+  align-items: center;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.favorite-btn:hover {
+  color: var(--brand);
+  background: color-mix(in oklab, var(--brand) 15%, transparent);
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: var(--brand);
+}
+
+.favorite-btn.active:hover {
+  color: var(--brand-2);
+  background: color-mix(in oklab, var(--brand-2) 15%, transparent);
 }
 
 .a {
@@ -798,6 +829,7 @@ footer {
   display: flex;
   z-index: 9999;
   transition: left 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 0px 50px 50px 0px;
   
   background: radial-gradient(1200px 500px at 10% -10%, rgba(139,92,246,0.15), transparent 60%),
               radial-gradient(1000px 400px at 110% -20%, rgba(6,182,212,0.15), transparent 60%),
@@ -980,6 +1012,31 @@ footer {
 
 .resource-card:hover::before {
   opacity: 1;
+}
+
+.favorite-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.favorite-card .resource-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.favorite-card .resource-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.favorite-card .resource-title a:hover {
+  color: var(--brand);
+}
+
+.favorite-card .favorite-btn {
+  flex-shrink: 0;
 }
 
 .resource-icon {

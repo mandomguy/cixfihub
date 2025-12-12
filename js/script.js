@@ -115,6 +115,128 @@ const filterInput = document.getElementById('filterInput');
 
 // Logo is now just visual, no click handler needed
 
+// 2. Favorites System
+let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+function getFavorites() {
+  return JSON.parse(localStorage.getItem('favorites') || '[]');
+}
+
+function saveFavorites(favs) {
+  localStorage.setItem('favorites', JSON.stringify(favs));
+  favorites = favs;
+}
+
+function isFavorite(url) {
+  const favs = getFavorites();
+  return favs.some(f => f.url === url);
+}
+
+function updateFavoriteButtons() {
+  document.querySelectorAll('.favorite-btn').forEach(btn => {
+    const url = btn.getAttribute('data-url');
+    if (isFavorite(url)) {
+      btn.classList.add('active');
+      btn.innerHTML = '★';
+    } else {
+      btn.classList.remove('active');
+      btn.innerHTML = '☆';
+    }
+  });
+}
+
+function renderFavorites() {
+  const favoritesList = document.getElementById('favorites-list');
+  if (!favoritesList) return;
+  
+  const favs = getFavorites();
+  
+  if (favs.length === 0) {
+    favoritesList.innerHTML = '<p style="color: var(--muted); text-align: center; padding: 20px;">No favorites yet. Click the star icon on any link to add it to favorites.</p>';
+    return;
+  }
+  
+  // Clear existing content
+  favoritesList.innerHTML = '';
+  
+  // Group favorites by section
+  const grouped = {};
+  favs.forEach(fav => {
+    if (!grouped[fav.section]) {
+      grouped[fav.section] = [];
+    }
+    grouped[fav.section].push(fav);
+  });
+  
+  Object.entries(grouped).forEach(([section, items]) => {
+    const sectionHeader = el('h3', {
+      style: 'margin: 20px 0 12px 0; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;'
+    }, [section]);
+    favoritesList.appendChild(sectionHeader);
+    
+    items.forEach(fav => {
+      const card = el('div', { class: 'resource-card favorite-card' });
+      
+      const icon = el('div', { class: 'resource-icon' }, ['🔗']);
+      card.appendChild(icon);
+      
+      const info = el('div', { class: 'resource-info' });
+      const title = el('div', { class: 'resource-title' });
+      const link = el('a', {
+        href: fav.url,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        style: 'color: var(--text); text-decoration: none;'
+      }, [fav.label]);
+      title.appendChild(link);
+      info.appendChild(title);
+      
+      if (fav.desc) {
+        const desc = el('div', { class: 'resource-desc' }, [fav.desc]);
+        info.appendChild(desc);
+      }
+      
+      card.appendChild(info);
+      
+      const favBtn = el('button', {
+        class: 'favorite-btn active',
+        'data-url': fav.url,
+        type: 'button',
+        onclick: (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.toggleFavorite(fav.url, fav.label, fav.section, fav.desc || '');
+        }
+      }, ['★']);
+      card.appendChild(favBtn);
+      
+      favoritesList.appendChild(card);
+    });
+  });
+}
+
+// Make toggleFavorite globally accessible
+window.toggleFavorite = function(url, label, section, desc = '') {
+  const favs = getFavorites();
+  const existingIndex = favs.findIndex(f => f.url === url);
+  
+  if (existingIndex >= 0) {
+    favs.splice(existingIndex, 1);
+    saveFavorites(favs);
+    toast('Removed from favorites');
+    updateFavoriteButtons();
+    renderFavorites();
+    return false;
+  } else {
+    favs.push({ url, label, section, desc });
+    saveFavorites(favs);
+    toast('Added to favorites');
+    updateFavoriteButtons();
+    renderFavorites();
+    return true;
+  }
+};
+
 // 2. Build Sections
 let linkCount = 0;
 const openStates = JSON.parse(sessionStorage.getItem('openStates') || '{}');
@@ -149,7 +271,21 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
       el('div', { class: 'label' }, [it.label]),
       it.desc ? el('div', { class: 'desc' }, [it.desc]) : null
     ]));
+    
+    const favoriteBtn = el('button', { 
+      class: `favorite-btn ${isFavorite(it.url) ? 'active' : ''}`, 
+      type: 'button',
+      'data-url': it.url,
+      onclick: (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.toggleFavorite(it.url, it.label, sectionName, it.desc || '');
+      },
+      title: isFavorite(it.url) ? 'Remove from favorites' : 'Add to favorites'
+    }, [isFavorite(it.url) ? '★' : '☆']);
+    
     card.appendChild(el('div', { class: 'actions' }, [
+      favoriteBtn,
       el('button', { class: 'btn copy', type: 'button', onclick: (e)=>{ e.preventDefault(); e.stopPropagation(); navigator.clipboard.writeText(it.url).then(()=> toast('Copied!')); }}, ['Copy'])
     ]));
     content.appendChild(card);
@@ -289,7 +425,45 @@ window.closeSidebar = function() {
   }
 };
 
-// 3. TAB SWITCHING (Global scope)
+// 3. OPEN FAVORITES PANEL (Global scope)
+window.openFavoritesPanel = function(clickedElement) {
+  // Open sidebar if closed
+  const sidebar = document.getElementById('sidebar-widget');
+  if (sidebar && !sidebar.classList.contains('active')) {
+    window.openSidebar();
+  }
+  
+  // Switch to favorites tab
+  const favoritesView = document.getElementById('tab-favorites');
+  if (favoritesView) {
+    // Hide all views
+    document.querySelectorAll('.panel-view').forEach(view => {
+      view.classList.remove('visible');
+    });
+    
+    // Show favorites view
+    favoritesView.classList.add('visible');
+    renderFavorites();
+    
+    // Update icon states - mark favorites icon as active
+    document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)').forEach(icon => {
+      icon.classList.remove('active-tab');
+    });
+    
+    // Activate the clicked favorites icon
+    if (clickedElement) {
+      clickedElement.classList.add('active-tab');
+    } else {
+      // Find the favorites icon if clickedElement not provided
+      const railIcons = document.querySelectorAll('.sidebar-rail .rail-icon:not(.close-action)');
+      if (railIcons.length > 0) {
+        railIcons[0].classList.add('active-tab');
+      }
+    }
+  }
+};
+
+// 4. TAB SWITCHING (Global scope)
 window.switchTab = function(tabId, clickedElement) {
   // Hide all views
   document.querySelectorAll('.panel-view').forEach(view => {
@@ -299,6 +473,10 @@ window.switchTab = function(tabId, clickedElement) {
   const targetView = document.getElementById(tabId);
   if (targetView) {
     targetView.classList.add('visible');
+    // If switching to favorites tab, render favorites
+    if (tabId === 'tab-favorites') {
+      renderFavorites();
+    }
   }
 
   // Update Icon States
@@ -317,3 +495,8 @@ window.toggleTheme = function() {
   const newTheme = current === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', newTheme);
 };
+
+// 5. Initialize favorites on page load
+document.addEventListener('DOMContentLoaded', () => {
+  renderFavorites();
+});
