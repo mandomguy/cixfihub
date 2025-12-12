@@ -265,6 +265,7 @@ body.sidebar-is-open #widget-trigger-btn {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 16px;
+  align-items: start; /* Prevents vertical stretching */
 }
 
 .hero-card {
@@ -276,6 +277,7 @@ body.sidebar-is-open #widget-trigger-btn {
   overflow: hidden;
   position: relative;
 }
+
 
 .hero-card .shine {
   position: absolute;
@@ -301,6 +303,376 @@ body.sidebar-is-open #widget-trigger-btn {
   margin: 0;
   color: var(--muted);
 }
+
+/* ============================================
+   ABOUT SECTION - REFACTORED
+   ============================================ */
+
+.about {
+  background: linear-gradient(180deg, 
+    color-mix(in oklab, var(--card) 93%, transparent), 
+    color-mix(in oklab, var(--bg-soft) 88%, transparent));
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  /* STRICT HEIGHT CONTROLS - Prevents hero expansion */
+  height: 500px; /* Fixed height instead of max-height */
+  min-height: 500px;
+  max-height: 500px;
+  overflow: hidden; /* Container doesn't scroll */
+}
+
+/* Header Title */
+.about-header {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+/* Separator Line */
+.about-separator {
+  margin: 0 0 16px 0;
+  border: none;
+  height: 1px;
+  background: color-mix(in oklab, var(--text) 12%, transparent);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevents separator from shrinking */
+}
+
+/* Scrollable Links Container */
+.about-links {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px 0 0; /* Right padding for scrollbar spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+  
+  /* THIS IS WHERE THE SCROLL HAPPENS */
+  flex: 1; /* Takes remaining space */
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0; /* Important for flex scroll */
+}
+
+/* Individual Link Item */
+.about-link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: color-mix(in oklab, var(--bg-soft) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  flex-shrink: 0; /* Prevents items from compressing */
+}
+
+.about-link-item:hover {
+  background: color-mix(in oklab, var(--card) 100%, transparent);
+  border-color: var(--brand);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--brand) 20%, transparent);
+}
+
+/* SVG Icon Styling */
+.about-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--brand);
+  transition: transform 0.2s ease;
+}
+
+.about-link-item:hover .about-icon {
+  transform: scale(1.1);
+  color: var(--brand-2);
+}
+
+/* Link Styling */
+.about-link-item a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-link-item:hover a {
+  color: var(--brand);
+}
+
+/* Custom Scrollbar Styling */
+.about-links::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about-links::-webkit-scrollbar-track {
+  background: color-mix(in oklab, var(--bg-soft) 50%, transparent);
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.about-links::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--brand) 40%, transparent);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.about-links::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--brand) 60%, transparent);
+}
+
+/* Firefox Scrollbar */
+.about-links {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--brand) 40%, transparent) 
+                   color-mix(in oklab, var(--bg-soft) 50%, transparent);
+}
+
+/* Shine Effect (preserved from original) */
+.about .shine {
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 140%;
+  background: conic-gradient(from 0deg, 
+    transparent 0 20%, 
+    color-mix(in oklab, var(--brand) 35%, transparent) 20% 40%, 
+    transparent 40% 60%, 
+    color-mix(in oklab, var(--brand-2) 35%, transparent) 60% 80%, 
+    transparent 80%);
+  filter: blur(30px);
+  opacity: 0.55;
+  animation: rotateShine 16s linear infinite;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  
+  .about {
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+  }
+  
+  .about-link-item {
+    padding: 8px 10px;
+  }
+  
+  .about-link-item a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+  }
+}
+
+/* ============================================
+   BUILD POPULARITY SECTION
+   ============================================ */
+
+.build-popularity {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  display: flex;
+  flex-direction: column;
+  /* Fill remaining space in hero-card */
+  flex: 1;
+  min-height: 0; /* Important for flex scroll */
+}
+
+.build-popularity-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+.build-icon {
+  color: var(--brand);
+  flex-shrink: 0;
+}
+
+/* SCROLLABLE CONTAINER */
+.class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 8px; /* Space for scrollbar */
+  
+  /* THIS IS WHERE THE SCROLL HAPPENS */
+  flex: 1; /* Takes remaining space */
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0; /* Important for flex scroll */
+  max-height: 300px; /* Fallback max height */
+}
+
+/* Custom Scrollbar Styling */
+.class-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.class-list::-webkit-scrollbar-track {
+  background: color-mix(in oklab, var(--bg-soft) 50%, transparent);
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.class-list::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--brand) 40%, transparent);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.class-list::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--brand) 60%, transparent);
+}
+
+/* Firefox Scrollbar */
+.class-list {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--brand) 40%, transparent) 
+                   color-mix(in oklab, var(--bg-soft) 50%, transparent);
+}
+
+.loading-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  font-size: 14px;
+}
+
+.error-state {
+  text-align: center;
+  color: #ef4444;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* Individual Class Bar */
+.class-bar {
+  position: relative;
+  padding: 10px 12px;
+  background: var(--bg-soft);
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevents compression */
+  min-height: 44px; /* Ensures consistent height */
+}
+
+.class-bar:hover {
+  border-color: var(--brand);
+  transform: translateX(2px);
+  box-shadow: 0 4px 12px color-mix(in oklab, var(--brand) 15%, transparent);
+}
+
+/* Progress Bar Background */
+.class-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    color-mix(in oklab, var(--brand) 20%, transparent),
+    color-mix(in oklab, var(--brand-2) 15%, transparent));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+/* Class Bar Content */
+.class-bar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.class-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.class-percentage {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+/* Top 3 indicator badge */
+.class-bar:nth-child(1) .class-percentage::before {
+  content: '🥇';
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.class-bar:nth-child(2) .class-percentage::before {
+  content: '🥈';
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.class-bar:nth-child(3) .class-percentage::before {
+  content: '🥉';
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .class-list {
+    max-height: 250px;
+  }
+  
+  .class-bar {
+    min-height: 40px;
+    padding: 8px 10px;
+  }
+  
+  .class-name {
+    font-size: 13px;
+  }
+  
+  .class-percentage {
+    font-size: 12px;
+  }
+}
+
 
 /* Stats */
 .stats {

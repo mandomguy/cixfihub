@@ -559,3 +559,94 @@ window.toggleTheme = function() {
 document.addEventListener('DOMContentLoaded', () => {
   renderFavorites();
 });
+
+/* ==========================================================================
+   BUILD POPULARITY WIDGET
+   ========================================================================== */
+
+
+// Fetch and display build popularity data
+// Fetch and display ALL build popularity data with scroll
+async function fetchBuildPopularity() {
+  const classList = document.getElementById('class-list');
+  
+  try {
+    classList.innerHTML = '<div class="loading-state">Loading build data...</div>';
+    
+    // Mock data based on typical PoE class distribution
+    const mockData = {
+      classNames: [
+        "Juggernaut", "Berserker", "Chieftain", "Raider", "Deadeye", "Pathfinder",
+        "Occultist", "Elementalist", "Necromancer", "Slayer", "Gladiator", "Champion",
+        "Inquisitor", "Hierophant", "Guardian", "Assassin", "Trickster", "Saboteur", "Ascendant"
+      ],
+      // Simulated class distribution (array of class indices)
+      classes: [
+        ...Array(150).fill(0),  // Juggernaut - 15%
+        ...Array(120).fill(1),  // Berserker - 12%
+        ...Array(100).fill(2),  // Chieftain - 10%
+        ...Array(95).fill(3),   // Raider - 9.5%
+        ...Array(90).fill(4),   // Deadeye - 9%
+        ...Array(85).fill(5),   // Pathfinder - 8.5%
+        ...Array(75).fill(6),   // Occultist - 7.5%
+        ...Array(70).fill(7),   // Elementalist - 7%
+        ...Array(65).fill(8),   // Necromancer - 6.5%
+        ...Array(55).fill(9),   // Slayer - 5.5%
+        ...Array(50).fill(10),  // Gladiator - 5%
+        ...Array(45).fill(11),  // Champion - 4.5%
+        ...Array(35).fill(12),  // Inquisitor - 3.5%
+        ...Array(30).fill(13),  // Hierophant - 3%
+        ...Array(25).fill(14),  // Guardian - 2.5%
+        ...Array(20).fill(15),  // Assassin - 2%
+        ...Array(15).fill(16),  // Trickster - 1.5%
+        ...Array(10).fill(17),  // Saboteur - 1%
+        ...Array(5).fill(18)    // Ascendant - 0.5%
+      ]
+    };
+    
+    // Process the data
+    const classData = mockData.classNames.map((className, index) => {
+      const count = mockData.classes.filter(c => c === index).length;
+      const percentage = ((count / mockData.classes.length) * 100).toFixed(2);
+      
+      return {
+        name: className,
+        percentage: parseFloat(percentage),
+        count: count
+      };
+    });
+    
+    classData.sort((a, b) => b.percentage - a.percentage);
+    
+    classList.innerHTML = '';
+    
+    classData.forEach((classItem, index) => {
+      const bar = document.createElement('div');
+      bar.className = 'class-bar';
+      bar.innerHTML = `
+        <div class="class-bar-fill" style="width: 0%"></div>
+        <div class="class-bar-content">
+          <span class="class-name">${classItem.name}</span>
+          <span class="class-percentage">${classItem.percentage}%</span>
+        </div>
+      `;
+      
+      classList.appendChild(bar);
+      
+      setTimeout(() => {
+        const fill = bar.querySelector('.class-bar-fill');
+        const maxPercentage = classData[0].percentage;
+        const scaledWidth = (classItem.percentage / maxPercentage) * 100;
+        fill.style.width = `${scaledWidth}%`;
+      }, 100 + (index * 30));
+    });
+    
+    console.log('Using mock data - Update manually for real statistics');
+    
+  } catch (error) {
+    console.error('Error:', error);
+    classList.innerHTML = '<div class="error-state">Unable to load data</div>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', fetchBuildPopularity);
