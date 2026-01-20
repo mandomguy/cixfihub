@@ -85,7 +85,7 @@ app.get("/api/classes-scraped", async (req, res) => {
 
     const response = await axios.get("https://poe2.ninja/api/buildoverview", {
       params: { league: league, type: "class" },
-      timeout: 15000,
+      timeout: 30000,
     });
 
     if (
