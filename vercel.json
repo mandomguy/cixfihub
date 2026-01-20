@@ -1,9 +1,5 @@
 {
   "functions": {
-    "api/steam-players.js": {
-      "memory": 128,
-      "maxDuration": 10
-    },
     "api/classes-scraped.js": {
       "memory": 128,
       "maxDuration": 15
