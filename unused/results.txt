@@ -1,0 +1,151 @@
+=== POE2 Class Distribution ===
+
+Total classes found: 28
+
+--- Class Data ---
+
+1. Oracle: 17%
+2. Blood Mage: 16%
+3. Pathfinder: 15%
+4. Shaman: 9%
+5. Disciple of Varashta: 6%
+6. Stormweaver: 6%
+7. Titan: 5%
+8. Invoker: 4%
+9. Amazon: 4%
+10. Ritualist: 4%
+11. Deadeye: 3%
+12. Witchhunter: 2%
+13. Lich: 2%
+14. Tactician: 2%
+15. Infernalist: 1%
+16. Smith of Kitava: 1%
+17. Warbringer: 1%
+18. Chronomancer: 0.7%
+19. Acolyte of Chayula: 0.6%
+20. Abyssal Lich: 0.6%
+21. Gemling Legionnaire: 0.2%
+22. Druid: 0.0%
+23. Witch: 0.0%
+24. Ranger: 0.0%
+25. Huntress: 0.0%
+26. Warrior: 0.0%
+27. Mercenary: 0.0%
+28. Sorceress: 0.0%
+
+--- JSON Output ---
+
+[
+  {
+    "name": "Oracle",
+    "percentage": "17%"
+  },
+  {
+    "name": "Blood Mage",
+    "percentage": "16%"
+  },
+  {
+    "name": "Pathfinder",
+    "percentage": "15%"
+  },
+  {
+    "name": "Shaman",
+    "percentage": "9%"
+  },
+  {
+    "name": "Disciple of Varashta",
+    "percentage": "6%"
+  },
+  {
+    "name": "Stormweaver",
+    "percentage": "6%"
+  },
+  {
+    "name": "Titan",
+    "percentage": "5%"
+  },
+  {
+    "name": "Invoker",
+    "percentage": "4%"
+  },
+  {
+    "name": "Amazon",
+    "percentage": "4%"
+  },
+  {
+    "name": "Ritualist",
+    "percentage": "4%"
+  },
+  {
+    "name": "Deadeye",
+    "percentage": "3%"
+  },
+  {
+    "name": "Witchhunter",
+    "percentage": "2%"
+  },
+  {
+    "name": "Lich",
+    "percentage": "2%"
+  },
+  {
+    "name": "Tactician",
+    "percentage": "2%"
+  },
+  {
+    "name": "Infernalist",
+    "percentage": "1%"
+  },
+  {
+    "name": "Smith of Kitava",
+    "percentage": "1%"
+  },
+  {
+    "name": "Warbringer",
+    "percentage": "1%"
+  },
+  {
+    "name": "Chronomancer",
+    "percentage": "0.7%"
+  },
+  {
+    "name": "Acolyte of Chayula",
+    "percentage": "0.6%"
+  },
+  {
+    "name": "Abyssal Lich",
+    "percentage": "0.6%"
+  },
+  {
+    "name": "Gemling Legionnaire",
+    "percentage": "0.2%"
+  },
+  {
+    "name": "Druid",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Witch",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Ranger",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Huntress",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Warrior",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Mercenary",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Sorceress",
+    "percentage": "0.0%"
+  }
+]

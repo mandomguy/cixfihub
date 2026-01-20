@@ -1,5 +1,10 @@
 {
-    "notes.notesDefaultNoteExtension": "txt",
-    "notes.notesLocation": "c:\\Users\\sub45\\OneDrive\\Documentos\\WebDev\\Notes - Extension",
-    "livePreview.defaultPreviewPath": "/html/index.html"
+  "notes.notesDefaultNoteExtension": "txt",
+  "notes.notesLocation": "c:\\Users\\sub45\\OneDrive\\Documentos\\WebDev\\Notes - Extension",
+  "livePreview.defaultPreviewPath": "/currency.html",
+  "builder.serverUrl": "http://127.0.0.1:5500/",
+  "builder.command": "npm run dev",
+  "builder.runDevServer": true,
+  "builder.autoDetectDevServer": true,
+  "builder.launchType": "browser"
 }

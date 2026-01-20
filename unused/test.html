@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feature Tabs Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --accent: #d1598c;
+      --bg: #05060a;
+      --bg-alt: #0b0d15;
+      --text: #f5f5f7;
+      --muted: #a2a3b3;
+      --border: #26293a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #151728 0, #05060a 60%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        Roboto, sans-serif;
+      color: var(--text);
+    }
+
+    .feat-container-2957 {
+      width: 100%;
+      max-width: 720px;
+      background: linear-gradient(145deg, #090b12, #101321);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(0, 0, 0, 0.85);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feat-container-2957::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(209, 89, 140, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(109, 97, 255, 0.22), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .feat-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 4px;
+      background: rgba(8, 10, 20, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
+    }
+
+    .feat-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.08s ease;
+      outline: none;
+      white-space: nowrap;
+    }
+
+    .feat-btn svg {
+      flex-shrink: 0;
+    }
+
+    .feat-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 0 0 1px rgba(209, 89, 140, 0.35);
+    }
+
+    .feat-btn.active {
+      color: #fff;
+      background: radial-gradient(circle at 0 0, #e170a8, #b047e1);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.18),
+        0 12px 25px rgba(0, 0, 0, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .feat-btn.active svg {
+      stroke: #fff;
+    }
+
+    .feat-panel {
+      display: none;
+      animation: fadeInFeat 0.25s ease-out;
+    }
+
+    .feat-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeInFeat {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .feat-pill {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at 0 0, #141628, #0c0e18);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    .feat-pill svg {
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 640px) {
+      .feat-container-2957 {
+        margin: 12px;
+        padding: 14px 12px 16px;
+      }
+
+      .feat-nav {
+        padding: 3px;
+      }
+
+      .feat-btn span {
+        font-size: 11px;
+      }
+
+      .feat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="feat-container-2957">
+    <div class="feat-nav">
+      <button
+        type="button"
+        class="feat-btn active"
+        onclick="switchFeatTab2957(this, 'aimbot')"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#d1598c"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display:inline-block;vertical-align:middle;"
+        >
+          <circle cx="12" cy="12" r="7"></circle>
+          <line x1="12" y1="2" x2="12" y2="6"></line>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="2" y1="12" x2="6" y2="12"></line>
+          <line x1="18" y1="12" x2="22" y2="12"></line>
+        </svg>
+        <span>Aimbot</span>
+      </button>
+
+      <button
+        type="button"
+        class="feat-btn"
+        onclick="switchFeatTab2957(this, 'visuals')"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#d1598c"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display:inline-block;vertical-align:middle;"
+        >
+          <path
+            d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+          ></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        <span>Visuals</span>
+      </button>
+
+      <button
+        type="button"
+        class="feat-btn"
+        onclick="switchFeatTab2957(this, 'misc')"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#d1598c"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display:inline-block;vertical-align:middle;"
+        >
+          <path
+            d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0Z"
+          ></path>
+          <path d="m7 16.5-4.74-2.85"></path>
+          <path d="m7 16.5 4.74-2.85"></path>
+          <path d="M7 16.5v5.17"></path>
+          <path
+            d="M12 4.27a2 2 0 0 1 .97-1.71l3-1.8a2 2 0 0 1 2.06 0l3 1.8a2 2 0 0 1 .97 1.71v3.24a2 2 0 0 1-.97 1.71l-3 1.8a2 2 0 0 1-2.06 0L12 9a2 2 0 0 1-.97-1.71Z"
+          ></path>
+          <path d="m17 7.85-4.74-2.85"></path>
+          <path d="m17 7.85 4.74-2.85"></path>
+          <path d="M17 7.85v5.17"></path>
+          <path
+            d="M7.97 4.42A2 2 0 0 0 7 6.13v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L17 10.5a2 2 0 0 0 .97-1.71V5.55a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0Z"
+          ></path>
+          <path d="m12 8-4.74-2.85"></path>
+          <path d="m12 8 4.74-2.85"></path>
+          <path d="M12 8v5.17"></path>
+        </svg>
+        <span>Misc</span>
+      </button>
+    </div>
+
+    <div id="feat-panel-2957-aimbot" class="feat-panel active">
+      <div class="feat-grid">
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Aim On/Off
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Aim Key
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Visibility Check
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          FOV
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Bone Selector
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Aim at Shoot
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Target Switch Delay
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Nearest Coefficient
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Aimbot Speed
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Hitbox Priority
+        </div>
+      </div>
+    </div>
+
+    <div id="feat-panel-2957-visuals" class="feat-panel">
+      <div class="feat-grid">
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Enemy Box ESP
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Enemy Line
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Enemy Distance ESP
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Enemy Health ESP
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Enemy Name
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Skeleton ESP
+        </div>
+      </div>
+    </div>
+
+    <div id="feat-panel-2957-misc" class="feat-panel">
+      <div class="feat-grid">
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Invisible Opacity
+        </div>
+        <div class="feat-pill">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d1598c"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="margin-right:12px;flex-shrink:0;display:inline-block;"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Custom ESP Colors
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchFeatTab2957(btn, tabKey) {
+      var container = btn.closest(".feat-container-2957");
+      if (!container) return;
+
+      var panels = container.querySelectorAll(".feat-panel");
+      var buttons = container.querySelectorAll(".feat-btn");
+
+      panels.forEach(function (p) {
+        p.classList.remove("active");
+      });
+
+      buttons.forEach(function (b) {
+        b.classList.remove("active");
+      });
+
+      var target = container.querySelector("#feat-panel-2957-" + tabKey);
+      if (target) {
+        target.classList.add("active");
+      }
+
+      btn.classList.add("active");
+    }
+  </script>
+</body>
+</html>
