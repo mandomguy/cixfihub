@@ -208,7 +208,9 @@ const el = (tag, props = {}, children = []) => {
     .forEach(
       (c) =>
         c &&
-        node.appendChild(typeof c === "string" ? document.createTextNode(c) : c)
+        node.appendChild(
+          typeof c === "string" ? document.createTextNode(c) : c,
+        ),
     );
   return node;
 };
@@ -321,7 +323,7 @@ function renderFavorites() {
         style:
           "margin: 20px 0 12px 0; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;",
       },
-      [section]
+      [section],
     );
     favoritesList.appendChild(sectionHeader);
 
@@ -341,7 +343,7 @@ function renderFavorites() {
           rel: "noopener noreferrer",
           style: "color: var(--text); text-decoration: none;",
         },
-        [fav.label]
+        [fav.label],
       );
       title.appendChild(link);
       info.appendChild(title);
@@ -366,11 +368,11 @@ function renderFavorites() {
               fav.url,
               fav.label,
               fav.section,
-              fav.desc || ""
+              fav.desc || "",
             );
           },
         },
-        ["★"]
+        ["★"],
       );
       card.appendChild(favBtn);
 
@@ -460,7 +462,7 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
       el("div", { class: "meta" }, [
         el("div", { class: "label" }, [it.label]),
         it.desc ? el("div", { class: "desc" }, [it.desc]) : null,
-      ])
+      ]),
     );
 
     const favoriteBtn = el(
@@ -478,7 +480,7 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
           ? "Remove from favorites"
           : "Add to favorites",
       },
-      [isFavorite(it.url) ? "★" : "☆"]
+      [isFavorite(it.url) ? "★" : "☆"],
     );
 
     card.appendChild(
@@ -497,9 +499,9 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
                 .then(() => toast("Copied!"));
             },
           },
-          ["Copy"]
+          ["Copy"],
         ),
-      ])
+      ]),
     );
     content.appendChild(card);
     // Cache card reference for filter optimization
@@ -544,7 +546,7 @@ const updateOpenRate = () => {
   const total = Object.keys(DATA).length;
   // Use cached sectionElements instead of querySelectorAll
   const opened = sectionElements.filter(
-    (sec) => sec.getAttribute("aria-expanded") === "true"
+    (sec) => sec.getAttribute("aria-expanded") === "true",
   ).length;
   openRate.textContent = total
     ? `${Math.round((opened / total) * 100)}%`
@@ -585,7 +587,7 @@ if (filterInput) {
     "input",
     debounce((e) => {
       performFilter(e.target.value);
-    }, 150)
+    }, 150),
   );
 }
 
@@ -594,7 +596,7 @@ async function fetchSteamPlayers() {
   const appId = 2694490;
   // Proxy URL handles CORS and HTTPS
   const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-    `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appId}`
+    `https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=${appId}`,
   )}`;
 
   try {
@@ -620,12 +622,12 @@ document.getElementById("themeToggle").addEventListener("click", () => {
     document.documentElement.getAttribute("data-theme") === "light";
   document.documentElement.setAttribute(
     "data-theme",
-    isLight ? "dark" : "light"
+    isLight ? "dark" : "light",
   );
 });
 
 const io = new IntersectionObserver((entries) =>
-  entries.forEach((e) => e.isIntersecting && e.target.classList.add("in"))
+  entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
@@ -721,7 +723,7 @@ window.openFavoritesPanel = function (clickedElement) {
     } else {
       // Find the favorites icon if clickedElement not provided
       const railIcons = document.querySelectorAll(
-        ".sidebar-rail .rail-icon:not(.close-action)"
+        ".sidebar-rail .rail-icon:not(.close-action)",
       );
       if (railIcons.length > 0) {
         railIcons[0].classList.add("active-tab");
@@ -737,7 +739,7 @@ window.switchTab = function (tabId, clickedElement) {
   if (!panelViews) {
     panelViews = document.querySelectorAll(".panel-view");
     railIcons = document.querySelectorAll(
-      ".sidebar-rail .rail-icon:not(.close-action)"
+      ".sidebar-rail .rail-icon:not(.close-action)",
     );
   }
 
@@ -811,21 +813,27 @@ async function fetchBuildPopularity() {
     let ascendancies = [];
     let baseClasses = [];
 
-    // Try fetching from local API
-    try {
-      const apiResponse = await fetch(
-        "http://localhost:5000/api/classes-scraped"
-      );
-      if (apiResponse.ok) {
-        const data = await apiResponse.json();
-        ascendancies = data.ascendancies || [];
-        baseClasses = data.baseClasses || [];
-        console.log(
-          `Loaded ${ascendancies.length} ascendancies, ${baseClasses.length} base classes`
-        );
+    // Try fetching from API (Vercel serverless or local Express)
+    const apiEndpoints = [
+      "/api/classes-scraped", // Vercel deployment (relative path)
+      "http://localhost:5000/api/classes-scraped", // Local Express server
+    ];
+
+    for (const endpoint of apiEndpoints) {
+      try {
+        const apiResponse = await fetch(endpoint);
+        if (apiResponse.ok) {
+          const data = await apiResponse.json();
+          ascendancies = data.ascendancies || [];
+          baseClasses = data.baseClasses || [];
+          console.log(
+            `Loaded ${ascendancies.length} ascendancies, ${baseClasses.length} base classes from ${endpoint}`,
+          );
+          break; // Success, exit loop
+        }
+      } catch (apiErr) {
+        console.log(`API endpoint ${endpoint} not available, trying next...`);
       }
-    } catch (apiErr) {
-      console.log("Local API not available, using fallback");
     }
 
     // Fallback: Generate static data
@@ -908,12 +916,15 @@ async function fetchBuildPopularity() {
         </div>
       `;
 
-      setTimeout(() => {
-        const fill = bar.querySelector(".class-bar-fill");
-        const scaledWidth =
-          maxPct > 0 ? (classItem.rawPercentage / maxPct) * 100 : 0;
-        fill.style.width = `${scaledWidth}%`;
-      }, 100 + delayIndex * 25);
+      setTimeout(
+        () => {
+          const fill = bar.querySelector(".class-bar-fill");
+          const scaledWidth =
+            maxPct > 0 ? (classItem.rawPercentage / maxPct) * 100 : 0;
+          fill.style.width = `${scaledWidth}%`;
+        },
+        100 + delayIndex * 25,
+      );
 
       return bar;
     }
@@ -942,7 +953,7 @@ async function fetchBuildPopularity() {
         baseClasses.find((c) => c.rawPercentage > 0)?.rawPercentage || 1;
       baseClasses.forEach((item, index) => {
         classList.appendChild(
-          createClassBar(item, maxBasePct, ascendancies.length + index)
+          createClassBar(item, maxBasePct, ascendancies.length + index),
         );
       });
     }

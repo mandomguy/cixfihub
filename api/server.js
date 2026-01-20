@@ -3,11 +3,13 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 const PORT = 5000;
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, "..")));
 
 // Cache for class data (24 hours)
 let classesCache = null;
@@ -130,7 +132,7 @@ app.get("/api/classes-scraped", async (req, res) => {
     classesCache = { data: result, time: now, league };
 
     console.log(
-      `Fetched ${baseClasses.length} base classes and ${ascendancies.length} ascendancies`
+      `Fetched ${baseClasses.length} base classes and ${ascendancies.length} ascendancies`,
     );
     res.json(result);
   } catch (err) {
@@ -154,24 +156,6 @@ app.get("/api/classes-scraped", async (req, res) => {
 
 app.get("/api/classes", (req, res) => {
   res.redirect(`/api/classes-scraped?league=${req.query.league || "vaal"}`);
-});
-
-app.get("/", (req, res) => {
-  res.send(`<h1>PoE2 Class Popularity API</h1>
-    <h2>Endpoint:</h2>
-    <p><a href="/api/classes-scraped">/api/classes-scraped</a> (24h cache)</p>
-    <h3>Leagues:</h3>
-    <p>
-      <a href="/api/classes-scraped?league=vaal">Vaal</a> | 
-      <a href="/api/classes-scraped?league=dawn">Dawn</a> | 
-      <a href="/api/classes-scraped?league=standard">Standard</a>
-    </p>
-    <h3>Response includes:</h3>
-    <ul>
-      <li><code>baseClasses</code> - Witch, Ranger, Warrior, etc.</li>
-      <li><code>ascendancies</code> - Oracle, Blood Mage, Pathfinder, etc.</li>
-      <li><code>classes</code> - Combined list (backwards compatible)</li>
-    </ul>`);
 });
 
 app.listen(PORT, () => {
