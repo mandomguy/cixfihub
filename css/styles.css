@@ -9,6 +9,7 @@
 :root {
   --navbar-height: 76px;
   --footer-height: 80px;
+  --sidenav-width: 200px;
   --sidebar-rail-width: 80px;
   --sidebar-panel-width: 380px;
   --bg: #0f1115;
@@ -21,7 +22,8 @@
   --accent: #22c55e; /* green */
   --ring: #3b82f6; /* blue */
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --gradient-test: radial-gradient(
+  --gradient-test:
+    radial-gradient(
       1200px 500px at 10% -10%,
       rgba(139, 92, 246, 0.25),
       transparent 60%
@@ -63,10 +65,18 @@ body {
 
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   color: var(--text);
-  background: radial-gradient(
+  background:
+    radial-gradient(
       1200px 500px at 10% -10%,
       rgba(139, 92, 246, 0.25),
       transparent 60%
@@ -104,12 +114,33 @@ body {
   position: relative;
 }
 
-/* LEFT SECTION: Logo + Widget Trigger */
+/* LEFT SECTION: Logo + Brand Title */
 .header-left {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+}
+
+/* --- Navbar Brand Link --- */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--text);
+  transition: opacity 0.2s ease;
+}
+
+.navbar-brand:hover {
+  opacity: 0.9;
+}
+
+.navbar-brand:hover .mark {
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.6),
+    0 8px 24px rgba(139, 92, 246, 0.25);
+  transform: scale(1.05) translateY(-2px);
 }
 
 /* --- Logo Styling --- */
@@ -122,12 +153,13 @@ body {
 }
 
 .logo .mark {
-  width: 48px;
-  height: 48px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--card);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent),
+  box-shadow:
+    0 0 0 2px color-mix(in oklab, var(--brand) 40%, transparent),
     var(--shadow);
   display: flex;
   justify-content: center;
@@ -137,46 +169,20 @@ body {
 
 .logo .mark img {
   width: auto;
-  height: 2.5rem;
+  height: 2.2rem;
 }
 
-/* Logo has subtle interaction even without click */
-.logo .mark:hover {
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.6),
-    0 8px 24px rgba(139, 92, 246, 0.25);
-  transform: scale(1.05) translateY(-2px);
-}
-
-/* Widget Trigger Button - Now in navbar */
-#widget-trigger-btn {
-  background-color: var(--card);
-  color: var(--text);
-  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  width: 45px;
-  height: 45px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-#widget-trigger-btn:hover {
-  border-color: var(--brand);
-  color: var(--brand);
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent),
-    0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
-}
-
-/* Hide when sidebar is open */
-body.sidebar-is-open #widget-trigger-btn {
-  opacity: 0.5;
-  pointer-events: none;
+/* --- Navbar Title --- */
+.navbar-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: linear-gradient(135deg, var(--text) 40%, var(--brand));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+  user-select: none;
 }
 
 /* MIDDLE SECTION: Search Bar */
@@ -184,26 +190,37 @@ body.sidebar-is-open #widget-trigger-btn {
   flex: 1;
   display: flex;
   justify-content: center;
-  max-width: 600px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .search {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: var(--bg-soft);
   height: 40px;
   width: 100%;
   border-radius: 12px;
   border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   box-shadow: var(--shadow);
-  padding: 0 12px;
-  transition: all 0.2s ease;
+  padding: 0 14px;
+  transition: all 0.25s ease;
 }
 
 .search:focus-within {
   border-color: color-mix(in oklab, var(--brand) 50%, transparent);
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 20%, transparent);
+}
+
+.search svg {
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.search:focus-within svg {
+  color: var(--brand);
 }
 
 .search input {
@@ -212,7 +229,7 @@ body.sidebar-is-open #widget-trigger-btn {
   color: var(--text);
   border: 0;
   outline: none;
-  font-size: 15px;
+  font-size: 14px;
   min-width: 0;
 }
 
@@ -221,7 +238,7 @@ body.sidebar-is-open #widget-trigger-btn {
   opacity: 0.7;
 }
 
-/* RIGHT SECTION: Theme + GitHub */
+/* RIGHT SECTION: Theme Toggle */
 .header-right {
   display: flex;
   align-items: center;
@@ -229,7 +246,48 @@ body.sidebar-is-open #widget-trigger-btn {
   flex-shrink: 0;
 }
 
-/* --- Buttons --- */
+/* --- Theme Toggle Button --- */
+.theme-toggle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in oklab, var(--text) 12%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--bg-soft) 85%, transparent),
+    color-mix(in oklab, var(--bg) 85%, transparent)
+  );
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--brand) 40%, transparent),
+    0 6px 16px color-mix(in oklab, var(--brand) 20%, transparent);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95) translateY(0);
+}
+
+.theme-icon {
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover .theme-icon {
+  transform: rotate(15deg);
+}
+
+/* --- General Buttons (kept for other uses) --- */
 .btn {
   border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
   background: linear-gradient(
@@ -242,46 +300,19 @@ body.sidebar-is-open #widget-trigger-btn {
   border-radius: 12px;
   cursor: pointer;
   white-space: nowrap;
-  transition: transform 0.12s ease-in-out, border-color 0.2s ease-in-out,
+  transition:
+    transform 0.12s ease-in-out,
+    border-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
   font-size: 14px;
 }
 
 .btn:hover {
   background-color: var(--card);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent),
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent),
     0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
   transform: scale(1.02) translateY(-2px);
-}
-
-#themeToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#githubIconDark {
-  width: 45px;
-  height: 45px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background-image: url(/images/github-mark.png);
-  background-size: 24px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-#githubIconDark:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 60%, transparent),
-    0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
-}
-
-#githubIconDark:active {
-  transform: scale(0.98) translateY(0);
 }
 
 /* ============================================
@@ -537,251 +568,128 @@ body.sidebar-is-open #widget-trigger-btn {
 }
 
 /* ============================================
-   BUILD POPULARITY SECTION
+   HERO FAVORITES SECTION
    ============================================ */
 
-.build-popularity {
+.hero-favorites {
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  display: flex;
-  flex-direction: column;
-  /* Fill remaining space in hero-card */
-  flex: 1;
-  min-height: 0; /* Important for flex scroll */
 }
 
-.build-popularity-header {
+.hero-favorites__header {
   display: flex;
   align-items: center;
   gap: 8px;
   margin: 0 0 12px 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text);
-  flex-shrink: 0; /* Prevents header from shrinking */
 }
 
-.build-icon {
+.hero-favorites__icon {
   color: var(--brand);
   flex-shrink: 0;
 }
 
-/* SCROLLABLE CONTAINER */
-.class-list {
+.hero-favorites__count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  background: color-mix(in oklab, var(--text) 8%, transparent);
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.hero-favorites__empty {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  padding: 16px 0;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.hero-favorites__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Individual favorite card */
+.fav-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-right: 8px; /* Space for scrollbar */
-
-  /* THIS IS WHERE THE SCROLL HAPPENS */
-  flex: 1; /* Takes remaining space */
-  overflow-y: auto;
-  overflow-x: hidden;
-  min-height: 0; /* Important for flex scroll */
-  max-height: 300px; /* Fallback max height */
-}
-
-/* Custom Scrollbar Styling */
-.class-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.class-list::-webkit-scrollbar-track {
-  background: color-mix(in oklab, var(--bg-soft) 50%, transparent);
-  border-radius: 3px;
-  margin: 4px 0;
-}
-
-.class-list::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, var(--brand) 40%, transparent);
-  border-radius: 3px;
-  transition: background 0.2s ease;
-}
-
-.class-list::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in oklab, var(--brand) 60%, transparent);
-}
-
-/* Firefox Scrollbar */
-.class-list {
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklab, var(--brand) 40%, transparent)
-    color-mix(in oklab, var(--bg-soft) 50%, transparent);
-}
-
-.loading-state {
-  text-align: center;
-  color: var(--muted);
-  padding: 20px;
-  font-size: 14px;
-}
-
-.error-state {
-  text-align: center;
-  color: #ef4444;
-  padding: 20px;
-  font-size: 14px;
-}
-
-/* Individual Class Bar */
-.class-bar {
-  position: relative;
+  gap: 2px;
   padding: 10px 12px;
+  border-radius: 10px;
   background: var(--bg-soft);
   border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
-  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s ease;
+  position: relative;
   overflow: hidden;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  flex-shrink: 0; /* Prevents compression */
-  min-height: 44px; /* Ensures consistent height */
+  min-height: 0;
 }
 
-.class-bar:hover {
-  border-color: var(--brand);
-  transform: translateX(2px);
+.fav-card:hover {
+  border-color: color-mix(in oklab, var(--brand) 50%, transparent);
+  transform: translateY(-2px);
   box-shadow: 0 4px 12px color-mix(in oklab, var(--brand) 15%, transparent);
 }
 
-/* Progress Bar Background */
-.class-bar-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--brand) 20%, transparent),
-    color-mix(in oklab, var(--brand-2) 15%, transparent)
-  );
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
-}
-
-/* Class Bar Content */
-.class-bar-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.class-name {
-  font-size: 14px;
+.fav-card__label {
+  font-size: 13px;
   font-weight: 600;
   color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20px;
 }
 
-/* Section Headers (Ascendancies / Base Classes) */
-.class-section-header {
+.fav-card__desc {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.fav-card__remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--brand);
-  border-bottom: 1px solid color-mix(in oklab, var(--brand) 30%, transparent);
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--brand) 10%, transparent),
-    transparent
-  );
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.15s ease;
 }
 
-.class-section-header:first-child {
-  margin-top: 0;
-}
-
-.class-section-header .section-icon {
-  font-size: 14px;
-}
-
-.base-class-header {
-  color: var(--muted);
-  border-bottom-color: color-mix(in oklab, var(--muted) 30%, transparent);
-  background: linear-gradient(
-    90deg,
-    color-mix(in oklab, var(--muted) 10%, transparent),
-    transparent
-  );
-}
-
-/* Base class bars (dimmed since 0% usage) */
-.class-bar.base {
-  opacity: 0.6;
-}
-
-.class-bar.base:hover {
+.fav-card:hover .fav-card__remove {
   opacity: 1;
 }
 
-/* Class info wrapper with icon */
-.class-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0; /* Prevents overflow */
+.fav-card__remove:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
 }
 
-.class-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-  background: color-mix(in oklab, var(--bg-soft) 80%, transparent);
-  border: 1px solid color-mix(in oklab, var(--brand) 30%, transparent);
-}
-
-.class-percentage {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--brand);
-  white-space: nowrap;
-}
-
-/* Top 3 indicator badge */
-.class-bar:nth-child(1) .class-percentage::before {
-  content: "🥇";
-  margin-right: 4px;
-  font-size: 12px;
-}
-
-.class-bar:nth-child(2) .class-percentage::before {
-  content: "🥈";
-  margin-right: 4px;
-  font-size: 12px;
-}
-
-.class-bar:nth-child(3) .class-percentage::before {
-  content: "🥉";
-  margin-right: 4px;
-  font-size: 12px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .class-list {
-    max-height: 250px;
-  }
-
-  .class-bar {
-    min-height: 40px;
-    padding: 8px 10px;
-  }
-
-  .class-name {
-    font-size: 13px;
-  }
-
-  .class-percentage {
-    font-size: 12px;
+@media (max-width: 600px) {
+  .hero-favorites__grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1084,6 +992,92 @@ body.sidebar-is-open #widget-trigger-btn {
 }
 
 /* ============================================
+   SIDE NAVIGATION
+   ============================================ */
+.sidenav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--sidenav-width);
+  padding-top: calc(var(--navbar-height) + 16px);
+  padding-left: 16px;
+  padding-right: 8px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.sidenav__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  opacity: 0.6;
+  padding: 0 12px;
+  margin-bottom: 16px;
+}
+
+.sidenav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidenav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.sidenav__item:hover {
+  color: var(--text);
+  background: color-mix(in oklab, var(--text) 6%, transparent);
+}
+
+.sidenav__item--active {
+  color: var(--brand);
+  background: color-mix(in oklab, var(--brand) 14%, transparent);
+  font-weight: 600;
+}
+
+.sidenav__item--active:hover {
+  color: var(--brand);
+  background: color-mix(in oklab, var(--brand) 18%, transparent);
+}
+
+.sidenav__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.sidenav__item--active .sidenav__icon {
+  opacity: 1;
+}
+
+/* Push main content to the right to make room for sidenav */
+main,
+.grid-footer {
+  margin-left: var(--sidenav-width);
+}
+
+/* ============================================
    SECTIONS & CARDS
    ============================================ */
 .container {
@@ -1144,7 +1138,9 @@ body.sidebar-is-open #widget-trigger-btn {
   padding: 0 14px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease, padding-top 0.25s ease;
+  transition:
+    max-height 0.35s ease,
+    padding-top 0.25s ease;
 }
 
 .section[aria-expanded="true"] .section-content {
@@ -1163,7 +1159,10 @@ body.sidebar-is-open #widget-trigger-btn {
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
-  transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .card:hover {
@@ -1281,7 +1280,9 @@ body.sidebar-is-open #widget-trigger-btn {
 .reveal {
   opacity: 0;
   transform: translateY(12px) scale(0.98);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .reveal.in {
@@ -1309,7 +1310,9 @@ footer {
   bottom: 18px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.2s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.2s ease;
 }
 
 .to-top.show {
@@ -1337,7 +1340,8 @@ footer {
   transition: left 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   border-radius: 0px 50px 50px 0px;
 
-  background: radial-gradient(
+  background:
+    radial-gradient(
       1200px 500px at 10% -10%,
       rgba(139, 92, 246, 0.15),
       transparent 60%
@@ -1601,6 +1605,16 @@ footer {
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 900px) {
+  /* Hide sidenav on smaller screens */
+  .sidenav {
+    display: none;
+  }
+
+  main,
+  .grid-footer {
+    margin-left: 0;
+  }
+
   .hero {
     grid-template-columns: 1fr;
   }
@@ -1612,31 +1626,15 @@ footer {
   }
 
   .header-center {
-    max-width: 300px;
+    max-width: 280px;
   }
 
   .search input {
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  #themeToggle {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
-  /* Sidebar adjustments for tablets */
-  :root {
-    --sidebar-rail-width: 72px;
-    --sidebar-panel-width: 340px;
-  }
-
-  .sidebar-panel {
-    padding: 20px 16px;
-  }
-
-  .rail-icon {
-    height: 56px;
-    font-size: 20px;
+  .navbar-title {
+    font-size: 0.95rem;
   }
 }
 
@@ -1649,64 +1647,28 @@ footer {
     padding: 8px 12px;
   }
 
+  /* Hide search on very small screens */
   .header-center {
     display: none;
   }
 
-  #githubIconDark {
-    width: 40px;
-    height: 40px;
-    background-size: 20px;
+  /* Hide the title text on small mobile, keep logo */
+  .navbar-title {
+    display: none;
   }
 
-  /* Sidebar adjustments for mobile */
-  :root {
-    --navbar-height: 64px;
-    --footer-height: 60px;
-    --sidebar-rail-width: 64px;
-    --sidebar-panel-width: 280px;
+  .logo .mark {
+    width: 36px;
+    height: 36px;
   }
 
-  .sidebar-widget {
-    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.8);
+  .logo .mark img {
+    height: 1.8rem;
   }
 
-  .sidebar-panel {
-    padding: 16px 12px;
-  }
-
-  .sidebar-panel h2 {
-    font-size: 1.25rem;
-    margin-bottom: 16px;
-  }
-
-  .rail-icon {
-    height: 52px;
-    font-size: 18px;
-  }
-
-  .rail-icon.close-action {
-    height: 60px;
-    font-size: 22px;
-  }
-
-  .resource-card {
-    padding: 10px;
-    min-height: 56px;
-  }
-
-  .resource-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
-    margin-right: 10px;
-  }
-
-  .resource-title {
-    font-size: 0.9rem;
-  }
-
-  .resource-desc {
-    font-size: 0.7rem;
+  .theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
 }
