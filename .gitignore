@@ -1,6 +1,19 @@
-.vercel
+# Dependencies
+node_modules/
 
-.vercel
+# IDE / Editor
+.vscode/
+.idea/
 
+# Vercel
+.vercel/
+
+# Gemini
 .gemini/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Credentials
 gha-creds-*.json

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cixfi POE2 Hub — Resource Grid</title>
+  <meta name="description" content="A curated collection of essential PoE 2 tools, community databases, build guides, and official resources." />
+
+  <!-- Base Design System -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Grid Page Styles -->
+  <link rel="stylesheet" href="css/grids.css">
+</head>
+<body>
+
+  <!-- Navbar rendered by portable component -->
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar({
+      searchId: 'gridSearch',
+      searchPlaceholder: 'Search resources...',
+      basePath: '../'
+    });
+  </script>
+
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="grid-hero">
+    <!-- LEFT: Main hero card -->
+    <div class="hero-card reveal" style="--delay: 0s">
+      <div class="shine" aria-hidden="true"></div>
+      <h1 class="grid-hero__title">
+        Path of Exile 2 —<br>
+        <span class="highlight">Resource Hub</span>
+      </h1>
+      <p class="grid-hero__subtitle">
+        A curated collection of essential tools, community databases,
+        and official information for the next generation of Wraeclast.
+      </p>
+      <div class="grid-hero__stats">
+        <div class="grid-hero__stat">
+          <div class="grid-hero__stat-value" id="statSections">0</div>
+          <div class="grid-hero__stat-label">Sections</div>
+        </div>
+        <div class="grid-hero__stat">
+          <div class="grid-hero__stat-value" id="statLinks">0</div>
+          <div class="grid-hero__stat-label">Links</div>
+        </div>
+        <div class="grid-hero__stat">
+          <div class="grid-hero__stat-value">v0.8.2</div>
+          <div class="grid-hero__stat-label">Latest</div>
+        </div>
+        <div class="grid-hero__stat">
+          <div class="grid-hero__stat-value">Active</div>
+          <div class="grid-hero__stat-label">Status</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Quick Info card -->
+    <div class="hero-card quick-info reveal" style="--delay: 0.1s">
+      <div class="shine" aria-hidden="true"></div>
+      <h2 class="quick-info__header">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3L14.09 8.26L20 9.27L15.55 13.14L16.91 19.02L12 16.27L7.09 19.02L8.45 13.14L4 9.27L9.91 8.26L12 3Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        Quick Info
+      </h2>
+      <p class="quick-info__text">
+        Welcome to the centralized hub for PoE 2. We track everything
+        from official dev manifestos to community-built crafting simulators.
+      </p>
+      <ul class="quick-info__list">
+        <li class="quick-info__item">
+          <span class="quick-info__check">✓</span>
+          Verified Community Tools
+        </li>
+        <li class="quick-info__item">
+          <span class="quick-info__check">✓</span>
+          Real-time Price Tracking
+        </li>
+        <li class="quick-info__item">
+          <span class="quick-info__check">✓</span>
+          Expert Build Guides
+        </li>
+      </ul>
+      <button class="submit-btn" onclick="window.open('https://github.com/yourusername/yourrepo/issues', '_blank')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 8V16M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Submit a Resource
+      </button>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GRID CONTENT
+       ============================================ -->
+  <main class="grid-main" id="grid-section">
+    <!-- Filter Bar (rendered by JS) -->
+    <div class="filter-bar" id="filter-bar"></div>
+
+    <!-- Resource Grid (rendered by JS) -->
+    <div class="resource-grid" id="resource-grid"></div>
+
+    <!-- Pagination (rendered by JS) -->
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="grid-footer">
+    <div class="grid-footer__inner">
+      <div class="grid-footer__brand">
+        <div class="grid-footer__logo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <span class="grid-footer__copyright">POE 2 Resource Hub © 2024</span>
+      </div>
+
+      <div class="grid-footer__links">
+        <a class="grid-footer__link" href="#">Manifesto</a>
+        <a class="grid-footer__link" href="#">Open Source</a>
+        <a class="grid-footer__link" href="#">Legal Notice</a>
+      </div>
+
+      <div class="grid-footer__socials">
+        <!-- Globe Icon -->
+        <svg class="grid-footer__social" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M2 12H22M12 2C14.5 4.73 16 8.33 16 12C16 15.67 14.5 19.27 12 22C9.5 19.27 8 15.67 8 12C8 8.33 9.5 4.73 12 2Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <!-- Terminal Icon -->
+        <svg class="grid-footer__social" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="3" width="20" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M6 10L10 13L6 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="toTop" class="btn to-top" aria-label="Back to top">▲ Top</button>
+
+  <!-- Grid Page Logic -->
+  <script src="js/grids.js" defer></script>
+</body>
+</html>

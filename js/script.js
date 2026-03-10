@@ -63,6 +63,7 @@ const DATA = {
     { label: "PoeVault", url: "https://www.poe-vault.com/poe2" },
     { label: "Maxroll", url: "https://maxroll.gg/poe2/build-guides" },
     { label: "Mobalytics", url: "https://mobalytics.gg/poe-2/builds" },
+    { label: "Game8", url: "https://game8.co/games/Path-of-Exile-2" },
   ],
   Crafting: [
     {
@@ -84,6 +85,11 @@ const DATA = {
         },
       ],
     },
+    {
+      label: "Path of Crafting",
+      url: "https://pathofcrafting.net/",
+      desc: "Alternative to CraftOfExile. Better UI and more features",
+    },
   ],
   Trade: [
     {
@@ -95,6 +101,11 @@ const DATA = {
       label: "Poe.ninja - Prices",
       url: "https://poe.ninja/poe2/economy/",
       desc: "Current market prices",
+    },
+    {
+      label: "PoeScout - Prices",
+      url: "https://poe2scout.com",
+      desc: "Current market prices with API support",
     },
   ],
   "Information/Guides": [
@@ -222,7 +233,7 @@ const makeIcon = () => {
 };
 
 let toastTimer;
-function toast(msg) {
+function toast(msg, type = "info") {
   let t = document.getElementById("toast");
   if (!t) {
     t = el("div", { id: "toast" });
@@ -231,25 +242,35 @@ function toast(msg) {
       left: "50%",
       bottom: "24px",
       transform: "translateX(-50%)",
-      background: "color-mix(in oklab, var(--bg-soft) 90%, transparent)",
-      border: "1px solid",
-      borderColor: "color-mix(in oklab, var(--ring) 40%, transparent)",
-      color: "var(--text)",
       padding: "10px 14px",
       borderRadius: "12px",
       boxShadow: "var(--shadow)",
       zIndex: "100",
       opacity: "0",
       transition: "opacity 0.2s ease",
+      fontSize: "14px",
+      fontWeight: "600",
     });
     document.body.appendChild(t);
   }
   t.textContent = msg;
+
+  if (type === "error") {
+    t.style.background = "rgba(239, 68, 68, 0.15)";
+    t.style.border = "1px solid rgba(239, 68, 68, 0.5)";
+    t.style.color = "#f87171";
+  } else {
+    t.style.background = "color-mix(in oklab, var(--bg-soft) 90%, transparent)";
+    t.style.border =
+      "1px solid color-mix(in oklab, var(--ring) 40%, transparent)";
+    t.style.color = "var(--text)";
+  }
+
   t.style.opacity = "1";
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => {
     t.style.opacity = "0";
-  }, 2000);
+  }, 2500);
 }
 
 /* ==========================================================================
@@ -263,6 +284,7 @@ const filterInput = document.getElementById("filterInput");
 // Logo is now just visual, no click handler needed
 
 // 2. Favorites System
+const MAX_FAVORITES = 6;
 let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
 function getFavorites() {
@@ -292,92 +314,68 @@ function updateFavoriteButtons() {
   });
 }
 
+function updateFavCount() {
+  const countEl = document.getElementById("favCount");
+  if (countEl) {
+    const favs = getFavorites();
+    countEl.textContent = `${favs.length} / ${MAX_FAVORITES}`;
+  }
+}
+
 function renderFavorites() {
   const favoritesList = document.getElementById("favorites-list");
   if (!favoritesList) return;
 
   const favs = getFavorites();
+  updateFavCount();
 
   if (favs.length === 0) {
     favoritesList.innerHTML =
-      '<p style="color: var(--muted); text-align: center; padding: 20px;">No favorites yet. Click the star icon on any link to add it to favorites.</p>';
+      '<p class="hero-favorites__empty">Click ★ on any link to pin it here.</p>';
     return;
   }
 
-  // Clear existing content
   favoritesList.innerHTML = "";
 
-  // Group favorites by section
-  const grouped = {};
   favs.forEach((fav) => {
-    if (!grouped[fav.section]) {
-      grouped[fav.section] = [];
-    }
-    grouped[fav.section].push(fav);
-  });
-
-  Object.entries(grouped).forEach(([section, items]) => {
-    const sectionHeader = el(
-      "h3",
-      {
-        style:
-          "margin: 20px 0 12px 0; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px;",
-      },
-      [section],
-    );
-    favoritesList.appendChild(sectionHeader);
-
-    items.forEach((fav) => {
-      const card = el("div", { class: "resource-card favorite-card" });
-
-      const icon = el("div", { class: "resource-icon" }, ["🔗"]);
-      card.appendChild(icon);
-
-      const info = el("div", { class: "resource-info" });
-      const title = el("div", { class: "resource-title" });
-      const link = el(
-        "a",
-        {
-          href: fav.url,
-          target: "_blank",
-          rel: "noopener noreferrer",
-          style: "color: var(--text); text-decoration: none;",
-        },
-        [fav.label],
-      );
-      title.appendChild(link);
-      info.appendChild(title);
-
-      if (fav.desc) {
-        const desc = el("div", { class: "resource-desc" }, [fav.desc]);
-        info.appendChild(desc);
-      }
-
-      card.appendChild(info);
-
-      const favBtn = el(
-        "button",
-        {
-          class: "favorite-btn active",
-          "data-url": fav.url,
-          type: "button",
-          onclick: (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.toggleFavorite(
-              fav.url,
-              fav.label,
-              fav.section,
-              fav.desc || "",
-            );
-          },
-        },
-        ["★"],
-      );
-      card.appendChild(favBtn);
-
-      favoritesList.appendChild(card);
+    const card = el("a", {
+      class: "fav-card",
+      href: fav.url,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      title: fav.desc || fav.label,
     });
+
+    const label = el("span", { class: "fav-card__label" }, [fav.label]);
+    card.appendChild(label);
+
+    if (fav.desc) {
+      const desc = el("span", { class: "fav-card__desc" }, [fav.desc]);
+      card.appendChild(desc);
+    }
+
+    const removeBtn = el(
+      "button",
+      {
+        class: "fav-card__remove",
+        type: "button",
+        title: "Remove from favorites",
+        onclick: (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          window.toggleFavorite(
+            fav.url,
+            fav.label,
+            fav.section,
+            fav.desc || "",
+          );
+        },
+      },
+      ["✕"],
+    );
+    card.appendChild(removeBtn);
+
+    favoritesList.appendChild(card);
   });
 }
 
@@ -387,6 +385,7 @@ window.toggleFavorite = function (url, label, section, desc = "") {
   const existingIndex = favs.findIndex((f) => f.url === url);
 
   if (existingIndex >= 0) {
+    // Remove
     favs.splice(existingIndex, 1);
     saveFavorites(favs);
     toast("Removed from favorites");
@@ -394,6 +393,14 @@ window.toggleFavorite = function (url, label, section, desc = "") {
     renderFavorites();
     return false;
   } else {
+    // Check limit before adding
+    if (favs.length >= MAX_FAVORITES) {
+      toast(
+        `Favorites full! Max ${MAX_FAVORITES} allowed. Remove one first.`,
+        "error",
+      );
+      return false;
+    }
     favs.push({ url, label, section, desc });
     saveFavorites(favs);
     toast("Added to favorites");
@@ -414,6 +421,7 @@ Object.entries(DATA).forEach(([sectionName, items]) => {
   const isExpanded = openStates[sectionName] ? "true" : "false";
   const section = el("section", {
     class: "section reveal",
+    id: `section-${sectionName}`,
     "aria-expanded": isExpanded,
     "data-name": sectionName,
   });
@@ -617,14 +625,7 @@ async function fetchSteamPlayers() {
 fetchSteamPlayers();
 
 // 5. Theme Toggle & UI
-document.getElementById("themeToggle").addEventListener("click", () => {
-  const isLight =
-    document.documentElement.getAttribute("data-theme") === "light";
-  document.documentElement.setAttribute(
-    "data-theme",
-    isLight ? "dark" : "light",
-  );
-});
+// Theme toggle is now handled by navbar.js component
 
 const io = new IntersectionObserver((entries) =>
   entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
@@ -662,305 +663,22 @@ document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
   toggleVisibility();
 })();
 
-/* ==========================================================================
-   SIDEBAR - GLOBAL FUNCTIONS (Must be accessible to onclick handlers)
-   ========================================================================== */
-
-// SIDEBAR
-const sidebar = document.getElementById("sidebar-widget");
-const body = document.body;
-
-// Cache panel views and rail icons for performance
-let panelViews = null;
-let railIcons = null;
-
-// 1. OPEN FUNCTION (Global scope)
-window.openSidebar = function () {
-  if (sidebar) {
-    sidebar.classList.add("active");
-    body.classList.add("sidebar-is-open");
-  }
-};
-
-// 2. CLOSE FUNCTION (Global scope)
-window.closeSidebar = function () {
-  if (sidebar) {
-    sidebar.classList.remove("active");
-    body.classList.remove("sidebar-is-open");
-  }
-};
-
-// 3. OPEN FAVORITES PANEL (Global scope)
-window.openFavoritesPanel = function (clickedElement) {
-  // Open sidebar if closed
-  const sidebar = document.getElementById("sidebar-widget");
-  if (sidebar && !sidebar.classList.contains("active")) {
-    window.openSidebar();
-  }
-
-  // Switch to favorites tab
-  const favoritesView = document.getElementById("tab-favorites");
-  if (favoritesView) {
-    // Hide all views
-    document.querySelectorAll(".panel-view").forEach((view) => {
-      view.classList.remove("visible");
-    });
-
-    // Show favorites view
-    favoritesView.classList.add("visible");
-    renderFavorites();
-
-    // Update icon states - mark favorites icon as active
-    document
-      .querySelectorAll(".sidebar-rail .rail-icon:not(.close-action)")
-      .forEach((icon) => {
-        icon.classList.remove("active-tab");
-      });
-
-    // Activate the clicked favorites icon
-    if (clickedElement) {
-      clickedElement.classList.add("active-tab");
-    } else {
-      // Find the favorites icon if clickedElement not provided
-      const railIcons = document.querySelectorAll(
-        ".sidebar-rail .rail-icon:not(.close-action)",
-      );
-      if (railIcons.length > 0) {
-        railIcons[0].classList.add("active-tab");
-      }
-    }
-  }
-};
-
-// 4. TAB SWITCHING (Global scope)
-window.switchTab = function (tabId, clickedElement) {
-  // Lazy-load cached elements on first use
-  // Note: Assumes static DOM structure; elements are not dynamically added after page load
-  if (!panelViews) {
-    panelViews = document.querySelectorAll(".panel-view");
-    railIcons = document.querySelectorAll(
-      ".sidebar-rail .rail-icon:not(.close-action)",
-    );
-  }
-
-  // Hide all views
-  panelViews.forEach((view) => {
-    view.classList.remove("visible");
-  });
-
-  // Show target view
-  const targetView = document.getElementById(tabId);
-  if (targetView) {
-    targetView.classList.add("visible");
-    // If switching to favorites tab, render favorites
-    if (tabId === "tab-favorites") {
-      renderFavorites();
-    }
-  }
-
-  // Update Icon States
-  railIcons.forEach((icon) => {
-    icon.classList.remove("active-tab");
-  });
-  if (clickedElement) {
-    clickedElement.classList.add("active-tab");
-  }
-};
-
-// 4. THEME TOGGLE (Global scope - already defined above, but ensure sidebar version works)
-window.toggleTheme = function () {
-  const current = document.documentElement.getAttribute("data-theme");
-  const newTheme = current === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", newTheme);
-};
-
-// 5. Initialize favorites on page load
+// 7. Initialize favorites on page load
 document.addEventListener("DOMContentLoaded", () => {
   renderFavorites();
 });
 
-/* ==========================================================================
-   BUILD POPULARITY WIDGET
-   ========================================================================== */
+// 8. Sidenav active state
+(() => {
+  const sidenav = document.getElementById("sidenav");
+  if (!sidenav) return;
 
-// Class hierarchy for fallback (from maxroll.gg)
-const CLASS_HIERARCHY = {
-  Huntress: ["Amazon", "Ritualist"],
-  Warrior: ["Smith of Kitava", "Warbringer", "Titan"],
-  Sorceress: ["Stormweaver", "Chronomancer"],
-  Mercenary: ["Witchhunter", "Gemling Legionnaire", "Tactician"],
-  Monk: ["Invoker", "Acolyte of Chayula"],
-  Ranger: ["Deadeye", "Pathfinder"],
-  Witch: ["Lich", "Blood Mage", "Infernalist"],
-};
+  const navItems = sidenav.querySelectorAll(".sidenav__item");
 
-const BASE_CLASSES = Object.keys(CLASS_HIERARCHY);
-
-function getClassType(name) {
-  return BASE_CLASSES.includes(name) ? "base" : "ascendancy";
-}
-
-// Fetch and display build popularity data
-async function fetchBuildPopularity() {
-  const classList = document.getElementById("class-list");
-
-  if (!classList) return;
-
-  try {
-    classList.innerHTML =
-      '<div class="loading-state">Loading build data...</div>';
-
-    let ascendancies = [];
-    let baseClasses = [];
-
-    // Try fetching from API (Vercel serverless or local Express)
-    const apiEndpoints = [
-      "/api/classes-scraped", // Vercel deployment (relative path)
-      "http://localhost:5000/api/classes-scraped", // Local Express server
-    ];
-
-    for (const endpoint of apiEndpoints) {
-      try {
-        const apiResponse = await fetch(endpoint);
-        if (apiResponse.ok) {
-          const data = await apiResponse.json();
-          ascendancies = data.ascendancies || [];
-          baseClasses = data.baseClasses || [];
-          console.log(
-            `Loaded ${ascendancies.length} ascendancies, ${baseClasses.length} base classes from ${endpoint}`,
-          );
-          break; // Success, exit loop
-        }
-      } catch (apiErr) {
-        console.log(`API endpoint ${endpoint} not available, trying next...`);
-      }
-    }
-
-    // Fallback: Generate static data
-    if (ascendancies.length === 0 && baseClasses.length === 0) {
-      console.log("Using static fallback data");
-
-      // Ascendancies with mock percentages
-      const allAscendancies = [
-        "Oracle",
-        "Blood Mage",
-        "Pathfinder",
-        "Shaman",
-        "Disciple of Varashta",
-        "Stormweaver",
-        "Titan",
-        "Invoker",
-        "Amazon",
-        "Ritualist",
-        "Deadeye",
-        "Witchhunter",
-        "Lich",
-        "Tactician",
-        "Infernalist",
-        "Smith of Kitava",
-        "Warbringer",
-        "Chronomancer",
-        "Acolyte of Chayula",
-        "Abyssal Lich",
-        "Gemling Legionnaire",
-      ];
-
-      allAscendancies.forEach((name, index) => {
-        const rawPercentage = Math.max(0.5, 17 - index * 0.8);
-        const imageName = name.toLowerCase().replace(/\s+/g, "-");
-        ascendancies.push({
-          name,
-          percentage: rawPercentage.toFixed(1) + "%",
-          rawPercentage,
-          image: `https://poe.ninja/poe2-assets/cdn/classes/${imageName}.webp`,
-          type: "ascendancy",
-        });
-      });
-
-      // Base classes (0% usage typical)
-      BASE_CLASSES.forEach((name) => {
-        const imageName = name.toLowerCase().replace(/\s+/g, "-");
-        baseClasses.push({
-          name,
-          percentage: "0.0%",
-          rawPercentage: 0,
-          image: `https://poe.ninja/poe2-assets/cdn/classes/${imageName}.webp`,
-          type: "base",
-        });
-      });
-    }
-
-    if (ascendancies.length === 0 && baseClasses.length === 0) {
-      throw new Error("No class data available");
-    }
-
-    classList.innerHTML = "";
-
-    // Helper to create class bar
-    function createClassBar(classItem, maxPct, delayIndex) {
-      const bar = document.createElement("div");
-      bar.className = `class-bar ${classItem.type || "ascendancy"}`;
-      bar.innerHTML = `
-        <div class="class-bar-fill" style="width: 0%"></div>
-        <div class="class-bar-content">
-          <div class="class-info">
-            <img 
-              src="${classItem.image}" 
-              alt="${classItem.name}" 
-              class="class-icon"
-              onerror="this.style.display='none'"
-            />
-            <span class="class-name">${classItem.name}</span>
-          </div>
-          <span class="class-percentage">${classItem.percentage}</span>
-        </div>
-      `;
-
-      setTimeout(
-        () => {
-          const fill = bar.querySelector(".class-bar-fill");
-          const scaledWidth =
-            maxPct > 0 ? (classItem.rawPercentage / maxPct) * 100 : 0;
-          fill.style.width = `${scaledWidth}%`;
-        },
-        100 + delayIndex * 25,
-      );
-
-      return bar;
-    }
-
-    // ASCENDANCIES SECTION
-    if (ascendancies.length > 0) {
-      const ascHeader = document.createElement("div");
-      ascHeader.className = "class-section-header";
-      ascHeader.innerHTML = `<span class="section-icon">⚔️</span> Ascendancies`;
-      classList.appendChild(ascHeader);
-
-      const maxAscPct = ascendancies[0]?.rawPercentage || 1;
-      ascendancies.forEach((item, index) => {
-        classList.appendChild(createClassBar(item, maxAscPct, index));
-      });
-    }
-
-    // BASE CLASSES SECTION
-    if (baseClasses.length > 0) {
-      const baseHeader = document.createElement("div");
-      baseHeader.className = "class-section-header base-class-header";
-      baseHeader.innerHTML = `<span class="section-icon">🛡️</span> Base Classes`;
-      classList.appendChild(baseHeader);
-
-      const maxBasePct =
-        baseClasses.find((c) => c.rawPercentage > 0)?.rawPercentage || 1;
-      baseClasses.forEach((item, index) => {
-        classList.appendChild(
-          createClassBar(item, maxBasePct, ascendancies.length + index),
-        );
-      });
-    }
-  } catch (error) {
-    console.error("Error fetching build popularity:", error);
-    classList.innerHTML = '<div class="error-state">Unable to load data</div>';
-  }
-}
-
-document.addEventListener("DOMContentLoaded", fetchBuildPopularity);
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      navItems.forEach((i) => i.classList.remove("sidenav__item--active"));
+      item.classList.add("sidenav__item--active");
+    });
+  });
+})();
