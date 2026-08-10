@@ -185,7 +185,6 @@ const countLinks = document.getElementById("countLinks");
 const openRate = document.getElementById("openRate");
 const currentPlayers = document.getElementById("currentPlayers");
 
-// Performance utilities
 const debounce = (fn, delay) => {
   let timeoutId;
   return (...args) => {
