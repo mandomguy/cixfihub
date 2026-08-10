@@ -327,6 +327,7 @@
   letter-spacing: 0.5px;
   color: white;
   z-index: 1;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -445,91 +446,6 @@
 }
 
 /* ============================================
-   GRID PAGE FOOTER
-   ============================================ */
-.grid-footer {
-  border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
-  padding: 28px 24px;
-  background: linear-gradient(180deg, transparent, rgba(15, 17, 21, 0.5));
-}
-
-.grid-footer__inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.grid-footer__brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.grid-footer__logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: color-mix(in oklab, var(--brand) 20%, transparent);
-  border: 1px solid color-mix(in oklab, var(--brand) 30%, transparent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.grid-footer__logo svg {
-  color: var(--brand);
-}
-
-.grid-footer__copyright {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--muted);
-}
-
-.grid-footer__links {
-  display: flex;
-  gap: 32px;
-}
-
-.grid-footer__link {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.grid-footer__link:hover {
-  color: var(--brand);
-}
-
-.grid-footer__socials {
-  display: flex;
-  gap: 16px;
-}
-
-.grid-footer__social {
-  width: 20px;
-  height: 20px;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.grid-footer__social:hover {
-  color: var(--brand);
-  transform: translateY(-2px);
-}
-
-/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1100px) {
@@ -549,15 +465,6 @@
 
   .resource-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-footer__inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .grid-footer__links {
-    gap: 20px;
   }
 }
 

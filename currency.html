@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POE2 Currency Tracker</title>
+  <style>
+    :root {
+      --bg: #0f0f17;
+      --card: #1a1a2e;
+      --card2: #16213e;
+      --text: #e0e0ff;
+      --muted: #8892b0;
+      --primary: #9d4edd;
+      --accent: #00d4ff;
+      --positive: #22c55e;
+      --negative: #ef4444;
+      --border: #334155;
+      --radius: 16px;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #0f0f17 0%, #16213e 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .container {
+      width: 100%;
+      max-width: 460px;
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+    .header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ref-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ref-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+    .ref-btn:not(.active) {
+      background: var(--card2);
+      color: var(--muted);
+    }
+    .refresh {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--card2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .refresh:hover { background: var(--primary); transform: rotate(180deg); }
+    .periods {
+      display: flex;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      background: var(--card2);
+      margin: 1rem;
+      border-radius: 12px;
+    }
+    .period {
+      flex: 1;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .period.active {
+      background: var(--primary);
+      color: white;
+    }
+    .content {
+      padding: 1.5rem;
+      min-height: 340px;
+    }
+    .chart-view {
+      text-align: center;
+    }
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .currency-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .currency-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .change {
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .positive { background: rgba(34,197,94,0.2); color: var(--positive); }
+    .negative { background: rgba(239,68,68,0.2); color: var(--negative); }
+    canvas { width: 100% !important; height: 200px !important; }
+
+    .prices-view .list {
+      max-height: 380px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .price-card {
+      background: var(--card2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .price-card:hover { background: #223355; }
+    .price-card.selected { border: 2px solid var(--primary); }
+    .price-left { display: flex; align-items: center; gap: 0.75rem; }
+    .price-icon { width: 36px; height: 36px; border-radius: 50%; }
+    .price-name { font-weight: 600; }
+    .price-val { font-size: 0.9rem; color: var(--muted); }
+
+    .nav {
+      display: flex;
+      border-top: 1px solid var(--border);
+      background: var(--card2);
+    }
+    .nav-item {
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-item.active { color: var(--primary); }
+    .nav-item svg { width: 24px; height: 24px; margin-bottom: 0.25rem; }
+    .nav-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="header">
+      <div>
+        <button class="ref-btn active" id="chaosBtn">Chaos</button>
+        <button class="ref-btn" id="exaltedBtn">Exalted</button>
+      </div>
+      <div class="refresh" id="refreshBtn">Refresh</div>
+    </div>
+
+    <div class="periods" id="periods"></div>
+
+    <div class="content">
+      <!-- Chart View -->
+      <div id="chartView" class="chart-view">
+        <div class="chart-header">
+          <div class="currency-info">
+            <img id="chartIcon" class="currency-icon" src="" alt="">
+            <div>
+              <div id="chartName" class="price-name text-xl"></div>
+              <div id="chartPrice" class="price"></div>
+            </div>
+          </div>
+          <div id="chartChange" class="change"></div>
+        </div>
+        <canvas id="priceChart"></canvas>
+      </div>
+
+      <!-- Prices View -->
+      <div id="pricesView" class="hidden">
+        <h3 style="margin-bottom:1rem; font-size:1.2rem;">All Currencies</h3>
+        <div class="list" id="pricesList"></div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div class="nav-item active" data-view="chart">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <div>Chart</div>
+        <div class="nav-indicator"></div>
+      </div>
+      <div class="nav-item" data-view="prices">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V2c0-.55-.45-1-1-1s-1 .45-1 1v1.06A8.994 8.994 0 003.06 11H2c-.55 0-1 .45-1 1s.45 1 1 1h1.06A8.994 8.994 0 0011 20.94V22c0 .55.45 1 1 1s1-.45 1-1v-1.06A8.994 8.994 0 0020.94 13H22c.55 0 1-.45 1-1s-.45-1-1-1h-1.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+        <div>Prices</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const TIME_PERIODS = ['1D', '3D', '1W', '1M'];
+    let currencies = [];
+    let selectedCurrency = null;
+    let selectedPeriod = '1D';
+    let reference = 'chaos';
+    let chart = null;
+
+    // Sample fallback data (you can expand this)
+    const sampleData = [
+      {id:"divine",name:"Divine Orb",icon:"https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsRmluYWwiLCJ3IjoyLCJoIjoyLCJzY2FsZSI6MX1d/2f8e7c4d2a/DivineOrb.png",currentPrice:182,change1d:3.2,change3d:7.1,change1w:-2.4,change1m:18.5,priceHistory:[170,172,175,178,176,180,182]},
+      {id:"exalted",name:"Exalted Orb",icon:"https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RpZmljYXRpb24iLCJ3IjoyLCJoIjoyLCJzY2FsZSI6MX1d/2f8e7c4d2a/ExaltedOrb.png",currentPrice:12,change1d:-1.1,change3d:4.3,change1w:12.8,change1m:25.3,priceHistory:[11.5,11.7,11.8,12.0,11.9,12.1,12]},
+      {id:"mirror",name:"Mirror of Kalandra",icon:"https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSdW5lQm91bmQiLCJ3IjoyLCJoIjoyLCJzY2FsZSI6MX1d/2f8e7c4d2a/MirrorofKalandra.png",currentPrice:32000,change1d:0.8,change3d:-3.2,change1w:5.6,change1m:-8.1,priceHistory:[31500,31800,31600,31900,32100,32000,32000]},
+      {id:"chaos",name:"Chaos Orb",icon:"https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSdW5lQm91bmQiLCJ3IjoyLCJoIjoyLCJzY2FsZSI6MX1d/2f8e7c4d2a/ChaosOrb.png",currentPrice:1,change1d:0,change3d:0,change1w:0,change1m:0,priceHistory:[1,1,1,1,1,1,1]}
+    ];
+
+    async function fetchData(ref) {
+      try {
+        const url = `https://poe2scout.com/api/items/currency/currency?page=1&perPage=30&league=Rise%20of%20the%20Abyssal&referenceCurrency=${ref}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error();
+        const json = await res.json();
+        return json.items.map(item => {
+          const price = ref === 'chaos' ? (item.chaosEquivalent || 0) : (item.exaltedEquivalent || 0);
+          const change = item.sparkline?.totalChange || 0;
+          const history = item.sparkline?.data || Array(7).fill(price);
+          return {
+            id: item.id,
+            name: item.name,
+            icon: item.icon,
+            currentPrice: Math.round(price * 100) / 100,
+            change1d: Math.round(change * 15) / 100,
+            change3d: Math.round(change * 40) / 100,
+            change1w: Math.round(change * 100) / 100,
+            change1m: Math.round(change * 150) / 100,
+            priceHistory: history.slice(-7).map((v,i) => ({value: v || price, timestamp: new Date(Date.now() - (6-i)*86400000).toISOString().slice(5,10)}))
+          };
+        });
+      } catch (e) {
+        console.warn("API failed, using sample data");
+        return sampleData.map(c => ({...c, referenceCurrency: ref}));
+      }
+    }
+
+    function getChange(currency) {
+      switch(selectedPeriod) {
+        case '1D': return currency.change1d;
+        case '3D': return currency.change3d;
+        case '1W': return currency.change1w;
+        case '1M': return currency.change1m;
+      }
+    }
+
+    function renderPeriods() {
+      document.getElementById('periods').innerHTML = TIME_PERIODS.map(p => 
+        `<div class="period ${p===selectedPeriod?'active':''}" onclick="setPeriod('${p}')">${p}</div>`
+      ).join('');
+    }
+
+    function renderChart() {
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      if (chart) chart.destroy();
+      const data = selectedCurrency.priceHistory.map(h => h.value);
+      const positive = getChange(selectedCurrency) >= 0;
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: selectedCurrency.priceHistory.map(h => h.timestamp),
+          datasets: [{
+            data: data,
+            borderColor: positive ? '#22c55e' : '#ef4444',
+            backgroundColor: positive ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 4,
+            pointBackgroundColor: positive ? '#22c55e' : '#ef4444'
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#8892b0' } },
+            y: { grid: { color: '#334155' }, ticks: { color: '#8892b0' } }
+          }
+        }
+      });
+    }
+
+    function renderChartView() {
+      document.getElementById('chartIcon').src = selectedCurrency.icon;
+      document.getElementById('chartName').textContent = selectedCurrency.name;
+      document.getElementById('chartPrice').textContent = selectedCurrency.currentPrice.toLocaleString() + ' ' + reference;
+      const change = getChange(selectedCurrency);
+      const changeEl = document.getElementById('chartChange');
+      changeEl.textContent = (change>=0?'+':'') + change.toFixed(1) + '%';
+      changeEl.className = 'change ' + (change>=0?'positive':'negative');
+      renderChart();
+    }
+
+    function renderPricesView() {
+      const list = document.getElementById('pricesList');
+      list.innerHTML = currencies.map(c => {
+        const change = getChange(c);
+        const selected = c.id === selectedCurrency.id;
+        return `
+          <div class="price-card ${selected?'selected':''}" onclick="selectCurrency('${c.id}')">
+            <div class="price-left">
+              <img src="${c.icon}" class="price-icon" alt="">
+              <div>
+                <div class="price-name">${c.name}</div>
+                <div class="price-val">${c.currentPrice.toLocaleString()} ${reference}</div>
+              </div>
+            </div>
+            <div class="${change>=0?'positive':'negative'}">
+              ${change>=0?'+':''}${change.toFixed(1)}%
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function render() {
+      renderPeriods();
+      renderChartView();
+      renderPricesView();
+    }
+
+    function selectCurrency(id) {
+      selectedCurrency = currencies.find(c => c.id === id) || currencies[0];
+      render();
+    }
+
+    async function setReference(ref) {
+      reference = ref;
+      document.querySelectorAll('.ref-btn').forEach(b => b.classList.toggle('active', b.id === ref+'Btn'));
+      currencies = await fetchData(ref);
+      selectedCurrency = currencies[0];
+      render();
+    }
+
+    function setPeriod(p) {
+      selectedPeriod = p;
+      render();
+    }
+
+    function switchView(view) {
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.view === view));
+      document.getElementById('chartView').classList.toggle('hidden', view !== 'chart');
+      document.getElementById('pricesView').classList.toggle('hidden', view !== 'prices');
+      if (view === 'chart') renderChart();
+    }
+
+    // Init
+    document.getElementById('chaosBtn').onclick = () => setReference('chaos');
+    document.getElementById('exaltedBtn').onclick = () => setReference('exalted');
+    document.getElementById('refreshBtn').onclick = () => setReference(reference);
+    document.querySelectorAll('.nav-item').forEach(el => el.onclick = () => switchView(el.dataset.view));
+
+    (async () => {
+      currencies = await fetchData('chaos');
+      selectedCurrency = currencies[0];
+      render();
+    })();
+  </script>
+</body>
+</html>

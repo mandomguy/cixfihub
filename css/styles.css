@@ -58,12 +58,20 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body {
-  height: 100dvh;
+.cursor-pointer,
+[role="button"],
+a,
+button:hover,
+input[type="submit"],
+label[for],
+select {
+  cursor: pointer;
 }
 
+html,
 body {
+  cursor: crosshair;
+  height: 100dvh;
   margin: 0;
   font-family:
     ui-sans-serif,
@@ -1304,6 +1312,89 @@ footer {
   z-index: 1;
 }
 
+/* ── Grid Footer Component (shared across all pages) ── */
+.grid-footer {
+  border-top: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  padding: 28px 24px;
+  background: linear-gradient(180deg, transparent, rgba(15, 17, 21, 0.5));
+}
+
+.grid-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.grid-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grid-footer__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--brand) 20%, transparent);
+  border: 1px solid color-mix(in oklab, var(--brand) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-footer__logo svg {
+  color: var(--brand);
+}
+
+.grid-footer__copyright {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.grid-footer__links {
+  display: flex;
+  gap: 32px;
+}
+
+.grid-footer__link {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.grid-footer__link:hover {
+  color: var(--brand);
+}
+
+.grid-footer__socials {
+  display: flex;
+  gap: 16px;
+}
+
+.grid-footer__social {
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.grid-footer__social:hover {
+  color: var(--brand);
+  transform: translateY(-2px);
+}
+
 .to-top {
   position: fixed;
   right: 18px;
@@ -1613,6 +1704,15 @@ footer {
   main,
   .grid-footer {
     margin-left: 0;
+  }
+
+  .grid-footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .grid-footer__links {
+    gap: 20px;
   }
 
   .hero {
