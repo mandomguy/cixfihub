@@ -38,7 +38,7 @@ const RESOURCES = [
   {
     title: "Official Portal",
     description: "Direct access to GGG forums, patch notes, and dev logs.",
-    image: "../images/grid-official.png",
+    image: "/images/grid-official.png",
     category: "official",
     categoryLabel: "Official",
     badge: { text: "HOT", color: "#ef4444" },
@@ -47,7 +47,7 @@ const RESOURCES = [
   {
     title: "Path of Building",
     description: "Essential character planning tool for PoE 2 skill trees.",
-    image: "../images/grid-tools.png",
+    image: "/images/grid-tools.png",
     category: "tools",
     categoryLabel: "Tools",
     badge: { text: "Updated", color: "#8b5cf6" },
@@ -57,7 +57,7 @@ const RESOURCES = [
     title: "Mercenary Guides",
     description:
       "Complete breakdown of the new Mercenary class and ammo types.",
-    image: "../images/grid-builds.png",
+    image: "/images/grid-builds.png",
     category: "builds",
     categoryLabel: "Builds",
     badge: { text: "New", color: "#22c55e" },
@@ -67,7 +67,7 @@ const RESOURCES = [
     title: "Crafting Lab",
     description:
       "Simulate PoE 2 currency usage and suffix/prefix probabilities.",
-    image: "../images/grid-official.png",
+    image: "/images/grid-official.png",
     category: "tools",
     categoryLabel: "Utility",
     url: "https://www.craftofexile.com/?game=poe2",
@@ -75,7 +75,7 @@ const RESOURCES = [
   {
     title: "Trading Hub",
     description: "Bulk exchange and item indexing specifically for PoE 2.",
-    image: "../images/grid-atlas.png",
+    image: "/images/grid-atlas.png",
     category: "trade",
     categoryLabel: "Trade",
     url: "https://www.pathofexile.com/trade2",
@@ -83,7 +83,7 @@ const RESOURCES = [
   {
     title: "Atlas Planner",
     description: "Plan your end-game map strategy and passive pathing.",
-    image: "../images/grid-atlas.png",
+    image: "/images/grid-atlas.png",
     category: "builds",
     categoryLabel: "Endgame",
     url: "https://poe.ninja/poe2/builds",
@@ -91,7 +91,7 @@ const RESOURCES = [
   {
     title: "Community Discord",
     description: "Connect with thousands of players and build theorists.",
-    image: "../images/grid-social.png",
+    image: "/images/grid-social.png",
     category: "media",
     categoryLabel: "Social",
     url: "https://discord.com/invite/pathofexile",
@@ -100,7 +100,7 @@ const RESOURCES = [
     title: "Gameplay Trailers",
     description:
       "All official class reveal trailers and gameplay demonstrations.",
-    image: "../images/grid-media.png",
+    image: "/images/grid-media.png",
     category: "media",
     categoryLabel: "Media",
     badge: { text: "Media", color: "#3b82f6" },
@@ -112,7 +112,7 @@ const RESOURCES = [
     title: "Poe.ninja Builds",
     description:
       "Live meta tracking with the most popular ascendancies and gear.",
-    image: "../images/grid-builds.png",
+    image: "/images/grid-builds.png",
     category: "builds",
     categoryLabel: "Builds",
     badge: { text: "Popular", color: "#f59e0b" },
@@ -122,7 +122,7 @@ const RESOURCES = [
     title: "Sidekick Overlay",
     description:
       "In-game overlay for real-time price checking and item evaluation.",
-    image: "../images/grid-tools.png",
+    image: "/images/grid-tools.png",
     category: "tools",
     categoryLabel: "Tools",
     url: "https://sidekick-poe.github.io/",
@@ -131,7 +131,7 @@ const RESOURCES = [
     title: "Community Wiki",
     description:
       "Comprehensive player-maintained wiki covering all game mechanics.",
-    image: "../images/grid-social.png",
+    image: "/images/grid-social.png",
     category: "media",
     categoryLabel: "Wiki",
     url: "https://www.poe2wiki.net/wiki/Path_of_Exile_2_Wiki",
@@ -140,7 +140,7 @@ const RESOURCES = [
     title: "FilterBlade",
     description:
       "Build and customize loot filters with a powerful visual editor.",
-    image: "../images/grid-tools.png",
+    image: "/images/grid-tools.png",
     category: "tools",
     categoryLabel: "Tools",
     badge: { text: "Updated", color: "#8b5cf6" },
@@ -150,7 +150,7 @@ const RESOURCES = [
     title: "PoeScout Prices",
     description:
       "Current market prices with historical charts and API support.",
-    image: "../images/grid-atlas.png",
+    image: "/images/grid-atlas.png",
     category: "trade",
     categoryLabel: "Trade",
     badge: { text: "New", color: "#22c55e" },
@@ -159,7 +159,7 @@ const RESOURCES = [
   {
     title: "Reddit Community",
     description: "Join /r/pathofexile2 for discussions, memes, and game news.",
-    image: "../images/grid-social.png",
+    image: "/images/grid-social.png",
     category: "media",
     categoryLabel: "Social",
     url: "https://www.reddit.com/r/pathofexile2/",
@@ -167,7 +167,7 @@ const RESOURCES = [
   {
     title: "Exile Exchange 2",
     description: "Awakened PoE Trade successor — fast in-game price checks.",
-    image: "../images/grid-tools.png",
+    image: "/images/grid-tools.png",
     category: "tools",
     categoryLabel: "Tools",
     url: "https://github.com/Kvan7/Exiled-Exchange-2",
@@ -175,7 +175,7 @@ const RESOURCES = [
   {
     title: "Twitch Directory",
     description: "Watch live PoE 2 streamers, guides, and hardcore races.",
-    image: "../images/grid-media.png",
+    image: "/images/grid-media.png",
     category: "media",
     categoryLabel: "Media",
     url: "https://www.twitch.tv/directory/category/path-of-exile-2",
