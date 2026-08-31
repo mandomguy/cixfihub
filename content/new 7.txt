@@ -1,0 +1,1628 @@
+Act 1
+As the game opens, the Iron Count sentences you to death, and then, after narrowly escaping execution, you begin Act 1 on a beach. If this sounds familiar, that's because these are the same story beats you experienced at the beginning of the original Path of Exile campaign. From here, you continue by exploring dark forests, dank sepulchers, and blighted landscapes in an attempt to track down the Seed of Corruption and confront the twisted horrors hiding in the Count's mansion.
+
+Act 1 Cinematic Poe 2 1024 X 576
+The Riverbank
+Waypoint: No
+
+Boss: Bloated Miller
+
+Quests: Reaching Clearfell (Uncut Skill Gem Level 1)
+
+This is where the game begins. Select a movement type, walk forward and speak to the wounded man. Defeat the Zombie to loot your starting weapon, then equip it before progressing forward.
+
+Toward the middle of the zone, you find a Large Chest containing your first Skill Gem.
+
+Follow the tutorial prompts: 
+
+To socket your Skill Gem into the Skill Gem Panel (Default Hotkey: G)  
+Left Click the Skill Icon & Place it on your Skill Bar
+Continue travelling forward until you find The Bloated Miller. 
+
+Defeat the Bloated Miller, collect your loot, and head to The Clearfell Encampment.
+
+The Clearfell Encampment (Town)
+NPCs: Renly; Una; Finn
+
+The Clearfell Encampment is the first town in Path of Exile 2.
+
+Towns are safe zones and serve as a central hub, featuring:
+
+A Waypoint
+Your Stashes
+A Healing Well
+& NPCs
+NPCs act as vendors, progress various questlines, or offer quest rewards.
+
+The Clearfell Encampment has 3 NPCs by default:
+
+Renly: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Una: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Una can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Finn: allows you to Gamble Gold for Items of an unknown rarity.
+Disclaimer about NPCs: Only NPCs that can be found in each town by default are listed. A temporary league may add additional NPCs you can interact with as part of that league's unique mechanic.
+
+Clearfell
+Waypoint: Yes
+
+Bosses: Beira of the Rotten Pack (Head of the Winter Wolf: Grants +10% to Cold Resistance)
+
+Quests: None
+
+Points of Interest: Abandoned Stash (Optional: Uncut Skill Gem Level 1)
+
+Clearfell is the second monster-inhabited zone and contains no immediate quest objectives.
+
+In the centre of the zone, players can find Beira of the Rotten Pack; an ice themed unique boss. Defeating Beira provides the Head of the Winter Wolf, a permanent consumable buff granting +10% to Cold Resistance. It is possible to immediately defeat Beira, as a Level 2 character; but can also be completed later.
+
+On the right side of the Zone, players can find the entrance to the Mud Burrow along with a Waypoint. Near the top right, players can find the exit to The Grelwood. Opposite the Mud Burrow, on the other side of the Zone, players can find an Abandoned Stash that drops an Uncut Skill Gem Level 1.
+
+The Mud Burrow
+Waypoint: No
+
+Bosses: The Devourer (Optional)
+
+Quests: Treacherous Ground (Uncut Support Gem Level 1, Gold)
+
+The Mud Burrow is a narrow winding zone with an optional quest to Defeat the Devourer. The Devourer is a physical and chaos themed boss. The Devourer's abilities are telegraphed and can be avoided with careful positioning and movement. The Devourer’s chaos projectile barrage in particular can be avoided with Dodge Roll invincibility frames.
+
+The Grelwood
+Waypoint: Yes
+
+Bosses: Gerung, the Brambleghast (Optional), Areagne, Forgotten Witch (Optional)
+
+Quests: Secrets in the Dark
+
+Points of Interest: Tree of Souls, The Red Vale
+
+The Grelwood is an open forested area and is host to a multiple zone questline.
+
+Players can choose to either
+
+Search the Grelwood for the Tree of Souls before progressing to the Red Vale.
+Or can first progress to the Red Vale and search for the Tree of Souls afterward.
+Areagne, Forgotten Witch, is an optional miniboss that can be difficult to defeat on a low level character, due to her frequent use of teleportation, cold degens and curses. Defeating Areagne for the first time rewards an Uncut Support Gem Level 1. Located inside her hut is a Cauldron, which drops a Medium Life & Mana Flask. Note: you can open the Cauldron without defeating Areagne.
+
+Author's Note: It is recommended you search for the Red Vale first but if you encounter the Tree of Souls first, then lucky you!
+
+The Red Vale
+Waypoint: Yes
+
+Bosses: The Rust King
+
+Quests: Secrets in the Dark
+
+Points of Interest: 3 Obelisks of Rust
+
+The Red Vale is an open zone and contains 3 Obelisks of Rust. When interacting with an Obelisk of Rust, a wave of monsters spawn that need to be defeated to acquire 3 Runed Girdle quest items. 
+
+Upon interacting with the third and final Obelisk of Rust, The Rust King spawns instead of a wave of monsters. Defeating the Rust King drops the last Runed Girdle.
+
+After acquiring all three Runed Girdles, head to town and speak to Renly, to acquire the Runed Spikes quest item. Afterward, return to the Old Forest and search for the Tree of Souls.
+
+Return to The Grelwood
+Waypoint: Yes
+
+Bosses: Gerung, the Brambleghast (Optional)
+
+Quests: Secrets in the Dark
+
+Points of Interest: Tree of Souls, The Grim Tangle
+
+After acquiring the Runed Spikes, return to the Grelwood and search for the Tree of Souls, Summon Una (if you haven’t already), and stab the Runed Spikes into the three Runic Seals.
+
+Speak to Una, head to town, and speak to Una again to complete the Secrets in Dark Quest. Afterward, head back to the Grelwood and search for The Grim Tangle.
+
+The Grim Tangle
+Waypoint: Yes
+
+Bosses: Ervig, Rotted Druid (Optional: Uncut Support Gem Level 1)
+
+Quests: The Mysterious Shade
+
+The Grim Tangle is another narrow winding zone and contains no immediate quest objectives. Players should navigate through the zone, in search of the Cemetery of the Eternals.
+
+Cemetery of the Eternals
+Waypoint: Yes
+
+NPCs: Lachlann the Lost
+
+Quests: Sorrow Among Stones
+
+Points of Interest: Tomb of the Consort, Mausoleum of the Praetor, Ancient Ruins
+
+The Cemetery of the Eternals is an open area and is host to another multiple zone questline. Players need to search for the Tomb of the Consort & the Mausoleum of the Praetor, defeating the bosses inside, before returning to the Cemetery of the Eternals and speaking to Lachlann the Lost.
+
+Note: Consider progressing along the edge of the zone to find the Ancient Ruins secret; which drops a guaranteed Iron Ring or Lazuli Ring.
+
+Author's Note: There is no meaningful difference in which zone you complete first. Completing the zones in the order you find them is recommended!
+
+Tomb of the Consort
+Waypoint: Yes
+
+Bosses: Asinia, Praetor Consort
+
+Quests: Sorrow Among Stones
+
+Points of Interest: Haunted Treasure (Optional)
+
+The Tomb of the Consort is another underground zone and is home to Asinia, Praetor Consort.
+
+Search for and defeat Asinia, to acquire Asinia’s Memorial Key Piece.
+
+Optionally, search for the Haunted Treasure Secret and defeat the Rare enemy that spawns for an Uncut Support Gem Level 1.
+
+The Mausoleum
+Waypoint: Yes
+
+Bosses: Draven, Eternal Praetor
+
+Quests: Sorrow Among Stones
+
+Points of Interest: Forgotten Riches (Optional)
+
+The Mausoleum of the Praetor is another underground zone and is home to Draven, Eternal Praetor.
+
+Search for and defeat Draven, to acquire Draven’s Memorial Key Piece.
+
+Optionally, search for the Forgotten Riches Secret for a large amount of Gold and a Rare chest.
+
+Return to the Cemetery of the Eternals
+Waypoint: Yes
+
+NPCs: Lachlann the Lost
+
+Bosses: Lachlann of Endless Lament
+
+Quests: Sorrow Among Stones, Mysterious Shade
+
+Points of Interest: The Memorial Gate
+
+After acquiring both Memorial Key Pieces, return to the Cemetery of the Eternals and open the Memorial Gate near Lachlann the Lost. Follow Lachlann the Lost to his family's grave site, where he transforms into Lachlann of Endless Lament.
+
+Defeat Lachlann of Endless Lament and pick up Count Lachlann’s Ring. Head forward to the Hunting Ground, take the waypoint to town, speak to Una, and witness the revival of the Hooded One.
+
+The Hunting Grounds
+Waypoint: Yes
+
+Bosses: The Crowbell (Optional) (2 Weapon Set Passive Skill Points)
+
+Quests: None
+
+Points of Interest: Freythorn, Ogham Farmlands, Dryadic Ritual
+
+The Hunting Grounds is an open zone inhabited by extremely dangerous monsters, extra care is required to progress forward safely. The Crowbell is an optional boss that provides 2 Weapon Set Passive Skill Points if defeated. Completing the boss upon first entering the zone is possible, but players can choose to complete the boss at a later time.
+
+Connected to the Hunting Grounds are Freythorn and the Ogham Farmlands. It is recommended to find Freythorn first before progressing forward, as the optional boss inside provides +30 Spirit and a Persistent Skill Gem.
+
+Optionally, search the edge of the zone for the Dryadic Ritual Secret and defeat the Rare enemy for an Uncut Support Gem Level 1.
+
+Freythorn
+Waypoint: Yes
+
+Bosses: The King in the Mists (Gembloom Skull: +30 Spirit, Uncut Spirit Gem Level 4: Creates a Persistent Buff Skill Gem at Level 4)
+
+Quests: Ominous Altars (Optional) (A Normal Rarity Ruby, Sapphire or Topaz Charm)
+
+Points of Interest: 3 Ritual Altars
+
+Freythorn is hoisted above the Hunting Grounds, it is composed of narrow wooden walkways and filled with dangerous ritual enemies. This is home to the King in the Mists.
+
+Search for the three Ritual Altars, interact with them, and defeat the newly spawned enemies to cleanse the Ritual.
+
+After cleansing three Ritual Altars, head to the top of the zone, in search of a much larger Ritual Altar. Clear the enemies surrounding it and interact with the larger Ritual Altar to begin the final Ritual, spawning another wave of monsters. Defeat the monsters and the King in the Mists spawns.
+
+The King in the Mists is a multi-phase, physical, and chaos themed boss, with both ranged and melee abilities. During the fight, the King in the Mists casts either a purple or red debuff on you.
+
+If the debuff is purple: keep moving to avoid being frozen.
+
+If the debuff is red: stand still to avoid being frozen. Standing still can be dangerous, so either maintain distance before the red debuff is cast, or, build up the boss's stagger bar and stun them when afflicted by the red debuff.
+
+Ritual Of Meditation
+This is the red debuff
+After defeating the King in the Mists. Loot the Gembloom Skull and consume it for a +30 Spirit buff. Consuming the Gembloom Skull also creates an Uncut Spirit Gem Level 4, allowing you to create your first Persistent Buff Skill Gem. Head to town and speak to Finn, who offers you a normal rarity Ruby, Sapphire, and Topaz Charm. Select one and progress further.
+
+Author's Note: Check out our Act 1 Boss Guide if you are struggling with this encounter.
+
+Ogham Farmlands
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Lost Lute (Optional) (2 Weapon Set Passive Skill Points)
+
+Ogham Farmlands is an open zone with an optional quest: The Lost Lute. To complete the Lost Lute: search for a hut containing Una’s Lute, Loot Una’s Lute, and speak to Una in Town to acquire 2 Weapon Set Passive Skill Points.
+
+Ogham Village
+Waypoint: Yes
+
+Bosses: The Executioner
+
+Quests: The Trail of Corruption (Uncut Skill Gem Level 5), Finding the Forge (Optional) (Unlocks the Salvage Bench)
+
+Points of Interest: Blacksmith's Chest (Optional) (Provides a Guaranteed Artificer's Orb and a Blank Rune)
+
+Ogham Village is a fiery hellscape which contains the Executioner, a required boss to progress forward; an optional but recommended quest, Finding the Forge which unlocks the Salvage Bench; and the Blacksmith's Chest.
+
+To complete Finding the Forge: search for Renly’s Smithing Tools and bring them back to Renly in town.
+
+Interact with the Blacksmith's Chest, located near Renly’s Smithing Tools, for a guaranteed Artificer's Orb and a Blank Rune, which can be exchanged with Renly for a Lesser Desert Rune, Lesser Glacial Rune, Lesser Storm Rune or Lesser Iron Rune. It's recommended to socket a Lesser Elemental Rune into your weapon to deal more damage.
+
+To complete the Trail of Corruption, search for and defeat The Executioner. The Executioner is a physical and fire themed boss, with extremely lethal slam abilities. Pay careful attention to the Executioner's animations to either walk out of or Dodge Roll away from his abilities.
+
+After defeating the Executioner, free the prisoner at the top of the platform, travel forward to the Manor Ramparts, and take the Waypoint to town to speak to Leitis for an Uncut Skill Gem Level 5.
+
+The Manor Ramparts
+Waypoint: Yes
+
+Quests: None
+
+Bosses: None
+
+Points of Interest: The Gallows (Optional)
+
+The Manor Ramparts is an open zone with no quests or bosses. Progress forward and search for the Oghman Manor.
+
+Optionally, search the edge of the zone for the Gallows Secret for an Uncut Support Gem Level 1.
+
+Oghman Manor
+Waypoint: Yes
+
+Bosses: Count Geonor (Unlock Act 2), Candlemass (Candlemass’ Essence: Grants +20 to Maximum Life)
+
+Quests: The Mad Wolf of Ogham
+
+The Oghman Manor is a multi-floor indoor zone that contains Count Geonor, a required boss to progress forward; and an optional but recommended boss, Candlemass, that grants a +20 to Maximum Life buff.
+
+Candlemass is located on the first floor and is a fire themed boss, with both ranged and melee attacks.
+
+Count Geonor, is found on the final floor and is a multi-phase, physical and cold themed boss. 
+
+During the first phase, Count Geonor fights you in both human and wolf form. Upon lowering Count Geonor to below half health, he permanently transitions to wolf form and disappears into an arena-wide fog.
+
+During the fog phase normal monsters spawn to provide flask charges. As the fog phase progresses, Count Geonor speaks various voice lines; and at the end of each voice line lunges at you from the fog.
+
+After the fog dissipates, Count Geonor returns in wolf form, with extra abilities. Carefully watch his animations and pay attention to arena-wide AoE abilities.
+
+After defeating Count Geonor, return to town and speak to the Hooded One, selecting the “Follow the Beast’s trail” dialogue option to progress to Act 2.
+
+Author's Note: Check out our Act 1 Boss Guide if you are struggling with this encounter.
+
+Act 2
+You pursue Countess Oriana and the Seed of corruption into Act 2. This takes you to the Vastiri plains where you explore vast deserts, ancient ruins and twisting underground caverns. Here, you encounter the Ardura Caravan, a Maraketh tribe. They are locked in battle with the Faradun who of late have gained a significant amount of power. The Faradun are wielding corruption, but the Ardura have a secret weapon; You. During this act you have a bit more freedom to pick the order in which you complete objectives.
+
+Poe 2 Act 2 Terrain Img 1 1024 X 576
+Vastiri Outskirts (Combat Town)
+Waypoint: Yes
+
+NPCs: The Hooded One; Zarka
+
+Bosses: Rathbreaker
+
+Quests: Earning Passage (Uncut Skill Gem Level 5)
+
+The Vastiri Outskirts is the first town in Act 2. You find Hyenic Raiders attacking at the edge of town, transitioning into a combat zone.
+
+Search the combat portion of the Vastiri Outskirts for Rathbreaker; a physical themed boss. Defeating Rathbreaker during progression can be challenging; that said here are some tips:
+
+Before the fight:
+
+Consider equipping various armour pieces for physical damage mitigation and life recovery to stay near full HP.
+Equip a single target ability for Rathbreaker, an AoE ability for swarming enemies, and a crowd control ability for safety.
+During the fight:
+
+Avoid positioning near the Cliffs at the top of the arena. As ranged enemies above throw javelins at your character if you come within range.
+These enemies also fire a rectangular javelin barrage, regardless of your position in the arena. The rectangular javelin barrage progresses quickly but not instantly, giving you time to reposition.
+Pay careful attention to Rathbreaker’s animations and attack patterns; as they are all avoidable with timed dodge-rolls or pre-planned movement.
+During the fight, Rathbreaker may occasionally summon a swarm of Hyena demons. Consider saving crowd control or AoE abilities to avoid getting surrounded.
+After defeating Rathbreaker, the fight isn’t over! Ranged enemies from the cliffs above jump down into the arena, joined by a final swarm of Hyena demons.
+If the fight is too difficult and the tips above do not help, consider farming the combat area before the boss for character levels and gear upgrades.
+
+After defeating Rathbreaker and the final swarm of enemies, return to the Vastiri Outskirts and speak to Zarka to unlock the Ardura Caravan and for an Uncut Skill Gem Level 5.
+
+Author's Note: Check out our Act 2 Boss Guide if you are struggling with this encounter.
+
+The Ardura Caravan (Town)
+NPCs: The Hooded One; Shambrin; Zarka; Sekhema Asala
+
+The Ardura Caravan is the second town in Act 2.
+
+Speak to the Hooded One and Sekhema Asala to unlock the Desert Map. Interact with the Desert Map and travel to the Mawdun Quarry, to investigate the Trail of Corruption.
+
+Note: Quest Locations have a Golden Chisel above the zone icon to help locate the next area to travel to.
+
+Po E 2 Desert Map Chisel
+The Golden Chisel
+The Ardura Caravan has 4 NPCs by default and 1 unlockable NPC as the quests progress:
+
+The Hooded One: Identifies items for free and Refunds Passive Points for Gold.
+Shambrin: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Zarka: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Zarka can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Sekhema Asala: is frequently spoken to progress various quests.
+Risu: allows you to Gamble Gold for Items of an unknown rarity. She does not initially appear by default and is unlocked after defeating Rudja, the Dread Engineer.
+Mawdun Quarry
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Trail of Corruption
+
+Points of Interest: Faridun War Cache (Optional: Artificer's Orb)
+
+The Mawdun Quarry has a mix of both narrow passages and open areas. It contains no immediate quest objectives. Navigate through the zone, in search of the Mawdun Mine.
+
+Optionally, search for the Faridun War Cache for a guaranteed Artificer's Orb.
+
+Faridun War Cache
+The Faridun War Cache is located near a checkpoint after crossing a bridge.
+Mawdun Mine
+Waypoint: Yes
+
+Bosses: Rudja, the Dread Engineer
+
+Quests: The Trail of Corruption
+
+Points of Interest: Essence (Optional: Lesser Essence of Insulation)
+
+The Mawdun Mine is a narrow winding zone and is home to Rudja, the Dread Engineer; a fire themed boss, with hard-hitting ranged and melee abilities. Defeating Rudja requires careful positioning and timely dodge rolls. Equipping a Ruby Charm or gear with extra Fire Resistance is recommended.
+
+Note that the guaranteed Essence in this zone provides a Lesser Essence of Insulation. Optionally, search for it before the boss fight if necessary.
+
+After defeating Rudja, free Risu, Faridun Defector from their cage and speak to them. Return to town, head to the lead cart and speak to both Risu & Sekhema Asala. Then use the Desert Map to travel to the Halani Gates.
+
+The Halani Gates
+Waypoint: No
+
+NPCs: Sekhema Asala
+
+Quests: Trail of Corruption
+
+The Faradun have closed the Halani Gates! Speak to Sekhema Asala and return to the Ardura Caravan.
+
+Head to the lead cart, speak to both Risu & Sekhema Asala, and use the Desert Map to travel to the Traitor’s Passage, an alternate entrance to the Halani Gates.
+
+Po E 2 Traitors Passage
+The Traitor's Passage location appears as the Halani Gates on the Desert Map.
+Traitor’s Passage
+Waypoint: Yes
+
+Bosses: Balbala, The Traitor (Optional: Djinn Barya)
+
+Quests: Trail of Corruption
+
+Points of Interest: Bell Chest (Optional: Uncut Skill Gem Level 6)
+
+The Traitor’s Passage is a dark cavernous zone, with the primary objective being to search for an entrance to the Halani Gates.
+
+While exploring the zone, players may encounter Balbala, the Traitor. Defeating Balbala drops a Djinn Barya and unlocks the Trial of the Sekhemas; the first available method for ascension. During progression, defeating Balbala may be difficult. It is recommended to acquire extra levels and gear before attempting the fight.
+
+The Halani Gates
+Waypoint: Yes
+
+Bosses: Jamanra, the Risen King (Uncut Skill Gem Level 7), L’im the Impaler (Optional)
+
+Quests: Trail of Corruption
+
+The Halani Gates is an outdoor zone featuring three gates separated by desert-like areas. Begin by searching for the Summon Asala quest object, who opens gate levers as you protect her from attacking enemies. The primary objective is to open all three gate levers to catch the corrupted caravan.
+
+Po E 2 Summon Asala
+Interact with this object to summon Asala.
+Upon reaching the third gate lever, it becomes clear that it has been destroyed by the beast. Progress forward to find Jamanra, the Risen King; a physical and lightning themed boss.
+
+Attempt to defeat Jamanra, who at low HP retreats to the corrupted caravan. In the corner of the arena, stairs appear, take them and chase the corrupted caravan into the sandstorm.
+
+Unfortunately, the sandstorm is impassable for now, return to the Ardura Caravan and speak to Zarka for an Uncut Skill Gem Level 7. Afterwards, head to the lead cart and speak to Sekhema Asala to unlock the next three quest objectives.
+
+Author's Note: The next three quest objectives can be completed in the order of your choosing. However, traveling to the Mastodon Badlands and Keth, before travelling to the Valley of the Titans is recommended, to simultaneously complete the Ancient Vows; an optional quest that provides a permanent character buff. The goal is to complete all three quests for the Horn of the Vastiri quest item.
+
+Mastodon Badlands
+Waypoint: Yes
+
+Bosses: None
+
+Quests: A Theft of Ivory (Mastodon Tusks: Uncut Support Gem Level 2), Ancient Vows (Optional: Sun Clan Relic)
+
+Points of Interest: Lightless Passage, Effigy (Optional)
+
+Use the Desert Map to travel to the Mastodon Badlands, an open area, inhabited by ritualistic summoners, shielded beasts and more. Search the Mastodon Badlands for the entrance to the Bone Pits.
+
+Optionally, search the edge of the zone for the Effigy Secret for an Uncut Support Gem Level 2.
+
+Furthermore, connected to the Mastodon Badlands is the Lightless Passage: a cavernous zone filled with Abyssal enemies. Battle your way through the zone in search of the Well of Souls, and speak to the Lurking Creature inside to unlock the Abyssal Crafting mechanic. Abyss Crafting lets you use Preserved Bones on Rare Items to add an unrevealed Desecrated Modifier. Use the Well of Souls to reveal the Desecration, where you can then choose between 1 of 3 Desecrated Modifiers.
+
+Author's Note: The Runes of Aldur League Mechanic in this zone provides a guaranteed Lesser Jeweller's Orb. See the Campaign League Mechanic Rewards Cheat Sheet for more information.
+
+The Bone Pits
+Waypoint: Yes
+
+Bosses: Iktab, the Deathlord & Ekbab Ancient Steed
+
+Quests: A Theft of Ivory (Mastodon Tusks: Uncut Support Gem Level 2), Ancient Vows (Optional: Sun Clan Relic)
+
+The Bone Pits is another open zone, similar in nature to the Mastodon Badlands. The primary objective is to find and defeat Iktab, the Deathlord & Ekbab, Ancient Steed to acquire the Mastodon Tusks quest item. Once you’ve acquired the Mastodon Tusks, return to the Ardura Caravan and speak to Zarka for an Uncut Support Gem Level 2.
+
+While searching for Iktab & Ekbab, you may find a Sun Clan Relic. It is recommended to clear the zone until you find it, to then eventually complete the Ancient Vows quest.
+
+Keth
+Waypoint: Yes
+
+Bosses: Kabala, Constrictor Queen (Optional: 2 Weapon Set Passive Skill Points), Ancient Vows (Optional: Kabala Clan Relic)
+
+Quests: The City of Seven Waters (The Essence of Water: Uncut Support Gem Level 2)
+
+Points of Interest: Abandoned Prayer (Optional)
+
+Use the Desert Map to travel to Keth, an open desert-like area, inhabited by skeletal enemies, scarabs, golems and more. The scarabs and beetles in Keth are lightning enchanted, so take care when encountering them.
+
+Search Keth for the entrance to the Lost City. While doing so, you may encounter Kabala, Constrictor Queen, an optional boss who rewards 2 Weapon Set Passive Skill Points if defeated.
+
+Optionally, search for the Abandoned Prayer Secret for a guaranteed Magic Amulet.
+
+The Lost City
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The City of Seven Waters (The Essence of Water: Uncut Support Gem Level 2), Ancient Vows (Optional: Kabala Clan Relic)
+
+Points of Interest: Golden Tomb (Optional: Uncut Spirit Gem (Level 6))
+
+The Lost City is an underground area with no quests or bosses. Progress forward and search for the Buried Shrines.
+
+While searching for the Buried Shrines you may find a Kabala Clan Relic. It is recommended to clear either the Lost City or the Buried Shrines until you find it, to then eventually complete the Ancient Vows quest.
+
+Buried Shrines
+Waypoint: Yes
+
+Bosses: Azarian, The Forsaken Son
+
+Quests: The City of Seven Waters (The Essence of Water: Uncut Support Gem Level 2), Ancient Vows (Optional: Kabala Clan Relic)
+
+Points of Interest: Elemental Shrine (A Magic Rarity Ruby, Sapphire or Topaz Ring, and a specific Lesser Elemental Rune)
+
+The Buried Shrines is another underground area and is home to Azarian, The Forsaken Son; a fire themed boss. Defeating Azarian requires strong positioning, timely dodge rolls and extra fire resistance.
+
+Before fighting Azarian, players can search for the Elemental Shrine, a room which contains 3 Offerings. Choosing an Offering grants a resist ring and a corresponding Lesser Elemental Rune:
+
+Fire: Ruby Ring + Lesser Desert Rune
+Water: Sapphire Ring + Lesser Glacial Rune
+Lightning: Topaz Ring + Lesser Storm Rune
+Selecting the Offering of Fire for a Ruby Ring is recommended to gain extra fire resistance before battling Azarian.
+
+In the four corners of Azarian’s arena are large destructible pots that when destroyed, engulf a corner of the arena with burning ground. If all four pots are destroyed, a safe area is solely present in the centre of the arena. The burning ground can be mitigated with life regeneration or fire resistance, or avoided entirely by carefully positioning Azarian, to prevent his attacks from breaking the pots.
+
+After defeating Azarian, the entrance to the Water Goddess opens. Speak to the Water Goddess, interact with the Everburning Cinders, ignite the Goddess and loot The Essence of Water quest item. Return to the Ardura Caravan and speak to Zarka for an Uncut Support Gem Level 2.
+
+While searching for Azarian you may find a Kabala Clan Relic. It is recommended to clear either the Lost City or the Buried Shrines until you find it, to then eventually complete the Ancient Vows quest.
+
+Valley of the Titans
+Waypoint: Yes
+
+Bosses: None
+
+Quests: A Crown of Stone, Ancient Vows (Optional: +1 Charm Slot and 30% increased Charm Charges gained or 30% increased Charm Effect Duration)
+
+Points of Interest: 3 Ancient Seals
+
+Use the Desert Map to travel to the Valley of the Titans, an open red-sanded zone, with colossal skeletal giants, skittering golems and more. Search the Valley for 3 Ancient Seals. Interacting with the third Ancient Seal opens the entrance to the Titan Grotto. The point of view zooms out as you approach its entrance.
+
+While progressing through the zone, you can find a Relic Altar near the waypoint. Place the previously found Kabala Clan and Sun Clan Relics into the Altar to gain +1 Charm Slot and the choice between the following two character buffs:
+
+30% increased Charm Charges gained
+30% increased Charm Effect Duration
+If you would like to change your buff you can always return to the Altar and select a different option.
+
+The Titan Grotto
+Waypoint: Yes
+
+Bosses: Zalmarath, the Colossus
+
+Quests: A Crown of Stone (Flame Ruby: Uncut Support Gem Level 2)
+
+Points of Interest: Titan's Sword (Optional)
+
+The Titan Grotto is an underground zone inhabited by electrocuting bats, large spiders, goliaths, and more. Players need to search for and defeat Zalmarath, the Colossus; a physical themed boss.
+
+During the fight, Zalmarath casts various arena-covering or arena-altering abilities. Players need to position carefully to avoid damage from either Zalmarath or the environmental dangers he activates.
+
+After defeating Zalmarath, loot the Flame Ruby quest item, return to the Ardura Caravan and speak to Zarka for an Uncut Support Gem Level 2 and the Horn of the Vastiri quest item. Afterwards, use the Desert Map to travel to the Halani Gates. Then, head to the top of the Ardura Caravan and Sound the Horn to clear the Sandstorm.
+
+Once you’ve cleared the Sandstorm, speak to Sekhema Asala and use the Desert Map to travel to Deshar.
+
+Po E 2 Sound The Horn
+Sound the Horn at the top most point of the Ardura Caravan.
+Note: While exploring the Titan Grotto, keep an eye out for the Titan's Sword, to find a guaranteed Lesser Rune.
+
+Titans Sword
+The Titan's Sword is located near a checkpoint, entrenched in the corpse of a long fallen Titan.
+Deshar
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Trail of Corruption, Tradition’s Toll (Optional: 2 Weapon Set Passive Skill Points)
+
+Points of Interest: The Unremembered (Optional: Artificer's Orb)
+
+Deshar is an open zone, inhabited by undead enemies, poisonous vultures, porcupine goliaths and more. Search for the Path of Mourning. Optionally look for the Fallen Dekhara for 2 Weapon Set Passive Skill Points and the Unremembered Skeleton for an Artificer's Orb.
+
+Po E 2 Fallen Dekhara
+After interacting with the Fallen Dekhara, you can loot the Final Letter. Return it to Shambrin in town for your reward.
+The Unremembered 1
+The Unremembered Skeleton is located near a checkpoint at the edge of the zone.
+Path of Mourning
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Trail of Corruption
+
+Points of Interest: Hushed Urn (Optional)
+
+The Path of Mourning is built above Deshar, composed of interconnected rooms and narrow fortified walkways. There are no quests or bosses in this zone. Progress forward and search for the Spires of Deshar.
+
+Optionally, while progressing through the zone search for the Hushed Urn Secret for an Uncut Support Gem Level 2.
+
+The Spires of Deshar
+Waypoint: Yes
+
+Bosses: Tor Gul, the Defiler
+
+Quests: The Trail of Corruption
+
+Points of Interest: Sisters of Garukhan (Optional: +10% Lightning Resistance)
+
+The Spires of Deshar is another elevated zone and is home to Tor Gul, the Defiler; a physical, fire and poison themed boss.
+
+Search for and defeat Tor Gul, then return to the Ardura Caravan, speak to Sekhema Asala, and use the Desert Map to travel to the Dreadnought.
+
+Before leaving the zone, make sure to locate the Sisters of Garukhan. Interact with it to gain +10% Lightning Resistance.
+
+The Dreadnought
+Waypoint: Yes
+
+Bosses: Jamanra, the Abomination
+
+Quests: The Trail of Corruption
+
+The Dreadnought is a series of moving connected carts and is the final zone in Act 2. Fight your way forward to the lead cart, to begin the final battle with Jamanra, the Abomination; a physical and lightning themed boss.
+
+Author’s Note: Farming extra levels and upgrading gear in the Dreadnought is recommended due to the high monster density and the upcoming difficulty of the final act boss.
+
+During Phase 1 of the fight, Jamanra attacks with a mix of lightning spells and environment altering abilities:
+
+Jamanra most often throws exploding lightning bolts or casts various AoE lightning tendril-like spells
+As the fight progresses Jamanra summons two moving lightning pylons that arc between each other. There are two lightning pylon variations, one variation aggressively chases the player, requiring consecutive dodge rolls to avoid.
+Jamanra may also summon an arena-wide gust of wind. Stand near Sekhema Asala to shield your character, while clearing the newly spawned trash monsters for flask charges.
+Upon reaching ~60% HP, Jamanra decapitates the head of the cart, allowing the Countess escape with the Beast, leaving you to face him in a small circular arena for Phase 2 of the fight.
+
+ Phase 2 is similar to Phase 1, but introduces a couple of AI and ability changes:
+
+Jamanra primarily attacks with his very large sword; either sundering the ground or cleaving a large area in front of him.
+The sunder attack has a long wind-up, that is telegraphed by Jamanra enchanting his sword, raising it above him, and slamming it into the ground. This triggers an AoE explosion near the boss, followed by a rapidly moving shockwave. Keeping your distance gives your character more time to Dodge Roll out of the damaging area.
+The cleave attack follows a similar pattern, where he first enchants his sword, before cleaving the area in front of him in a semi-circle pattern. To avoid damage, players can either play in melee range and Dodge Roll behind him or play at range and use Dodge Roll invincibility frames.
+Jamanra continues casting various targeted and AoE lightning spells, now with greater potency.
+The Lightning Pylons from Phase 1 also return in Phase 2, however this time they are stationary. Travelling through the electrical gates between them, inflicts the shocked debuff, increasing damage taken.
+Lastly, in addition to all of his direct abilities, Jamanra also summons moving tornadoes or lightning portals. The tornadoes slowly damage your character if you stand inside them. The lighting portals fire a stream of lightning bolts, again damaging your character.
+After defeating Jamanra, Sekhema Asala appears, speak to her, so she can strike one final blow. Afterwards, return to the Ardura Caravan, speak to the Hooded One, and at last, to Sekhema Asala, selecting the “Travel to the Sandswept Marsh” option to progress to Act 3.
+
+Author's Note: Check out our Act 2 Boss Guide if you are struggling with this encounter.
+
+Act 3
+The Jungles around Utzaal hide many secrets, including lost knowledge on how to control corruption. In pursuit of this knowledge, you need to explore the vast jungles and expansive zones. You team up with Alva Valai to search for the lost Vaal city of Aggorat. Battle jungle monstrosities, mindless constructs and the risen dead. Then, buckle in for a time-traveling finale where you go back to experience Aggorat in all of its glory.
+
+Poe 2 Reviewalva Img 1 1024 X 576
+Sandswept Marsh (Combat Town)
+Waypoint: Yes
+
+NPCs: The Hooded One; Zarka
+
+Bosses: Rootdredge (Optional: Uncut Skill Gem Level 9)
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Orok Campfire (Optional: Lesser Jeweller's Orb), Hanging Tree (Optional: Magic Ring)
+
+The Sandswept Marsh is the first town in Act 3. Look for a natural crossing at the edge of town and take it to transition into a combat zone. The primary quest objective is to cross the Sandswept Marsh, in search of a Ziggurat. 
+
+There are however, two secrets and one optional boss, which may provide valuable upgrades for your character:
+
+Orok Campfire: Basket containing Lesser Jeweller's Orb
+Hanging Tree: Corpses containing a Magic Ring
+Rootdredge: A unique physical & fire themed boss that drops an Uncut Skill Gem Level 9
+Ziggurat Encampment (Town)
+NPCs: The Hooded One, Alva, Oswald, Servi 
+
+The Ziggurat Encampment is the second town in Act 3. 
+
+Speak to the treasure hunters, Alva and Oswald, and then to the Hooded One to learn more about lowering the water levels. Take the exit to the Jungle Ruins, near the top of the town.
+
+The Ziggurat Encampment has 4 NPCs by default:
+
+The Hooded One: Identifies items for free and Refunds Passive Points for Gold.
+Alva: accompanies you for various quests.
+Oswald: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts. Oswald can also purchase Idols for Gold.
+Servi : Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Servi can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards. Furthermore, Servi can also provide “Local Knowledge,” a special version of the world map with information icons; click on an icon to hear zone specific dialogue.
+Jungle Ruins
+Waypoint: Yes
+
+NPCs: Alva
+
+Bosses: Mighty Silverfist (Optional: 2 Weapon Set Passive Skill Points)
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Venom Crypts, Troubled Camp, Matlan Waterways
+
+The Jungle Ruins is an open forested area. The primary quest objective is to search for the Matlan Waterways, however it is currently submerged underwater! Collect the waypoint near its entrance, summon and speak to Alva, and search for the Infested Barrens.
+
+There is however a secret, one optional unique boss and one side zone that are of potential interest:
+
+Troubled Camp: has a Vendor that may sell items of interest & drops rare items from a chest. 
+Mighty Silverfist: is a hard-hitting physical damage boss that provides 2 Weapon Set Passive Skill Points if defeated. Precise Dodge Rolls are required to avoid either his swing or slam attacks. Mighty Silverfist also has a damaging Roll ability which is especially lethal if your character is low on armour.
+Venom Crypts: is an optional but recommended side zone that when completed, provides a permanent character buff. The entrance to the Venom Crypts is located near the Waypoint in the Jungle Ruins.
+The Venom Crypts
+Waypoint: No
+
+Bosses: None
+
+Quests: The Slithering Dead (Optional: 25% increased Stun Threshold, or 30% increased Elemental Ailment Threshold, or 25% increased Mana Regeneration Rate; Artificer's Orb)
+
+The Venom Crypts is an overgrown underground tomb, inhabited by venomous cobras, tentacle miscreations, rats and more. Search the Venom Crypts for Corpse-snake Venom and return it to Servi in town, for an Artificer's Orb and a choice between the following permanent character buffs:
+
+25% increased Stun Threshold
+30% increased Elemental Ailment Threshold
+25% increased Mana Regeneration Rate
+Warning: you cannot change your choice later on!
+
+Infested Barrens
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Troubled Camp, Chimeral Wetlands
+
+The Infested Barrens is an outdoor zone that combines a forested jungle with narrow anthill columns. There are no quests or bosses. Continuing progressing and search for the Chimeral Wetlands.
+
+While exploring the zone you may find another Troubled Camp. Similar to the Jungle Ruins, the Troubled Camp has a Vendor that sells items and a chest that drops a rare item.
+
+Author's Note: In the 0.5 Teasers, a new zone connected to the Infested Barrens was spotted on the World Map. Current community speculation is that this zone is host to a specialised Runes of Aldur Quest. If you've found the Runes of Aldur league mechanic useful for your playthrough, then consider exploring this new zone for any potentially new rewards or crafting mechanics. This section will be updated and this note removed once the exact details are confirmed via playtesting.
+
+Chimeral Wetlands
+Waypoint: Yes
+
+Bosses: Xyclucian, the Chimera
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Ravaged Camp, Toxic Bloom, Temple of Chaos
+
+The Chimeral Wetlands is a dense jungle filled with toxic flora and undead explorers, and is home to Xylucian, the Chimera; a tri-elemental, physical and chaos themed boss.
+
+Begin by searching the Chimeral Wetlands for the entrance to Jiquani’s Machinarium, guarded by Xylucian; a challenging boss with a large array of abilities and mechanics. Xylucian’s abilities are telegraphed by which head he uses to attack:
+
+From the centre head: he can cast a flamethrower in a cone shaped attack pattern.
+From the left head: he can fire lightning spark projectiles.
+From the right head: he can channel a freezing breath, creating a large area of chilled ground.
+Furthermore, Xylucian can also:
+
+Fly into the air, creating a wall of frost or tracking the player with flames.
+Returning from the air, Xylucian slams the ground, triggering a large physical area of effect explosion
+At every 25% health breakpoint, Xylucian flies to a pillar, firing a volley of fireballs or poison needles at the player. Break the stone platform under him to temporarily stun him.
+After defeating Xylucian, loot the Chimeral Inscribed Ultimatum quest item and progress forward to Jiquani’s Machinarium.
+
+Connected to the Chimeral Wetlands is the Temple of Chaos; the second available method for ascension. During progression, completing the Temple of Chaos may be difficult. It is recommended to acquire extra levels and gear before attempting the ascendancy trial.
+
+While exploring the Chimeral Wetlands, players may encounter the following two secrets:
+
+Ravaged Camp: contains a chest that drops a rare item.
+Toxic Bloom: contains a Rare Monster that drops a Magic Amulet when killed.
+Jiquani’s Machinarium
+Waypoint: Yes
+
+NPCs: Alva
+
+Bosses: Blackjaw, the Remnant (Optional: The Flame Core: Grants +10% to Fire Resistance)
+
+Quests: Legacy of the Vaal
+
+Points of Interest: 4 Small Soul Cores
+
+Jiquani’s Machinarium is an underground puzzle-like zone that requires Small Soul Cores to unlock different sections:
+
+One Small Soul Core is required to unlock the initial puzzle.
+A second Small Soul Core is required to unlock the entrance to Jiquani’s Sanctum.
+The third and fourth Small Soul Cores can be used to gain access to the optional boss: Blackjaw, the Remnant or a secret room with loot.
+Blackjaw is a physical and fire themed boss; who uses a combination of devastating slams and fire spells which can be avoided with either Dodge Roll invincibility frames or careful positioning. Defeating Blackjaw provides a Flame Core, which when consumed provides a permanent +10% to Fire Resistance buff.
+
+Jiquani’s Sanctum
+Waypoint: Yes
+
+NPCs: Alva
+
+Bosses: Zicoatl, Warden of the Core
+
+Quests: Legacy of the Vaal
+
+Points of Interest: 2 Medium Soul Cores, Paquate’s Mechanism
+
+Jiquani’s Sanctum is another underground puzzle-like zone that requires two Medium Soul Cores to activate Zicoatl, Warden of the Core; a physical and lightning themed unique boss.
+
+Defeating Zicoatly provides a Large Soul Core, which is used to open the entrance to the Matlan Waterways. Begin by summoning and speaking to Alva, located near the start of the area and then search for two Medium Soul Cores. The Soul Cores are randomly located and need to be placed into two separate generators. Once you’ve activated the generators, speak to Alva once more and interact with the Large Soul Core to begin the fight.
+
+Zicoatl has a wide array of physical and lightning abilities. Most abilities have a telegraphed windup that can be avoided by playing in melee range and Dodge Rolling behind the boss. One of Zicoatl’s most lethal abilities is his triangular expanding slam. Stand near the vertices to avoid taking damage.
+
+Safe Zone Triangle Slam
+Position yourself near the vertices to stay safe!
+After defeating Zicoatl, loot the Large Soul Core, return to the Jungle Ruins and interact with the Stone Altar to resurface the entrance to the Matlan Waterways.
+
+Note: while clearing Jiquani’s Sanctum you may discover a corruption altar, allowing the player to unpredictably modify an item.
+
+The Matlan Waterways
+Waypoint: No
+
+Bosses: None
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Narag’s Hut (Optional), Ravaged Corpse (Optional: Rare Belt), Azak Bog
+
+The Matlan Waterways is an open zone composed of a series of interconnected canals. Players need to interact with many pressure-pads to drain water-filled sections to progress forward.
+
+At the end of the zone, players encounter one final, larger lever. Interact with it, return to town, speak to Alva at the base of the Ziggurat and enter the Drowned City to continue progressing the main questline.
+
+That said, connected to the Matlan Waterways is the Azak Bog, an optional but recommended side zone with a unique boss that provides +30 Spirit and a Persistent Skill gem. Furthermore, near the Azak Bog entrance, interact with a Ravaged Corpse, summon Servi, and speak to her for an unidentified Rare Belt reward.
+
+Note: While progressing through the Matlan Waterways, players may find Narag’s hut. Host to a rare enemy that drops a rare weapon.
+
+The Azak Bog
+Waypoint: Yes
+
+Bosses: Ignagduk, the Bog Witch (Gemrot Skull: +30 Spirit, Uncut Spirit Gem Level 10: Creates a Persistent Buff Skill Gem at Level 10)
+
+Quests: Tribal Vengeance (Optional: A Magic Rarity Thawing, Staunching, Antidote, Dousing or Grounding Charm)
+
+Points of Interest: Flameskin Ritual
+
+The Azak Bog is an outdoor zone, featuring narrow wooden walkways, wooden encampments, dangerous fire themed enemies, and the unique Boss: Ignagduk, the Bog Witch. 
+
+Upon entering the zone, summon and speak to Servi to begin the Tribal Vengeance quest to defeat Ignaduk.
+
+Ignaduk is a multi-phase, physical and fire themed boss, with many spell abilities. To mitigate Ignaduks fire damage, in addition to equipping a Ruby Charm or fire resistance gear, players can search for the Flameskin Ritual. Interacting with all the effigies surrounding the ritual temporarily buffs your characters with Ignagduk’s Harvest: significantly increasing fire resistance.
+
+Ignagduks Harvest
+Acquiring Ignaduk's Harvest can significantly reduce the difficulty of the upcoming boss fight.
+During Phase 1, Ignaduk alternates between casting fire or bone spells and riding her broomstick. 
+
+While on her broomstick, she circles the arena and charges at the player. Targeting Ignaduk during this ability can be difficult, but positioning near a summoned bone wall causes her to knock herself off when she charges into it.
+While stationary, Ignaduk has a preference for casting bone projectiles, that can be avoided with Dodge Roll invincibility frames
+Ignaduk may also cast Red Runes that explode any summoned bone wall in its radius.
+Once below 75% hp, Ignaduk transitions to Phase 2, igniting the effigies around the arena and discarding her broom for a new set of fire spells: Flame Walls, Fireballs, Incinerate and a devastating Infernal Corridor.
+
+Flame Walls, when summoned, appear in pairs of two, cross-sectioning the arena.
+Fireball and Incinerate abilities have a small telegraphed cast time, giving time to dodge either the projectiles or stream of flame.
+Ignaduk’s Infernal Corridor begins with the appearance of two bone walls. To survive, players should either position behind Ignaduk, or far away from the exit blast. The incoming infernal flame exits the corridor in a V-shaped pattern, thus extra care and quick decision making is required to survive.
+Additionally, the red runes that appeared in Phase 1 are now cast in greater quantities.
+After defeating Ignaduk, loot the Gemrot Skull and consume it for a +30 Spirit Buff and an Uncut Spirit Gem Level 10. Head to town and return Ignagduk’s Ghastly Spear to Servi for a Magic Rarity Charm:
+
+Thawing Charm: Used when you become Frozen
+Staunching Charm: Used when you start Bleeding
+Antidote Charm: Used when you become Poisoned
+Dousing charm: Used when you become Ignited
+Grounding Charm: Used when you become Shocked
+Select one and progress further.
+
+The Drowned City
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Secret Gold Cellars
+
+The Drowned City is an open zone composed of water-damaged ruins and is inhabited with large packs of cannibals, colossal volatile enemies who explode on death and more. This zone also introduces the drowning mechanic, a moving teal orb that reduces vision, and if you stand in it for too long, brings your character to a short and timely end.
+
+The primary quest objective is to travel to the Apex of Filth. However, players can also choose to enter the Molten Vault, an optional side zone.
+
+While navigating the Drowned City, you may come across underground cellars, filled with enemies, gold and loot.
+
+The Molten Vault
+Waypoint: Yes
+
+Bosses: Mektul, the Forgemaster (Optional)
+
+Quests: Treasures of Utzaal (Uncut Skill Gem Level 10, Unlocks the Reforging Bench, Artificer's Orb)
+
+Points of Interest: Molten Flow (Optional)
+
+The Molten Vault is an indoor forge inhabited by Mektul, the Forgemaster; a physical and fire themed boss. Defeating Mektul rewards the player with an Uncut Skill Gem Level 10 and unlocks the Reforging Bench.
+
+To find Mektul, begin by searching for a large vat of molten gold. Pull the nearby lever to open the path forward. Follow the flow of molten gold, exploring side rooms as alternate paths, when reaching dead ends. Continue following the flow of gold until you reach the boss Arena. Pull the Sluice Gate Lever and take the lift down to Mektul.
+
+While searching for Mektul, you may find two Frost Core's. Loot them and search for the two Molten Flows that impede your path. Place each Frost Core in a nearby Stone Altar to remove the impedance, travel ahead, and open each Gold Chest for extra loot and potential upgrades.
+
+Mektul is a challenging boss with a strict time limit. Players may need to improve their gear and level up before attempting the fight. His abilities include:
+
+Multiple quick attack and slam animations: that require mindful dodging to avoid.
+A Leap Slam: that deals AoE damage, queued if players stray too far from him.
+A Charged Slam: where Mektul charges his left arm and releases a straight-line attack.
+Molten Gold Waves: If pulled too far from the molten gold, he retreats to it and starts releasing waves of molten gold. This phase resets if he returns to the molten gold again.
+Explosive Rune Slam: Mektul channels an explosive rune that detonates at his feet.
+There are stalagmites along the Aureaduct that begin to turn red and explode as the molten gold nears them. They can also explode at Mektul’s command when he warcries. Players have less than four minutes to defeat Mektul before molten gold completely covers the aqueduct.
+
+After defeating Mektul, loot the Hammer of Kamasa and return it to Oswald in town for your rewards.
+
+Author's Note: Check out our Act 3 Boss Guide if you are struggling with this encounter.
+
+Apex of Filth
+Waypoint: Yes
+
+Bosses: Queen of Filth
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Cauldron Keeper (Optional)
+
+The Apex of Filth is an open runic area, once again inhabited by large packs of cannibals, volatile exploding enemies, shamans and more. The Filthy Crones in particular pay homage to Path of Exiles 1’s Doedre and use similar abilities such as casting curses or firing physical projectile attacks.
+
+Located in the centre of the zone is the Queen of Filth, a physical and chaos themed unique boss. Despite their appearance, the Queen of Filth is extremely mobile and requires careful positioning and timely Dodge Roll’s to survive. Furthermore, similar to the Filthy Crones encountered earlier, the Queen of Filth can cast circular patches of stationary cursed ground; avoid standing in these areas to avoid being debuffed.
+
+After defeating the Queen of Filth, loot the Temple Door idol quest item, return to town and speak to Alva, opening the entrance to the Temple of Kopec.
+
+While searching for the Queen of Filth, players may find the Cauldron Keeper; a friendly Filthy Crone who sells caster gear and jewellery. Players can also find Red, Green, and Blue Mushrooms, which can be placed into the Cauldron Keeper's cauldron for a Life and Mana Flask reward.
+
+Temple of Kopec
+Waypoint: No
+
+NPCs: Alva
+
+Bosses: Ketzuli, High Priest of the Sun
+
+Quests: Legacy of the Vaal
+
+The Temple of Kopec is an enclosed temple, inhabited by fiery enemies and introduces a unique environmental hazard: an indoor sun that applies a stacking burning debuff when standing in its light. Stay in the shade to avoid being burnt to a crisp.
+
+Carefully search the corners of the Temple for stairs to ascend to the top floor, to find Ketzuli, High Priest of the Sun; a fire themed boss.
+
+Ketzuli has a wide array of fire based spells and arena-wide abilities:
+
+Ketzuli can summon fireball projectiles from all sides of the arena, requiring quick repositioning to avoid damage. Just Don’t Get Hit 4Head.
+Ketzuli can also summon a moving, fiery black hole orb. Avoid standing within it.
+Occasionally, Ketzuli gets excited and aggressively dashes towards the player with a fiery explosion. Once the ability has finished, Ketzuli remarks in disappointment and becomes momentarily inanimate; offering the player a damage window.
+Periodically, Ketzuli raises his arms and channels a barrage of fireballs that rapidly track the player upon release. Use Dodge Roll invincibility frames to avoid taking damage.
+Ketzuli also has two distinct laser abilities. Either casting a linear fast moving laser from his head or casting a scorching beam that follows the character.
+After defeating Ketzuli a Summon Alva icon appears. Interact with it and speak to Alva, who then sacrifices her blood to raise the platform, returning your character to the Ziggurat Encampment with a newly created time portal.
+
+Follow Alva through the gateway to the Vaal Empire moments before the Cataclysm. Take the steps down to Utzaal of the past to continue your journey.
+
+Author's Note: Check out our Act 3 Boss Guide if you are struggling with this encounter.
+
+Utzaal (Past)
+Waypoint: Yes
+
+NPCs: Alva
+
+Bosses: Viper Napuatzi
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Chaos Statue, Secret Peculiar Fortunes
+
+Utzaal of the Past is an open area inhabited by legions of threatening Vaal enemies:
+
+The Eye of Winter casters are particularly dangerous. If possible, equip a Sapphire Charm or Cold Resistance gear, and avoid travelling along the Eye of Winter’s trajectory.
+Larger physical damage dealing Vaal Overseers and Vaal Goliaths are also present. If your character is low on physical damage mitigation, play with extra caution to avoid their attacks.
+Search the zone for Viper Napuatzi, an incredibly difficult fight. Consider farming Utzaal or a zone of your choosing for additional gear and character levels beforehand.
+
+During the fight, Viper Napuatzi can attack with the following abilities:
+
+Swap between multiple attack pattern chains that lead into an Area of Effect slam or sweep.
+Disengage from combat and shoot multiple puddles of poison out in a horizontal line.
+Raise her spear with infused lightning and throw it at the player, with multiple projectiles returning in a cone after it hits the shield wall of the arena. 
+Charge an unblockable attack that summons forth serpents from her spear in a straight line.
+At roughly 75% Napuatzi slams her spear into the ground creating a chaos degen effect. She then begins floating in the air and starts calling down a Firestorm with telegraphed runes on the ground. Shortly after changing to chaos meteors with a much larger area of effect. 
+
+Once the storm ends she continues casting various chaos spells:
+
+Infusing the shield guard with poison, causing them to attack in various spear patterns, followed by an arena-wide spear attack that concludes with the shield guard shrinking the arena. 
+Her default attacks become either a quick gatling of poison snakes or volley of multiple poison snakes in a frontal cone.
+Summons half a dozen forking snakes that bounce around the arena multiple times until dissipating.
+Leaps into the air and channels a large poison AoE slam.
+Initially you can avoid spears from one side of the shield wall as they cannot reach you, but after the arena shrinks from 2 spear phases players can now be hit from both sides. This makes the fight a race against time as meteors are very difficult to dodge with the limited space provided by the arena.
+
+Once Napuatzi is defeated the fight isn’t over! There are stragglers of the shield wall that need to be dealt with.  After dealing with stragglers, progress forward and search for Aggorat from the Past.
+
+While clearing Utzaal from the past, you may find a Chaos Statue, Secret Peculiar Fortunes and a Sacrificial Heart:
+
+The Chaos Statue provides an inscribed ultimatum that can be used in the Temple of Chaos
+Peculiar Fortunes are hidden across the map, interact with them to acquire golden idols which can be sold to Oswald in town for gold.
+The Sacrificial Heart is stabbed in the next zone to acquire 2 Weapon Set Passive Skill Points.
+Author's Note: Check out our Act 3 Boss Guide if you are struggling with this encounter.
+
+Aggorat (Past)
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Legacy of the Vaal
+
+Points of Interest: Peculiar Fortunes, Blood Sacrifice (Optional: 2 Weapon Set Passive Skill Points)
+
+Aggorat of the past is another open area inhabited by legions of threatening Vaal enemies. The primary objective is to explore Aggorat for the entrance to the Black Chambers. 
+
+While exploring you may find an altar and a Sacrificial Dagger. Interact with the altar to place the Sacrificial Heart found in the previous zone, loot the Sacrificial Dagger and stab the Sacrificial Heart to acquire 2 Weapon Set Passive Skill Points
+
+The Black Chambers (Past)
+Waypoint: Yes
+
+NPCs: Alva
+
+Bosses: Doryani, Royal Thaumaturge
+
+Quests: Legacy of the Vaal
+
+The Black Chambers of the Past hosts Doryani, Royal Thaumaturge, Act 3’s final boss. Search for the Testing Pit to begin the act's finale.
+
+During the initial phase, Doryani casts a variety of physical or tri-elemental abilities, such as:
+
+Flamethrowers from his Right Hand
+Lightning arcs from his Left Hand
+A horizontal line of exploding soul gems
+A targeted crackling lance-like blast
+Or slams the ground to create a Lightning Fire nova.
+Once Doryani drops below 75% HP, Phase 2 begins:
+
+An altar in the center of the room rises and begins rotating, firing pulsing laser beams
+Afterwards the altar lowers and charges multiple spikes around the room. When touched by a player, the spikes activate and fire arcing lightning strikes.
+Doryani can also spawn multiple stationary Solar Orbs that burn the player.
+Or can channel either a slow beam of lightning that tracks the player or a flameblast explosion at his feet, that activates any active Solar Orbs.
+After dropping below 50%, Phase 3 Begins. Doryani mounts the mech titled Doryani’s Triumph, which has the following moves:
+
+Slams the ground with either arm
+Fires a frost laser in an arc from the left arm.
+Unleashes a flamethrower in an arc from the right arm.
+Slams its head onto the ground directly in front of it.
+Strikes the ground with both arms creating a Lightning Fire nova.
+Casts a larger Flameblast around its right arm
+Charges a slam with the left hand, dealing cold damage
+Fires a barrage of lasers from its back, rapidly rotating clockwise around the arena.
+Detaches four legs from the mech, which fires a laser from the sky.
+Creates a static field around the mech, shooting forked lightning toward the outer edges of the arena.
+Once Doryani’s Triumph drops below 50%, Doryani flies into the air for a short time with a new set of abilities:
+
+The detached legs continuously reform to fire lasers from the sky.
+Fire or Lightning pillars spawn, either stationary or tracking the player.
+The mech transforms into a giant fist, following the player while gradually reducing in movement speed before slamming the ground with a massive lethal AoE.
+The right arm fires a red flamethrower.
+The left arm fires a red lightning beam in a T-shaped pattern.
+After defeating Doryani’s Triumph, Alva escapes from her prison and convinces Doryani to assist you in defeating the Beast. Portal to town and speak to Doryani to activate the Cataclysm. After awakening in the Ziggurat Encampment, speak to Doryani once more, the Hooded One, and lastly with Alva to travel to Kingsmarch.
+
+
+Author's Note: Check out our Act 3 Boss Guide if you are struggling with this encounter.
+
+Act 4
+Sail to Kingsmarch in search of an ancient weapon to battle corruption; the instrument of the Third Edict. The islands of Ngamakanui, are steeped in the lore of the Karui, so keep an eye out for ancestral deities as you travel. The act is made up of a series of smaller locations each with its own unique biome, foes and story. On one you might find a group of goblins worshipping a local giant, whereas another might contain a horror sealed away for the ages.
+
+A 4 Splash Karui Warship Poe 2 Img 1 1024 X 576
+Kingsmarch (Town)
+NPCs: Doryani; The Hooded One; Alva; Rog; Tujen; Ange; Dannig; Makoru; Kanu
+
+Kingsmarch is the first town in Act 4 and has 9 NPCs by default:
+
+Dannig: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Rog: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Rog can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Tujen: allows you to Gamble Gold for Items of an unknown rarity.
+Ange: Unlocks Asynchronous Trading, Hideout Selection and provides access to the Currency Exchange.
+Makoru: Facilitates sailing to various islands surrounding Kingsmarch.
+Speak to Doryani, Alva, Rog, Tujen and Ange. Then head down the dock towards the moored ship and speak to Kanu and Makoru. Sprint back up the dock and take the Boat Charter from Rog. Then sprint down the docks once more, and speak to Makoru to set sail to an island of your choosing.
+
+Optionally, consider sailing towards the following islands before beginning your progression for potential gear upgrades:
+
+Arastas: Speak to Servitor Marius for a Caster Shop.
+Ngakanu: Speak to Ruhaki for a Blacksmith Shop.
+Non-Linear Act
+Act 4 is non-linear, allowing you to complete the act in any order you'd like. The zone order listed below is only a suggestion; based on an evaluation of quest rewards and boss difficulty.
+
+Isle of Kin
+Waypoint: Yes
+
+Boss: The Blind Beast (Optional: Blank Greater Rune)
+
+Quests: The Search, Land of the Kin, Forgotten Bounty (Optional)
+
+Points of Interest: Beast Pen, Fossilised Formation, Flayed Sailor, Voltaxic Spire
+
+The Isle of Kin is a sulphite quarry inhabited by large packs of swarming Kin and their subdued behemoths. The primary quest objective is to search for the Volcanic Warrens, investigate what has riled the Kin up, and search for lost Weapon Pieces.
+
+Additionally, there is one optional unique boss, one optional quest objective, and 3 secrets to consider:
+
+The Blind Beast: is an aggressive physical and lightning damage boss that provides a Blank Greater Rune if defeated. This Blank Rune can be exchanged with Dannig in Kingsmarch for a Greater Rune of your choosing.
+Beast Pen: contains a rare beast that drops an Uncut Support Gem Level 4.
+Fossilised Formation: contains a Lesser Jeweller's Orb.
+Voltaxic Spire: Provides the Sulphite Infusion buff, increasing your movement speed, elemental resistance and damage until you leave the zone.
+Flayed Sailor: along the shores you find the body of a sailor, which drops a Torn Map Piece. Used to complete the optional Forgotten Bounty quest.
+Volcanic Warrens
+Waypoint: Yes
+
+Bosses: Krutog, Lord of Kin
+
+Quests: The Search, Land of the Kin
+
+Points of Interest: Volcanic Nest
+
+The Volcanic Warrens is a vast volcanic cavern packed with Kin, behemoths, molten imps and volcanic golems. Search the caverns for the throne room, host to Krutog, Lord of Kin, a physical and lightning themed boss.
+
+Defeat Krutog, return to the ship, and sail to Kedge Bay.
+
+Note: While clearing this zone you may encounter the Volcanic Nest Secret, housing two rare volcanic golems. Each dropping a Magic or Rare Ring on death.
+
+Kedge Bay
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Search, Dark Mists, Forgotten Bounty (Optional)
+
+Points of Interest: Abandoned Ship, Dead Man's Chest
+
+Kedge Bay is a shipwrecked strand, home to shrieking gulls, drowned crawlers, and sea-rotted skeletal sailors. Progress ahead to Journey's End, in search of additional Weapon Pieces.
+
+While clearing this zone you may find:
+
+Dead Man's Chest: contains a second Torn Map Piece, used to complete the optional Forgotten Bounty quest.
+Abandoned Ship Secret: contains a chest that may drop a Lesser Jeweller's Orb.
+Journey's End
+Waypoint: Yes
+
+NPCs: Tujen, Freya Hartlin
+
+Bosses: Captain Hartlin
+
+Quests: The Search, Dark Mists (Optional: 2 Weapon Set Passive Skill Points)
+
+Journey's End is another debris filled strand, teeming with undead explorers, ghostly creatures, and rotting soul-catchers. Upon entering the area, you encounter a trapped Freya Hartlin, who Tujen dearly wants to rescue. Summon and speak to Tujen, to gain your next objective: a quest to search for and defeat Captain Hartlin, a physical and cold themed boss.
+
+After defeating Captain Hartlin, loot the Verisium, return to town and speak to Dannig to acquire Verisium Spikes. Return to Journey's End and interact with the Karui Totem's to free Freya.
+
+Freya Hartlin
+Freya Hartlin's Karui Cage
+Surprise! Freya Hartlin is actually Omniphobia, Fear Manifest. Survive the madness, defeat Omniphobia, return to town and speak to Tujen for an Uncut Skill Gem Level 13 and for 2 Weapon Set Passive Skill Points.
+
+Abandoned Prison
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Search, Abandoned Prison
+
+Points of Interest: The Chapel, The Armoury
+
+The Abandoned Prison is is a time-worn penitentiary, haunted by spined necromancers, risen rattler's, eaten rats, eternal prisoners, eternal guards, and more. Search the zone for Solitary Confinement, to discover the darkness within.
+
+While progressing you may find a Chapel Key, which can be used to enter the Chapel. Clear the enemies and interact with the Goddess of Justice for a choice between:
+
+30% increased Life Recovery from Flasks
+30% increased Mana Recovery from Flasks
+If you would like to change your choice, you can always return to the Goddess and select a different option.
+
+Additionally, you may find the Armoury Secret. A locked room full of gear, hidden in riot armaments. Simply interact with the nearby lever to enter and claim your potential rewards.
+
+Solitary Confinement
+Waypoint: Yes
+
+Bosses: The Prisoner
+
+Quests: The Search, Abandoned Prison
+
+Solitary Confinement is built below the Abandoned Prison, and has been significantly water-damaged after centuries of neglect. So much so, that periodic waves of sea water submerge the prison floors, significantly lowering your movement speed.
+
+Search for and defeat the Prisoner, a physical and cold themed boss, with a unique regenerative ability. At 50%, 25%, and 10% HP, the Prisoner becomes staggered and immune to damage, and after a short delay, they begin to heal. Interact with a ballista on the edge of the arena and shoot the Prisoner with a piercing bolt to counter this regeneration. Note that after each ballista fired, the Prisoner gains new abilities.
+
+After defeating the Prisoner, speak to the Hooded One and return to town.
+
+Whakapanu Island
+Waypoint: Yes
+
+Bosses: Great White One (Optional)
+
+Quests: The Search, Whakapanu Island, Tribal Medicine (Optional), Forgotten Bounty (Optional)
+
+Points of Interest: Sharkpit, Crabshell Cavern, Petrified Pirate
+
+Whakapanu Island is an undisturbed paradise, inhabited by thriving coconut crabs, scorpion monkey's, towering elephant tortoise and more. Search the island for an entrance to the Singing Caverns.
+
+While exploring the island you may encounter the following bosses or points of interest:
+
+Crabshell Cavern: Home to a large overgrown rare crab, which drops an Uncut Support Gem Level 4.
+Petrified Pirate: drops another Torn Map Piece. Used to complete the optional Forgotten Bounty quest.
+Great White One: a large overgrown Shark, located at the Shark Pit, that when defeated drops a Shark Fin. The Shark Fin can be returned to Kaimana immediately at Ngakanu island or at the end of the act in town, for a choice between the following rewards:
+Kaom's Lesson Grants 30% increased Armour, Evasion and Energy Shield
+Rakiata's Lesson Grants 15% of Armour also applies to Elemental Damage, Gain Deflection Rating equal to 12% of Evasion Rating, 12% faster start of Energy Shield recharge
+Warning: consuming a Lesson is a permanent choice that cannot be changed later on!
+Note: at the end of the act, Kaimana is found on the platform at the end of the dock, opposite of the Ship.
+Singing Caverns
+Waypoint: Yes
+
+Bosses: Diamora, Song of Death
+
+Quests: The Search, Whakapanu Island
+
+Points of Interest: Beckoning Clam (Optional: Rare Pearlescent Amulet)
+
+The Singing Caverns is an underground passage, inhabited by amphibious prowlers, ghastly sirens and other nefarious sea creatures. Search the Cavern for Diamora, Song of Death, a physical and cold themed boss.
+
+Diamora is a siren, avoid her petrifying song and gaze and consider equipping a Thawing Charm before the fight. Refer to the Act 4 Boss Guide for assistance if necessary.
+
+Defeat Diamora and free Matiki from their Cage. Return to the Ship and speak to them once more, to unlock a new island, the Eye of Hinekora.
+
+Optionally, while exploring the Caverns you may encounter a Beckoning Clam. Interact with the Clam, defeat the ambush and interact with the Clam once more for a Humming Pearl. Return the Humming Pearl to Rog in town for a Rare Pearlescent Amulet.
+
+Shrike Island
+Waypoint: Yes
+
+Bosses: Scourge of the Skies
+
+Quests: The Search, Shrike Island, Forgotten Bounty (Optional)
+
+Points of Interest: Corpse Nest
+
+Shrike Island is a vicious rite of passage for the Karui that has become deadlier with the growing corruption. Vile Vultures, ravenous shrikes, scavenged skeletons and other hungry creatures await you. Search the island for the Scourge of the Skies, a physical themed boss.
+
+After defeating the Scourge of the Skies, speak to the Hooded One, return to town and sail to the next island.
+
+While scavenging the island, you may find the Corpse Nest Secret. Interact with the Corpse Nest for the fourth and final Torn Map Piece. To review, Torn Map Pieces are used to complete the optional Forgotten Bounty quest and drop from the following islands:
+
+Isle of Kin
+Kedge Bay
+Whakapanu Island
+Shrike Island
+Returning all four Torn Map Pieces to Makoru unlocks Plunder's Point. An optional area that introduces the Expedition mechanic. Summon Dannig, place the explosives around potentially rewarding locations, explode the explosives and clear the monsters for experience and loot.
+
+Eye of Hinekora
+Waypoint: Yes
+
+NPCs: Matiki, Navali
+
+Bosses: None
+
+Quests: Trial of Ancestors
+
+Points of Interest: Silent Hall
+
+After previously freeing Matiki from the Scourge of the Skies in Shrike Island, the Karui Elder guides your ship to the Eye of Hinekora, a proving grounds to enter the Halls of the Dead.
+
+Speak to Matiki and Navalia, and peer into the Well of Passing, to seek approval from the Mother of Death, Hinekora, to enter the proving grounds.
+
+With Hinekora's approval, your character is temporarily dead, but held in the Mother of Death's embrace, allowing you to pass into the spirit realm. Progress ahead and complete the following tests to enter the Halls of the Dead:
+
+Kaom's Test of Mettle
+Maata's Test of Mettle
+Rakiata's Test of Mettle
+After completing each test, near the end of the zone, search for the Silent Halls Secret, hidden behind a checkpoint. Explore the Silent Hall and pay your respects to receive a permanent +5% to Maximum Mana buff.
+
+Halls of the Dead
+Waypoint: Yes
+
+NPCs: Navali
+
+Bosses: Yama, the White (2 Weapon Set Passive Skill Points)
+
+Quests: Trial of the Ancestors
+
+Points of Interest: Tasalio's Test, Ngamahu's Test, Tawhoa's Test
+
+The Halls of the Dead is an ancestral proving ground, where the greatest warriors of the past battle endlessly. Explore the Halls for Yama, the White, a physical and chaos themed boss.
+
+While exploring, you may find additional Tests of Strength. Completing each test provides a Blank Tattoo which can be exchanged for a specific attribute or resist tattoo:
+
+Tawhoa's Test: +5 Strength or +5% Fire Resist
+Tasalio's Test: +5 Intelligence or +5% Cold Resist
+Ngamahu's Test: +5 Strength or +5% Fire Resist
+Warning: consuming a Tattoo is a permanent choice that cannot be changed later on!
+
+After completing each Test of Strength, progress to the end of the zone to find the entrance to the Trial of the Ancestor's. However, once more you must prove your worth by defeating Yama. Refer to the Act 4 Boss Guide if you encounter any difficulty.
+
+After defeating Yama, loot the Silver Coin and enter the Trial of the Ancestors. Speak to Navali at the top of the trial for 2 Weapon Set Passive Skill Points. Then return to town and sail to the next island.
+
+Arastas
+Waypoint: Yes
+
+NPCs: Missionary Lorandis
+
+Bosses: Torvian, Hand of the Saviour
+
+Quests: The Search
+
+Points of Interest: Golden Bells
+
+Arastas is the point of operations for the Twilight Order, a peaceful enclave also in search of the Weapon. Speak to Missionary Lorandis for more information.
+
+Missionary Lorandis 2
+Missionary Lorandis
+Surprise! You've been betrayed once more! Break the barrier, survive the ambush and search for the Excavation.
+
+While searching for the Excavation site, near the end of the zone you can find two Golden Bells:
+
+The Morning Bell is located in the Town Square and provides 3 Regal Orbs.
+The Evening Bell is located at the Cliffside and provides 3 Exalted Orbs.
+At the end of the zone you encounter Torvian, Hand of the Saviour, a physical and fire themed boss. Torvian is an incredibly challenging fight that can be made easier with an understanding of his Rock Toss ability. Surrounding the arena are three casters that periodically empower Torvian, most notably with damage reduction. When Torvian slams both axes into the ground, he emerges with a Rock that he tosses at the player. Position near a casters platform and dodge the Rock after it's thrown to interrupt the empowerment.
+
+For additional guidance refer to the Act 4 Boss Guide if necessary.
+
+The Excavation
+Waypoint: Yes
+
+Bosses: Benedictus, First Herald
+
+Quests: The Search
+
+The Excavation Site is swarming with the most zealous members of the Twilight Order and is host to Benedictus, First Herald, a physical, fire and lightning themed boss.
+
+Search for and defeat Benedictus. Timely dodge rolls and specific understanding of his Earthen Maze mechanics are key. Refer to the Act 4 Boss Guide for assistance if necessary.
+
+After defeating Benedictus, follow Tavakai and Makoru to the Weapon. Upon arrival, the Hooded One joins you and attempts to reforge the Weapon.
+
+Reforging Of The Weapon
+Reforging of the Weapon
+Unsurprisingly, you've been betrayed again! This time by Tavakai who wishes to use the Weapon to save his people. Can you trust anyone at this point?
+
+Speak to the Hooded One, return to town, speak to the Hooded One once more, and then to Rhodri to set sail to Ngakanu.
+
+Ngakanu
+Waypoint: Yes
+
+Bosses: None
+
+Quests: The Search
+
+Ngakanu is home to the Tukohama Tribe, however, the tribe members are enraged with blood-fevered fury, attacking anyone and everyone on site. Battle your way through the village, in search of the Heart of the Tribe.
+
+Heart of the Tribe
+Waypoint: Yes
+
+Bosses: Tavakai, the Chieftain
+
+Quests: The Search
+
+Points of Interest: Meeting House
+
+The Heart of the Tribe embodies the same blood-fevered rage found in Ngakanu. Search the area for Tavakai, the Chieftain, the final boss of Act 4.
+
+While exploring the area, you may find the Meeting House Secret, a room outlined with chests full of loot. Consider making any final upgrades at this point before confronting Tavakai.
+
+Tavakai is a multi-phase, physical, fire, cold and lightning themed boss. Precise dodge rolls, positioning and life recovery are key to defeating Tavakai. Refer to the Act 4 Boss Guide for video guidance if necessary.
+
+After defeating Tavakai, witness the Hooded One curing both Tavakai and Makoru. Then speak to Tavakai, return to Kingsmarch, and speak to the Hooded One.
+
+The Interludes
+Congratulations! You've beaten Act 4 and unlocked the Interludes! The Interludes are temporary side stories that bridge the gap between Act 4 and Endgame and will be removed upon the release of Act 5. Speak to the Hooded One to travel to an Interlude of your choosing.
+
+Interlude: Curse of Holten
+Journey back to Ogham to aid Renly in defeating the newfound corruption and impenetrable darkness that encases the town of Holten.
+
+Interlude 1: The Curse of Holten is a temporary side story that is included until the release of Act 5. The first interlude has 6 new areas and 5 new bosses.
+
+Interlude 1 1024 X 576
+The Refuge (Town)
+NPCs: The Hooded One; Renly, Finn, Una
+
+The Refuge is the main town in Interlude 1 and has 4 NPCs by default:
+
+The Hooded One: Identifies items for free and Refunds Passive Points for Gold.
+Renly: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Una: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Una can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Finn: allows you to Gamble Gold for Items of an unknown rarity.
+Speak to the Hooded One, Renly, Finn & Una to learn more about the encroaching darkness. Then take the exit to the Scorched Farmlands.
+
+Scorched Farmlands
+Waypoint: Yes
+
+Bosses: Isolde of the White Shroud and Heldra of the Black Pyre
+
+Quests: Recruit the Ezomytes
+
+The Scorched Farmlands contains the burnt remnants of the Ogham Farmlands from Act 1. Battle the corrupted farm-folk and explore the farmlands until you find an impassable wall of darkness.
+
+Explore further until encountering Isolde of the White Shroud and Heldra of the Black Pyre.
+
+Isolde is an ice themed boss, akin to Beira of the Rotten Pack from Act 1.
+Heldra is a fire themed boss, akin to Ignagduk, the Bog Witch from Act 3.
+Defeat Isolde and Heldra to end their stalemate and progress ahead to the Stones of Serle.
+
+Stones of Serle
+Waypoint: Yes
+
+Bosses: Siora, Blade of the Mists
+
+Quests: Recruit the Ezomytes
+
+The Stones of Serle is enchanted by Fey Spirits. Seek their help by activating the 6 Megaliths located around the edge of the zone.
+
+Upon activating all six surrounding Megaliths, head to the Stone Circle, located in the centre of the map, to battle Siora, Blade of the Mists, a physical and lightning themed boss. Use timely dodges to avoid Siora's flurry of slashes and lightning abilities. When Siora shrouds the arena in darkness, run to the glowing Megalith to clear it.
+
+After defeating Siora, speak to Una and return to the impassable wall of darkness in the Scorched Farmlands to enter the next zone, The Blackwood.
+
+The Blackwood
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Recruit the Ezomytes
+
+Points of Interest: Dark Omens
+
+The Blackwood is a forested area, shrouded in darkness, inhabited by forgotten stag, nameless horror, treant foulspawn and more. Explore the darkness for the entrance to Holten.
+
+While searching the forest, you may encounter Omen Altars. Interact with them to receive a random Omen which can be used for crafting. Consider exploring the entire area to find every Omen Altar.
+
+Holten
+Waypoint: Yes
+
+NPCs: The Ferryman
+
+Bosses: Sigbert of the Sullied Oath and Godwin of the Shattered Creed (Optional)
+
+Quests: Recruit the Ezomytes
+
+The town of Holten has been left to rot, as the Thane and Lady of Holten have changed their allegiance to a new dark master. Search the town for an entrance to the Holten Estate and Wolvenhold.
+
+Optional: Search for the Psalm of Blood, where you previously encountered Candlemass in Act 1, you can defeat Sigbert of the Sullied Oath and Godwin of the Shattered Creed for an Armourer's Scrap and for some magic and rare loot.
+
+Additionally, in the centre of Holten you can find the Soul of the Ferryman. A ghostly fisherman who sells a tab of Greater Runes for approximately 2,000 Gold each. You need approximately 20,000 Gold to purchase his whole stock.
+
+Wolvenhold
+Waypoint: Yes
+
+Bosses: Oswin, the Dread Warden (2 Weapon Set Passive Skill Points)
+
+Quests: Recruit the Ezomytes
+
+Wolvenhold is home to Oswin, the Dread Warden, and blood is his price. Navigate the prison-like estate, in search of the boss arena.
+
+Oswin is a physical and cold themed boss, akin to Azarian, The Forsaken Son from Act 2. Defeat Oswin and consume the Warden's Ledger for 2 Weapon Set Passive Skill Points.
+
+Holten Estate
+Waypoint: Yes
+
+Bosses: Thane Wulfric and Lady Elyswyth
+
+Quests: Recruit the Ezomytes
+
+Thane Wulfric and Lady Elswyth have barricaded themselves in Holten Estate's courtyard. Search for an alternate entrance to the courtyard and confront them.
+
+Thane Wulfric is a physical and fire themed boss, akin to Draven, Eternal Praetor from Act 1.
+Lady Elyswyth is a physical and chaos themed boss, akin to Asinia, Praetor Consort from Act 1.
+Defeat the duo, return to town, and speak to the Hooded One to travel to the next interlude.
+
+Note: refer to The Interludes Boss Guide if you require assistance.
+
+Interlude: The Stolen Barya
+Return to the Vastiri Desert, aid Asala with her sacred duty, and meet with the Sel Khari, guardians of the Sacred Water.
+
+Interlude 2: The Stolen Barya is a temporary side story that is included until the release of Act 5. The second interlude has 6 new areas and 4 new bosses.
+
+Interlude 2 C 1024 X 576
+The Khari Bazaar (Town)
+NPCs: The Hooded One; Sekhema Asala; Zarka; Risu
+
+The Khari Bazaar is the main town in Interlude 2 and has 4 NPCs by default:
+
+The Hooded One: Identifies items for free and Refunds Passive Points for Gold.
+Sekhema Asala: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Zarka: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Zarka can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Risu: allows you to Gamble Gold for Items of an unknown rarity.
+Speak to the Hooded One and Sekhema Asala to learn more about her sacred mission. Then take any exit to the Khari Crossing.
+
+The Khari Crossing
+Waypoint: No
+
+Bosses: Akthi, the Final Sting and Anundr, the Sandworm
+
+Quests: Recruit the Maraketh, Clearing the Way (Optional: 2 Weapon Set Passive Skill Points)
+
+Points of Interest: Molten Shrine, Travelling Merchant
+
+The Khari Crossing is a barren, dry, but most notably: a gigantic desert; which is an understatement.
+
+Begin by heading north, in search of the Molten Shrine Secret. Enter the Skullmaw Stairway, clear the enemies inside and consume the Molten One's Gift for +5% to Maximum Life.
+
+Afterwards, search for a checkpointed boss arena, to battle Akthi, the Final Sting and Anundr, the Sandworm.
+
+Akthi is a physical and chaos themed boss, akin to the Devourer from Act 1.
+Anundr is a physical and chaos themed boss, akin to the Great White One from Act 4, but more specifically the Scorpion in Act 9 of Path of Exile 1.
+Defeat Akthi and Anundr, then return to town and speak to Risu for 2 Weapon Set Passive Skill Points.
+
+Next collect the waypoints from the two connected zones: the Pools of Khatal and the Galai Gates, to avoid potentially re-exploring the Khari Crossing later.
+
+Pools of Khatal
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Recruit the Maraketh
+
+The Pools of Khatal is a ruined, barren landscape with no immediate quest objectives or points of interest. Progress ahead to the Sel Khari Sanctuary.
+
+Sel Khari Sanctuary
+Waypoint: Yes
+
+Bosses: Elzarah, the Cobra Lord
+
+Quests: Recruit the Maraketh
+
+Points of Interest: Two Wishes
+
+The Sel Khari Sanctuary has been overtaken by the Serpent Clan! Search the area for the leader of the Serpent Clan: Elzarah, the Cobra Lord, a physical, fire and chaos themed boss.
+
+After defeating Elzarah, speak to Sekhema Asala and progress to the Galai Gates.
+
+Optionally, while clearing this zone you may find Yoon's Barya and Rangeen's Barya. These Barya can be placed into opposing altars allowing you to wish for 2 out of the following 3 rewards:
+
+Rare Ring
+Rare Amulet
+Rare Jewel
+The Galai Gates
+Waypoint: Yes
+
+Bosses: Vornas, the Fell Flame
+
+Quests: Recruit the Maraketh
+
+The Galai Gates are the gateway to the fifth river, a distant memory at this point. Explore the area for the entrance to Qimah, guarded by Vornas, the Fell Flame, a physical and lightning themed boss.
+
+Defeat Vornas and enter Qimah.
+
+Qimah
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Recruit the Maraketh
+
+Points of Interest: Orbala's Pillar
+
+Qimah was once a home to the populace of Maraketh, but is now home to the growing corruption. Explore Qimah for the ceremony site, speak to Jado and enter the Qimah Reservoir.
+
+Additionally, search the zone for Orbala's Pillar and select a changeable permanent buff:
+
+Halani's Boon: 12% increased Cooldown Recovery Rate
+Galai's Boon: 20% increased Presence Area of Effect
+Akheli's Boon: 15% increased Global Defences
+Orbala's Boon: 3% increased Movement Speed
+Kochai's Boon: +5 to all Attributes
+Tabana's Boon: 5% to Elemental Resistances
+Alima's Disgrace: 5% increased Experience Gain and the negative inversion of the 6 other boons
+If you would like to change your buff you can always return to the Pillar and select a different option.
+
+Author's Note: This zone is incredibly dense, consider farming it for experience and gear before heading to the Qimah Reservoir, as the boss inside may be challenging.
+
+Qimah Reservoir
+Waypoint: Yes
+
+Bosses: Azmadi, the Faridun Prince
+
+Quests: Recruit the Maraketh
+
+Points of Interest: Sacred Wells
+
+Qimah Reservoir is the final zone in the second interlude. Search for and defeat Azmadi, the Faridun Prince and disrupt his ritual.
+
+Azmadi is a physical themed boss with many comboed abilities. There are two main strategies to defeat him: the first being to burst him down with a glass cannon build. However, if you cannot do so, you need to persistently dodge roll until you find a damage window. Patience is key as his combos can have extensive durations.
+
+Defeating Azmadi for many players is challenging; consider farming levels and gear if you face difficulty, or refer to The Interludes Boss Guide.
+
+Optionally, while exploring the Qimah Reservoir you may find two Sacred Wells. Each well can be filled with a Vial of Sacred Water, found from slaying monsters in the area, for a random currency item.
+
+After defeating Azmadi, interact with the Grand Barya, speak to Jado and Sekhema Asala, return to town, and speak to the Hooded One to travel to the final interlude.
+
+Interlude: Doryani's Contingency
+Assist Doryani, the Royal Thaumaturge of the Vaal once more with his plan to save his people from the Cataclysm. Doryani believes that ancient descendants of the Vaal may still live, sealed deep within the mountains, and may be key to defeating the Beast.
+
+Interlude 3: Doryani's Contingency is a temporary side story that is included until the release of Act 5. The third interlude has 7 new areas and 4 new bosses.
+
+Interlude 3 C 1024 X 576
+The Glade (Town)
+NPCs: The Hooded One; Doryani; Delwyn; Hilda
+
+The Glade is the main town in Interlude 3 and has 4 NPCs by default:
+
+The Hooded One: Identifies items for free and Refunds Passive Points for Gold.
+Delwyn: Sells Weapons, Body Armours, Helms, Gloves, Boots, Shields, Quivers & Belts.
+Doryani: Sells Sceptres, ES Shields, Wands, Staves, Life Flasks, Mana Flasks, Wisdom Scrolls, Rings, Amulets & Charms. Doryani can also Disenchant Magic Items & Rare Items for Transmutation or Regal Shards.
+Hilda: allows you to Gamble Gold for Items of an unknown rarity.
+Speak to the Hooded One, Doryani, Hilda and Delywn to learn more about Ancient Vaal Descendants and for information about the nearby area. Then take the exit to the Ashen Forest.
+
+Ashen Forest
+Waypoint: Yes
+
+Bosses: None
+
+Quests: Recruit the Vaal
+
+Points of Interest: Ancient Monument
+
+The Ashen Forest was once an Azmeri Hunting ground. Now, it's home to fungal zombies, swarming wasps, sabre spiders and more. Explore the area for an entrance to the Kriar Village.
+
+Optionally, search for and interact with the Ancient Monument for an Uncut Skill Gem Level 14.
+
+Kriar Village
+Waypoint: Yes
+
+Bosses: Lythara, the Wayward Spear
+
+Quests: Recruit the Vaal
+
+Points of Interest: Roving Wisps
+
+The Kriar Village is a narrow linear zone, inhabited by bramble hulk, snakethroat shambler, elephant tortoise and more. Explore the area for Lythara, the Wayward Spear, a physical, fire, cold, lightning, and chaos themed boss.
+
+While progressing, similar to the Hunting Grounds in Act 1: consider chasing the Azmeri wisp at the start of the zone into a rare to empower it for extra loot when defeated. Additionally, consider making any character upgrades now, before fighting Lythara.
+
+Lythara is in part a damage check, defeat her quickly, because as the fight progresses she gets empowered by Azmeri wisps. Two wisps or more can pose a significant challenge for even the strongest characters. Note: this fight may be difficult, consider significantly increasing your damage beforehand or referring to The Interludes Boss Guide for assistance.
+
+After defeating Lythara, consume the Gemcrust Skull to gain +40 to Maximum Spirit and an Uncut Spirit Gem Level 14. Then progress ahead to Glacial Tarn.
+
+Glacial Tarn
+Waypoint: Yes
+
+Bosses: Rakkar, the Frozen Talon
+
+Quests: Recruit the Vaal
+
+The Glacial Tarn is located at the base of the mountain, the Kriar Peaks. Search the area for the entrance to the Howling Caves, defeat the Abominable Yeti inside and return to the Glacial Tarn, continuing your ascent.
+
+Guarding the entrance to the Kriar Peaks is Rakkar, the Frozen Talon, a physical and cold themed boss. Defeat Rakkar and progress ahead.
+
+Howling Caves
+Waypoint: Yes
+
+Bosses: The Abominable Yeti (Optional: 2 Weapon Set Passive Skill Points)
+
+Quests: Howling Winds
+
+The Howling Caves is an indoor icy cavern, inhabited by brine maiden, frost wraiths, hungry wolves and more. Search the zone for the Abominable Yeti, a physical and cold themed boss.
+
+The Abominable Yeti is akin to the Mighty Silverfist from Act 3. Use timely dodge rolls to avoid taking lethal damage. After defeating the Yeti, loot the Icy Tusks and speak to Hilda in town for 2 Weapon Set Passive Skill Points.
+
+Kriar Peaks
+Waypoint: Yes
+
+NPC: Elder Madox
+
+Bosses: None
+
+Quests: Recruit the Vaal
+
+The Kriar Peaks is a linear narrow zone with no immediate boss or quest objective. Continue your climb towards the top of the mountain, and take the platform to descend into the Etched Ravine.
+
+While exploring the Kriar Peaks, you may encounter Elder Madox, peering off the mountainside into the distance. Speak to him for one free unique item. If playing a trade league and you're unsure what to select, consider searching for each item on the trade site, to learn its relative value.
+
+Etched Ravine
+Waypoint: Yes
+
+Bosses: Stormgore, the Guardian
+
+Quests: Recruit the Vaal
+
+The Etched Ravine is another linear zone that has been cut into the mountain by the Architect of Expansion. Search the zone for the entrance to the Cuachic Vault, guarded by Stormgore, the Guardian, a physical and lightning themed boss.
+
+Stormgore, the Guardian is akin to Blackjaw, the Remnant from Act 3. Use Dodge Roll invincibility frames and careful positioning to avoid his slams and lightning spells.
+
+After defeating Stormgore, progress forward and enter the Cuachic Vault.
+
+The Cuachic Vault
+Waypoint: Yes
+
+Bosses: Zelina, Blood Priestess and Zolin, Blood Priest
+
+Quests: Recruit the Vaal
+
+The Cuachic Vault is home to the Ancient Vaal Descendants. However, with no contact with the outside world, they do not understand that Doryani aids you. Progress ahead and convey your message to Zolin, Blood Priest and Zelina, Blood Priestess.
+
+Unsurprisingly, you and your message are seen as nonsense. Thus, since words do not work, defeat Zolin and Zelina in battle. Zolin and Zelina are physical and cold themed bosses, and in comparison to prior bosses, are relatively not challenging.
+
+After defeating Zolin and Zelina, summon and speak to Doryani to bring the Blood Priest and Priestess up to speed.
+
+Afterwards, return to Act 4: Kingsmarch, speak to the Hooded One for 2 Weapon Set Passive Skill Points and Travel to Oriath.
