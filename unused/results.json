@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Oracle",
+    "percentage": "17%"
+  },
+  {
+    "name": "Blood Mage",
+    "percentage": "16%"
+  },
+  {
+    "name": "Pathfinder",
+    "percentage": "15%"
+  },
+  {
+    "name": "Shaman",
+    "percentage": "9%"
+  },
+  {
+    "name": "Disciple of Varashta",
+    "percentage": "6%"
+  },
+  {
+    "name": "Stormweaver",
+    "percentage": "6%"
+  },
+  {
+    "name": "Titan",
+    "percentage": "5%"
+  },
+  {
+    "name": "Invoker",
+    "percentage": "4%"
+  },
+  {
+    "name": "Amazon",
+    "percentage": "4%"
+  },
+  {
+    "name": "Ritualist",
+    "percentage": "4%"
+  },
+  {
+    "name": "Deadeye",
+    "percentage": "3%"
+  },
+  {
+    "name": "Witchhunter",
+    "percentage": "2%"
+  },
+  {
+    "name": "Lich",
+    "percentage": "2%"
+  },
+  {
+    "name": "Tactician",
+    "percentage": "2%"
+  },
+  {
+    "name": "Infernalist",
+    "percentage": "1%"
+  },
+  {
+    "name": "Smith of Kitava",
+    "percentage": "1%"
+  },
+  {
+    "name": "Warbringer",
+    "percentage": "1%"
+  },
+  {
+    "name": "Chronomancer",
+    "percentage": "0.7%"
+  },
+  {
+    "name": "Acolyte of Chayula",
+    "percentage": "0.6%"
+  },
+  {
+    "name": "Abyssal Lich",
+    "percentage": "0.6%"
+  },
+  {
+    "name": "Gemling Legionnaire",
+    "percentage": "0.2%"
+  },
+  {
+    "name": "Druid",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Witch",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Ranger",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Huntress",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Warrior",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Mercenary",
+    "percentage": "0.0%"
+  },
+  {
+    "name": "Sorceress",
+    "percentage": "0.0%"
+  }
+]

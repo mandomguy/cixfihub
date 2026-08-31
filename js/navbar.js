@@ -26,6 +26,9 @@ function renderNavbar(options = {}) {
   header.id = "site-navbar";
 
   header.innerHTML = `
+  <head>
+    <link rel="stylesheet" href="${basePath}css/styles.css">
+  </head>
     <div class="header-inner" id="headerInner">
       <!-- LEFT SECTION: Logo + Title -->
       <div class="header-left">
