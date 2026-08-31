@@ -29,6 +29,8 @@ jobs:
   triage:
     runs-on: 'ubuntu-latest'
     timeout-minutes: 7
+    env:
+      TRIAGED_ISSUES: ''
     permissions:
       contents: 'read'
       id-token: 'write'
